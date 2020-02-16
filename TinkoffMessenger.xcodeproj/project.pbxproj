@@ -1,0 +1,491 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C58D767923F9C002000E739E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D767823F9C002000E739E /* AppDelegate.swift */; };
+		C58D767B23F9C002000E739E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D767A23F9C002000E739E /* SceneDelegate.swift */; };
+		C58D767D23F9C002000E739E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D767C23F9C002000E739E /* ViewController.swift */; };
+		C58D768023F9C002000E739E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C58D767E23F9C002000E739E /* Main.storyboard */; };
+		C58D768323F9C002000E739E /* TinkoffMessenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C58D768123F9C002000E739E /* TinkoffMessenger.xcdatamodeld */; };
+		C58D768523F9C004000E739E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C58D768423F9C004000E739E /* Assets.xcassets */; };
+		C58D768823F9C004000E739E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C58D768623F9C004000E739E /* LaunchScreen.storyboard */; };
+		C58D769323F9C004000E739E /* TinkoffMessengerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D769223F9C004000E739E /* TinkoffMessengerTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C58D768F23F9C004000E739E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C58D766D23F9C002000E739E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C58D767423F9C002000E739E;
+			remoteInfo = TinkoffMessenger;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C58D767523F9C002000E739E /* TinkoffMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C58D767823F9C002000E739E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C58D767A23F9C002000E739E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C58D767C23F9C002000E739E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C58D767F23F9C002000E739E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C58D768223F9C002000E739E /* TinkoffMessenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinkoffMessenger.xcdatamodel; sourceTree = "<group>"; };
+		C58D768423F9C004000E739E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C58D768723F9C004000E739E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C58D768923F9C004000E739E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C58D768E23F9C004000E739E /* TinkoffMessengerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinkoffMessengerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C58D769223F9C004000E739E /* TinkoffMessengerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkoffMessengerTests.swift; sourceTree = "<group>"; };
+		C58D769423F9C004000E739E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C58D767223F9C002000E739E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C58D768B23F9C004000E739E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C58D766C23F9C002000E739E = {
+			isa = PBXGroup;
+			children = (
+				C58D767723F9C002000E739E /* TinkoffMessenger */,
+				C58D769123F9C004000E739E /* TinkoffMessengerTests */,
+				C58D767623F9C002000E739E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C58D767623F9C002000E739E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C58D767523F9C002000E739E /* TinkoffMessenger.app */,
+				C58D768E23F9C004000E739E /* TinkoffMessengerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C58D767723F9C002000E739E /* TinkoffMessenger */ = {
+			isa = PBXGroup;
+			children = (
+				C58D767823F9C002000E739E /* AppDelegate.swift */,
+				C58D767A23F9C002000E739E /* SceneDelegate.swift */,
+				C58D767C23F9C002000E739E /* ViewController.swift */,
+				C58D767E23F9C002000E739E /* Main.storyboard */,
+				C58D768423F9C004000E739E /* Assets.xcassets */,
+				C58D768623F9C004000E739E /* LaunchScreen.storyboard */,
+				C58D768923F9C004000E739E /* Info.plist */,
+				C58D768123F9C002000E739E /* TinkoffMessenger.xcdatamodeld */,
+			);
+			path = TinkoffMessenger;
+			sourceTree = "<group>";
+		};
+		C58D769123F9C004000E739E /* TinkoffMessengerTests */ = {
+			isa = PBXGroup;
+			children = (
+				C58D769223F9C004000E739E /* TinkoffMessengerTests.swift */,
+				C58D769423F9C004000E739E /* Info.plist */,
+			);
+			path = TinkoffMessengerTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C58D767423F9C002000E739E /* TinkoffMessenger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C58D769723F9C004000E739E /* Build configuration list for PBXNativeTarget "TinkoffMessenger" */;
+			buildPhases = (
+				C58D767123F9C002000E739E /* Sources */,
+				C58D767223F9C002000E739E /* Frameworks */,
+				C58D767323F9C002000E739E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TinkoffMessenger;
+			productName = TinkoffMessenger;
+			productReference = C58D767523F9C002000E739E /* TinkoffMessenger.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C58D768D23F9C004000E739E /* TinkoffMessengerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C58D769A23F9C004000E739E /* Build configuration list for PBXNativeTarget "TinkoffMessengerTests" */;
+			buildPhases = (
+				C58D768A23F9C004000E739E /* Sources */,
+				C58D768B23F9C004000E739E /* Frameworks */,
+				C58D768C23F9C004000E739E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C58D769023F9C004000E739E /* PBXTargetDependency */,
+			);
+			name = TinkoffMessengerTests;
+			productName = TinkoffMessengerTests;
+			productReference = C58D768E23F9C004000E739E /* TinkoffMessengerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C58D766D23F9C002000E739E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = komarov;
+				TargetAttributes = {
+					C58D767423F9C002000E739E = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					C58D768D23F9C004000E739E = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = C58D767423F9C002000E739E;
+					};
+				};
+			};
+			buildConfigurationList = C58D767023F9C002000E739E /* Build configuration list for PBXProject "TinkoffMessenger" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C58D766C23F9C002000E739E;
+			productRefGroup = C58D767623F9C002000E739E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C58D767423F9C002000E739E /* TinkoffMessenger */,
+				C58D768D23F9C004000E739E /* TinkoffMessengerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C58D767323F9C002000E739E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C58D768823F9C004000E739E /* LaunchScreen.storyboard in Resources */,
+				C58D768523F9C004000E739E /* Assets.xcassets in Resources */,
+				C58D768023F9C002000E739E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C58D768C23F9C004000E739E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C58D767123F9C002000E739E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C58D767D23F9C002000E739E /* ViewController.swift in Sources */,
+				C58D767923F9C002000E739E /* AppDelegate.swift in Sources */,
+				C58D767B23F9C002000E739E /* SceneDelegate.swift in Sources */,
+				C58D768323F9C002000E739E /* TinkoffMessenger.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C58D768A23F9C004000E739E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C58D769323F9C004000E739E /* TinkoffMessengerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C58D769023F9C004000E739E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C58D767423F9C002000E739E /* TinkoffMessenger */;
+			targetProxy = C58D768F23F9C004000E739E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C58D767E23F9C002000E739E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C58D767F23F9C002000E739E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C58D768623F9C004000E739E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C58D768723F9C004000E739E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C58D769523F9C004000E739E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C58D769623F9C004000E739E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C58D769823F9C004000E739E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 52TSGWFG39;
+				INFOPLIST_FILE = TinkoffMessenger/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.ifmo.rain.komarov.TinkoffMessenger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C58D769923F9C004000E739E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 52TSGWFG39;
+				INFOPLIST_FILE = TinkoffMessenger/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.ifmo.rain.komarov.TinkoffMessenger;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C58D769B23F9C004000E739E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 52TSGWFG39;
+				INFOPLIST_FILE = TinkoffMessengerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.ifmo.rain.komarov.TinkoffMessengerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TinkoffMessenger.app/TinkoffMessenger";
+			};
+			name = Debug;
+		};
+		C58D769C23F9C004000E739E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 52TSGWFG39;
+				INFOPLIST_FILE = TinkoffMessengerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.ifmo.rain.komarov.TinkoffMessengerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TinkoffMessenger.app/TinkoffMessenger";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C58D767023F9C002000E739E /* Build configuration list for PBXProject "TinkoffMessenger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C58D769523F9C004000E739E /* Debug */,
+				C58D769623F9C004000E739E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C58D769723F9C004000E739E /* Build configuration list for PBXNativeTarget "TinkoffMessenger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C58D769823F9C004000E739E /* Debug */,
+				C58D769923F9C004000E739E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C58D769A23F9C004000E739E /* Build configuration list for PBXNativeTarget "TinkoffMessengerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C58D769B23F9C004000E739E /* Debug */,
+				C58D769C23F9C004000E739E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C58D768123F9C002000E739E /* TinkoffMessenger.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C58D768223F9C002000E739E /* TinkoffMessenger.xcdatamodel */,
+			);
+			currentVersion = C58D768223F9C002000E739E /* TinkoffMessenger.xcdatamodel */;
+			path = TinkoffMessenger.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C58D766D23F9C002000E739E /* Project object */;
+}
