@@ -5,4 +5,4 @@
 ## Educational project for [Fintech Tinkoff iOS course](https://fintech.tinkoff.ru/study/fintech/ios/).
 
 1. Application and ViewController LifeCycle - done.  
-To run in debug mode (with logs) select TinkoffMessengerDebug Scheme otherwise - TinkoffMessenger Scheme.
+To run in debug mode (with logs) select TinkoffMessengerDebug Scheme, otherwise - TinkoffMessenger Scheme.

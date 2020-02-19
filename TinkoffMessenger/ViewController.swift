@@ -84,13 +84,6 @@ class ViewController: UIViewController {
         printLog("\(#function)\n")
     }
     
-    
-
-    func printLog(_ message : String) {
-        #if Logs
-            print(message)
-        #endif
-    }
 
 }
 
