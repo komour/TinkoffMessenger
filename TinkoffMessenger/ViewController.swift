@@ -9,12 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        printLog("\(#function)\n")
-    }
+    
+    @IBOutlet weak var avatarUIImage: UIImageView!
+    @IBOutlet weak var choosePhotoUIButton: UIButton!
+    @IBOutlet weak var editUIButton: UIButton!
     
     override func loadView() {
         super.loadView()
@@ -30,6 +28,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        editUIButton.layer.borderWidth = 1
+        editUIButton.layer.borderColor = UIColor.black.cgColor
         
         printLog("\(#function)\n")
     }
@@ -52,6 +53,17 @@ class ViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         printLog("\(#function)\n")
+        
+        let cornerRadius = choosePhotoUIButton.bounds.size.width / 2
+        let edgeInset = choosePhotoUIButton.bounds.size.width / 4
+        
+        avatarUIImage.layer.cornerRadius = cornerRadius
+        choosePhotoUIButton.layer.cornerRadius = cornerRadius
+        
+        choosePhotoUIButton.imageEdgeInsets = UIEdgeInsets(top: edgeInset, left: edgeInset, bottom: edgeInset, right: edgeInset)
+        
+        editUIButton.layer.cornerRadius = editUIButton.bounds.size.width / 25
+
     }
     
     override func updateViewConstraints() {
@@ -82,6 +94,11 @@ class ViewController: UIViewController {
         super.viewDidDisappear(animated)
         
         printLog("\(#function)\n")
+    }
+    
+    
+    @IBAction func choosePhotoAction() {
+        print("Выбери изображение профиля")
     }
     
 
