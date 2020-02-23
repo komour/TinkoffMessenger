@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C543E5DE2401EC8F000652B4 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */; };
+		C543E5DF2401EC90000652B4 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */; };
 		C58D767923F9C002000E739E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D767823F9C002000E739E /* AppDelegate.swift */; };
 		C58D767D23F9C002000E739E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D767C23F9C002000E739E /* ViewController.swift */; };
 		C58D768023F9C002000E739E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C58D767E23F9C002000E739E /* Main.storyboard */; };
@@ -33,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		C58D767523F9C002000E739E /* TinkoffMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C58D767823F9C002000E739E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C58D767C23F9C002000E739E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +101,7 @@
 			children = (
 				C58D767823F9C002000E739E /* AppDelegate.swift */,
 				C58D767C23F9C002000E739E /* ViewController.swift */,
+				C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */,
 				C58D767E23F9C002000E739E /* Main.storyboard */,
 				C58D768423F9C004000E739E /* Assets.xcassets */,
 				C58D768623F9C004000E739E /* LaunchScreen.storyboard */,
@@ -248,6 +252,7 @@
 				C58D767D23F9C002000E739E /* ViewController.swift in Sources */,
 				C58D767923F9C002000E739E /* AppDelegate.swift in Sources */,
 				C58D768323F9C002000E739E /* TinkoffMessenger.xcdatamodeld in Sources */,
+				C543E5DE2401EC8F000652B4 /* ImagePickerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +271,7 @@
 				C58D769F23F9C178000E739E /* ViewController.swift in Sources */,
 				C58D76A023F9C178000E739E /* AppDelegate.swift in Sources */,
 				C58D76A223F9C178000E739E /* TinkoffMessenger.xcdatamodeld in Sources */,
+				C543E5DF2401EC90000652B4 /* ImagePickerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
