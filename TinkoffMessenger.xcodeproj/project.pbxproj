@@ -10,13 +10,13 @@
 		C543E5DE2401EC8F000652B4 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */; };
 		C543E5DF2401EC90000652B4 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */; };
 		C58D767923F9C002000E739E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D767823F9C002000E739E /* AppDelegate.swift */; };
-		C58D767D23F9C002000E739E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D767C23F9C002000E739E /* ViewController.swift */; };
+		C58D767D23F9C002000E739E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D767C23F9C002000E739E /* ProfileViewController.swift */; };
 		C58D768023F9C002000E739E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C58D767E23F9C002000E739E /* Main.storyboard */; };
 		C58D768323F9C002000E739E /* TinkoffMessenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C58D768123F9C002000E739E /* TinkoffMessenger.xcdatamodeld */; };
 		C58D768523F9C004000E739E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C58D768423F9C004000E739E /* Assets.xcassets */; };
 		C58D768823F9C004000E739E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C58D768623F9C004000E739E /* LaunchScreen.storyboard */; };
 		C58D769323F9C004000E739E /* TinkoffMessengerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D769223F9C004000E739E /* TinkoffMessengerTests.swift */; };
-		C58D769F23F9C178000E739E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D767C23F9C002000E739E /* ViewController.swift */; };
+		C58D769F23F9C178000E739E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D767C23F9C002000E739E /* ProfileViewController.swift */; };
 		C58D76A023F9C178000E739E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D767823F9C002000E739E /* AppDelegate.swift */; };
 		C58D76A223F9C178000E739E /* TinkoffMessenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C58D768123F9C002000E739E /* TinkoffMessenger.xcdatamodeld */; };
 		C58D76A523F9C178000E739E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C58D768623F9C004000E739E /* LaunchScreen.storyboard */; };
@@ -38,7 +38,7 @@
 		C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		C58D767523F9C002000E739E /* TinkoffMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C58D767823F9C002000E739E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C58D767C23F9C002000E739E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C58D767C23F9C002000E739E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C58D767F23F9C002000E739E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C58D768223F9C002000E739E /* TinkoffMessenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinkoffMessenger.xcdatamodel; sourceTree = "<group>"; };
 		C58D768423F9C004000E739E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				C58D767823F9C002000E739E /* AppDelegate.swift */,
-				C58D767C23F9C002000E739E /* ViewController.swift */,
+				C58D767C23F9C002000E739E /* ProfileViewController.swift */,
 				C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */,
 				C58D767E23F9C002000E739E /* Main.storyboard */,
 				C58D768423F9C004000E739E /* Assets.xcassets */,
@@ -249,7 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C58D767D23F9C002000E739E /* ViewController.swift in Sources */,
+				C58D767D23F9C002000E739E /* ProfileViewController.swift in Sources */,
 				C58D767923F9C002000E739E /* AppDelegate.swift in Sources */,
 				C58D768323F9C002000E739E /* TinkoffMessenger.xcdatamodeld in Sources */,
 				C543E5DE2401EC8F000652B4 /* ImagePickerManager.swift in Sources */,
@@ -268,7 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C58D769F23F9C178000E739E /* ViewController.swift in Sources */,
+				C58D769F23F9C178000E739E /* ProfileViewController.swift in Sources */,
 				C58D76A023F9C178000E739E /* AppDelegate.swift in Sources */,
 				C58D76A223F9C178000E739E /* TinkoffMessenger.xcdatamodeld in Sources */,
 				C543E5DF2401EC90000652B4 /* ImagePickerManager.swift in Sources */,
