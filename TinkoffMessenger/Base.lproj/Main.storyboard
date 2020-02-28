@@ -36,8 +36,8 @@
                                     <action selector="choosePhotoAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="TQ1-Q4-uMX"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OgH-jV-Clh">
-                                <rect key="frame" x="16" y="512" width="288" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OgH-jV-Clh">
+                                <rect key="frame" x="16" y="519" width="288" height="33"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Редактировать">
@@ -51,7 +51,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LA5-Ja-jPy">
-                                <rect key="frame" x="16" y="362" width="288" height="134"/>
+                                <rect key="frame" x="16" y="362" width="288" height="141"/>
                                 <string key="text">👨‍💻Люблю программировать под iOS
 👩‍🎓Изучать новые технологии
 👨‍🏫Помогаю развиваться другим 👨‍💻Люблю программировать под iOS
@@ -63,22 +63,21 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="BMK-aB-p8P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="1qG-du-U8V"/>
                             <constraint firstItem="LA5-Ja-jPy" firstAttribute="top" secondItem="URF-Q0-rEz" secondAttribute="bottom" constant="10" id="428-sj-krg"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LA5-Ja-jPy" secondAttribute="trailing" constant="16" id="53x-8z-Mi3"/>
                             <constraint firstItem="OgH-jV-Clh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LA5-Ja-jPy" secondAttribute="bottom" constant="16" id="FB2-XR-UnL"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OgH-jV-Clh" secondAttribute="bottom" constant="16" id="NFx-bE-TqA"/>
                             <constraint firstItem="OgH-jV-Clh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Qjr-ot-wt5"/>
                             <constraint firstItem="BMK-aB-p8P" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Qyr-TW-WbX"/>
-                            <constraint firstItem="OgH-jV-Clh" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.07" id="WwO-1K-Emg"/>
                             <constraint firstItem="ZOt-X7-Xy9" firstAttribute="bottom" secondItem="BMK-aB-p8P" secondAttribute="bottom" id="cb4-wm-nby"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="URF-Q0-rEz" secondAttribute="trailing" constant="16" id="d59-Ul-7iO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BMK-aB-p8P" secondAttribute="trailing" constant="16" id="e3E-iD-p0f"/>
                             <constraint firstItem="ZOt-X7-Xy9" firstAttribute="width" secondItem="BMK-aB-p8P" secondAttribute="width" multiplier="0.28" id="frD-an-Zx8"/>
-                            <constraint firstItem="BMK-aB-p8P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gFw-7s-eGt"/>
                             <constraint firstItem="URF-Q0-rEz" firstAttribute="top" secondItem="BMK-aB-p8P" secondAttribute="bottom" constant="8" id="kan-Hs-0at"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OgH-jV-Clh" secondAttribute="trailing" constant="16" id="nO8-uB-LNv"/>
                             <constraint firstItem="LA5-Ja-jPy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qWq-5Y-giQ"/>
                             <constraint firstItem="URF-Q0-rEz" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.07" id="t6i-bJ-xtT"/>
-                            <constraint firstItem="BMK-aB-p8P" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="vOV-MW-pXG"/>
                             <constraint firstItem="URF-Q0-rEz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="vbd-8C-s1r"/>
                             <constraint firstItem="ZOt-X7-Xy9" firstAttribute="trailing" secondItem="BMK-aB-p8P" secondAttribute="trailing" id="wub-JT-X3M"/>
                         </constraints>
