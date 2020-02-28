@@ -23,35 +23,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        printLog("The launch process is initiated: \(#function)\n")
+//        printLog("The launch process is initiated: \(#function)\n")
 
         return true
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        printLog("The application state changes from Non-running to Inactive: \(#function)\n")
+//        printLog("The application state changes from Non-running to Inactive: \(#function)\n")
         
         return true
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
-        printLog("The application state changes from Inactive to Active: \(#function)\n")
+//        printLog("The application state changes from Inactive to Active: \(#function)\n")
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
-        printLog("The application state changes from Active to Inactive: \(#function)\n")
+//        printLog("The application state changes from Active to Inactive: \(#function)\n")
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        printLog("The application state changes from Foreground (Inactive) to Background: \(#function)\n")
+//        printLog("The application state changes from Foreground (Inactive) to Background: \(#function)\n")
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
-        printLog("The application state changes from Background to Foreground (Inactive): \(#function)\n")
+//        printLog("The application state changes from Background to Foreground (Inactive): \(#function)\n")
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        printLog("The application state changes from Background to Non-running: \(#function)\n")
+//        printLog("The application state changes from Background to Non-running: \(#function)\n")
     }
     
 

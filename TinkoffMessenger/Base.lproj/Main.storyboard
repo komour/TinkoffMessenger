@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +11,94 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TinkoffMessenger" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="BMK-aB-p8P">
+                                <rect key="frame" x="16" y="16" width="288" height="288"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="BMK-aB-p8P" secondAttribute="height" multiplier="1:1" id="1lX-MI-f4Y"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOt-X7-Xy9" userLabel="ChoosePhoto">
+                                <rect key="frame" x="223.5" y="223.5" width="80.5" height="80.5"/>
+                                <color key="backgroundColor" red="0.24705882352941178" green="0.47058823529411764" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ZOt-X7-Xy9" secondAttribute="height" multiplier="1:1" id="wjQ-mB-58u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" image="choosePhotoButton">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                </state>
+                                <connections>
+                                    <action selector="choosePhotoAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="TQ1-Q4-uMX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OgH-jV-Clh">
+                                <rect key="frame" x="16" y="512" width="288" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Редактировать">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Александр Федоров" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="URF-Q0-rEz">
+                                <rect key="frame" x="16" y="312" width="288" height="40"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LA5-Ja-jPy">
+                                <rect key="frame" x="16" y="362" width="288" height="134"/>
+                                <string key="text">👨‍💻Люблю программировать под iOS
+👩‍🎓Изучать новые технологии
+👨‍🏫Помогаю развиваться другим 👨‍💻Люблю программировать под iOS
+👩‍🎓Изучать новые технологии 👨‍🏫Помогаю развиваться другим</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="LA5-Ja-jPy" firstAttribute="top" secondItem="URF-Q0-rEz" secondAttribute="bottom" constant="10" id="428-sj-krg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LA5-Ja-jPy" secondAttribute="trailing" constant="16" id="53x-8z-Mi3"/>
+                            <constraint firstItem="OgH-jV-Clh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LA5-Ja-jPy" secondAttribute="bottom" constant="16" id="FB2-XR-UnL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OgH-jV-Clh" secondAttribute="bottom" constant="16" id="NFx-bE-TqA"/>
+                            <constraint firstItem="OgH-jV-Clh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Qjr-ot-wt5"/>
+                            <constraint firstItem="BMK-aB-p8P" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="Qyr-TW-WbX"/>
+                            <constraint firstItem="OgH-jV-Clh" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.07" id="WwO-1K-Emg"/>
+                            <constraint firstItem="ZOt-X7-Xy9" firstAttribute="bottom" secondItem="BMK-aB-p8P" secondAttribute="bottom" id="cb4-wm-nby"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="URF-Q0-rEz" secondAttribute="trailing" constant="16" id="d59-Ul-7iO"/>
+                            <constraint firstItem="ZOt-X7-Xy9" firstAttribute="width" secondItem="BMK-aB-p8P" secondAttribute="width" multiplier="0.28" id="frD-an-Zx8"/>
+                            <constraint firstItem="BMK-aB-p8P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gFw-7s-eGt"/>
+                            <constraint firstItem="URF-Q0-rEz" firstAttribute="top" secondItem="BMK-aB-p8P" secondAttribute="bottom" constant="8" id="kan-Hs-0at"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OgH-jV-Clh" secondAttribute="trailing" constant="16" id="nO8-uB-LNv"/>
+                            <constraint firstItem="LA5-Ja-jPy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qWq-5Y-giQ"/>
+                            <constraint firstItem="URF-Q0-rEz" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.07" id="t6i-bJ-xtT"/>
+                            <constraint firstItem="BMK-aB-p8P" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="vOV-MW-pXG"/>
+                            <constraint firstItem="URF-Q0-rEz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="vbd-8C-s1r"/>
+                            <constraint firstItem="ZOt-X7-Xy9" firstAttribute="trailing" secondItem="BMK-aB-p8P" secondAttribute="trailing" id="wub-JT-X3M"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="avatarImage" destination="BMK-aB-p8P" id="4yy-8v-Suy"/>
+                        <outlet property="choosePhotoButtonOutlet" destination="ZOt-X7-Xy9" id="REh-tz-eA6"/>
+                        <outlet property="descriptionLabel" destination="LA5-Ja-jPy" id="LkQ-5h-SQ2"/>
+                        <outlet property="editButtonOutlet" destination="OgH-jV-Clh" id="cyV-ZN-Rf4"/>
+                        <outlet property="nameLabel" destination="URF-Q0-rEz" id="JH2-vq-pD1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.875" y="84.507042253521121"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="choosePhotoButton" width="256" height="256"/>
+        <image name="defaultAvatar" width="600" height="600"/>
+    </resources>
 </document>
