@@ -50,6 +50,8 @@
 		C5C61FA2240B22D800ABBE7D /* Date+isToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61FA0240B22D800ABBE7D /* Date+isToday.swift */; };
 		C5D6E2B8240B63D400543026 /* RandomHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6E2B7240B63D400543026 /* RandomHelper.swift */; };
 		C5D6E2B9240B63D400543026 /* RandomHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6E2B7240B63D400543026 /* RandomHelper.swift */; };
+		C5D6E2BC240C294900543026 /* UITableView+scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6E2BB240C294900543026 /* UITableView+scroll.swift */; };
+		C5D6E2BD240C294A00543026 /* UITableView+scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6E2BB240C294900543026 /* UITableView+scroll.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,7 @@
 		C5C61F9D240B1FC900ABBE7D /* UIfont+with.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIfont+with.swift"; sourceTree = "<group>"; };
 		C5C61FA0240B22D800ABBE7D /* Date+isToday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+isToday.swift"; sourceTree = "<group>"; };
 		C5D6E2B7240B63D400543026 /* RandomHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomHelper.swift; sourceTree = "<group>"; };
+		C5D6E2BB240C294900543026 /* UITableView+scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+scroll.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +174,7 @@
 				C5C61FA0240B22D800ABBE7D /* Date+isToday.swift */,
 				C51F7B2F240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift */,
 				C5D6E2B7240B63D400543026 /* RandomHelper.swift */,
+				C5D6E2BB240C294900543026 /* UITableView+scroll.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -375,6 +379,7 @@
 				C543E5DE2401EC8F000652B4 /* ImagePickerManager.swift in Sources */,
 				C51F7B4A240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift in Sources */,
 				C5D6E2B8240B63D400543026 /* RandomHelper.swift in Sources */,
+				C5D6E2BC240C294900543026 /* UITableView+scroll.swift in Sources */,
 				C51F7B47240B5B1E00A4D8A5 /* MessageCellModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +410,7 @@
 				C543E5DF2401EC90000652B4 /* ImagePickerManager.swift in Sources */,
 				C51F7B4B240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift in Sources */,
 				C5D6E2B9240B63D400543026 /* RandomHelper.swift in Sources */,
+				C5D6E2BD240C294A00543026 /* UITableView+scroll.swift in Sources */,
 				C51F7B48240B5B1E00A4D8A5 /* MessageCellModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

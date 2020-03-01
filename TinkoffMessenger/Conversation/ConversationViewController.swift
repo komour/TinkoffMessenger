@@ -24,6 +24,11 @@ class ConversationViewController: UIViewController {
         
         tableView.register(UINib(nibName: String(describing: MessageCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MessageCell.self))
         tableView.dataSource = self
+        tableView.reloadData()
+        
+        if hasMessages {
+            tableView.scrollToBottom()
+        }
     }
 
 }
@@ -48,8 +53,7 @@ extension ConversationViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.configure(with: ConversationViewController.messages[indexPath.row])
+        cell.selectionStyle = .none
         return cell
     }
-    
-    
 }

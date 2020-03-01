@@ -26,7 +26,7 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="XRg-bF-v1u" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="4Dc-WJ-uiz"/>
+                    <constraint firstItem="XRg-bF-v1u" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" priority="999" id="4Dc-WJ-uiz"/>
                     <constraint firstItem="XRg-bF-v1u" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.7" id="GAp-00-nQq"/>
                     <constraint firstItem="XRg-bF-v1u" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="hIS-T0-K2C"/>
                     <constraint firstItem="XRg-bF-v1u" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottom" constant="-4" id="hnS-B7-7Bb"/>

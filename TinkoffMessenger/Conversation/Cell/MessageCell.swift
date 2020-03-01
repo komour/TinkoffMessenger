@@ -17,13 +17,17 @@ class MessageCell: UITableViewCell, ConfigurableView {
     func configure(with model: MessageCellModel) {
         messageLabel.text = model.text
         if model.isIncoming {
+            messageLabel.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
+            messageLabel.text = "INCOMING: " + model.text
             messageLeading.isActive = true
             messageTrailing.isActive = false
-            messageLabel.text = "INCOMING: " + model.text
         } else {
+            messageLabel.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.5)
+            messageLabel.text = "OUTGOING: " + model.text
             messageLeading.isActive = false
             messageTrailing.isActive = true
-            messageLabel.text = "OUTGOING: " + model.text
         }
-    }    
+    }
 }
+
+
