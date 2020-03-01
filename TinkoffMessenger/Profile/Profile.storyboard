@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Профиль-->
+        <!--Profile-->
         <scene sceneID="blU-BP-qQW">
             <objects>
-                <viewController id="pWM-Ms-ZIq" customClass="ProfileViewController" customModule="TinkoffMessenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="pWM-Ms-ZIq" customClass="ProfileViewController" customModule="TinkoffMessenger" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AMf-Zn-KNy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,7 +40,7 @@
                                 <rect key="frame" x="16" y="519" width="288" height="33"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Редактировать">
+                                <state key="normal" title="Edit">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
@@ -83,7 +83,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QF6-cm-Dxx"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Профиль" id="53m-DW-a7D"/>
+                    <navigationItem key="navigationItem" title="Profile" id="53m-DW-a7D">
+                        <barButtonItem key="leftBarButtonItem" image="x" id="acX-i4-76P">
+                            <connections>
+                                <action selector="xButtonAction:" destination="pWM-Ms-ZIq" id="7wm-BC-K4G"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="avatarImage" destination="DaM-PW-4pT" id="KUn-Xs-cVS"/>
                         <outlet property="choosePhotoButtonOutlet" destination="hNJ-E1-iD2" id="oOY-iM-aco"/>
@@ -99,7 +105,7 @@
         <!--Navigation Controller-->
         <scene sceneID="LvV-Cl-LbN">
             <objects>
-                <navigationController storyboardIdentifier="profile" automaticallyAdjustsScrollViewInsets="NO" id="nCr-yx-v5l" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ProfileNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="nCr-yx-v5l" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1X3-bR-VBQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -118,5 +124,6 @@
     <resources>
         <image name="choosePhotoButton" width="256" height="256"/>
         <image name="defaultAvatar" width="600" height="600"/>
+        <image name="x" width="50" height="50"/>
     </resources>
 </document>

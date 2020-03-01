@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ConversationCell" id="KGk-i7-Jjw" customClass="ConversationCell" customModule="TinkoffMessenger" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="293" height="75"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Name Name Name Name Name " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P6-gQ-Xbe" userLabel="Name">
+                        <rect key="frame" x="16" y="8" width="164" height="26"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02.02.2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUO-kD-VTX" userLabel="Date">
+                        <rect key="frame" x="200" y="8" width="89" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="message message message message message message message message message message message message message " lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FE1-ES-1Ht" userLabel="Message">
+                        <rect key="frame" x="16" y="37" width="269" height="35"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="FE1-ES-1Ht" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottom" constant="-3" id="2Em-XM-2Yj"/>
+                    <constraint firstItem="0P6-gQ-Xbe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="3K5-Q3-4fF"/>
+                    <constraint firstItem="eUO-kD-VTX" firstAttribute="leading" secondItem="0P6-gQ-Xbe" secondAttribute="trailing" constant="20" id="4jQ-7H-pLM"/>
+                    <constraint firstItem="eUO-kD-VTX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="5CP-m5-Lhp"/>
+                    <constraint firstItem="eUO-kD-VTX" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailing" constant="-4" id="Haq-A1-RK8"/>
+                    <constraint firstItem="FE1-ES-1Ht" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Iep-HS-v3O"/>
+                    <constraint firstItem="FE1-ES-1Ht" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="lP7-5f-xAq"/>
+                    <constraint firstItem="0P6-gQ-Xbe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="nUA-bv-AIZ"/>
+                    <constraint firstItem="FE1-ES-1Ht" firstAttribute="top" secondItem="0P6-gQ-Xbe" secondAttribute="bottom" constant="3" id="v3h-FW-CGb"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="dateLabel" destination="eUO-kD-VTX" id="KID-pR-o24"/>
+                <outlet property="messageLabel" destination="FE1-ES-1Ht" id="yWt-Tg-yCO"/>
+                <outlet property="nameLabel" destination="0P6-gQ-Xbe" id="dWB-Id-6FI"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="158.37053571428569"/>
+        </tableViewCell>
+    </objects>
+</document>
