@@ -28,12 +28,6 @@ class ConversationsListViewController: UIViewController {
         present(profileNavigationController, animated: true, completion: nil)
     }
     
-    @IBAction func kek() {
-        let conversationViewController = UIStoryboard(name: "Conversation", bundle: Bundle.main).instantiateViewController(withIdentifier: String(describing: ConversationViewController.self))
-        navigationController?.pushViewController(conversationViewController, animated: true)
-    }
-    
-    
     //MARK: temporary test dataset
     
     /* timeIntervalSinceReferenceDate dates:
@@ -120,6 +114,19 @@ extension ConversationsListViewController: UITableViewDataSource {
 extension ConversationsListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let conversationViewController = UIStoryboard(name: "Conversation", bundle: Bundle.main).instantiateViewController(withIdentifier: String(describing: ConversationViewController.self))
+        var currentName: String?
+        if indexPath.section == 0 {
+            currentName = onlinePersons[indexPath.row].name
+        } else {
+            currentName = offlinePersons[indexPath.row].name
+        }
+        guard let curName = currentName else {
+            print("nil current name in \(#function)")
+            return
+        }
+        ConversationViewController.newTitle = curName
+        navigationController?.pushViewController(conversationViewController, animated: true)
         
     }
     
@@ -128,7 +135,7 @@ extension ConversationsListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        return 80
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -158,10 +165,6 @@ extension ConversationsListViewController: UITableViewDelegate {
 
 //MARK: utils to create test dataset
 extension ConversationsListViewController {
-    func randomString(length: Int) -> String {
-      let letters = "abcdefghijkl mnopqrstuvwxyz ABCDEFGHIJKLMN OPQRSTUVWXYZ 0123456789"
-      return String((0..<length).map{ _ in letters.randomElement()! })
-    }
     
     func randomMessage(length: Int) -> String? {
         switch Bool.random() {

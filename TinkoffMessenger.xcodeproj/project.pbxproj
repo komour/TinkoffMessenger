@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		C51F7B30240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B2F240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift */; };
 		C51F7B31240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B2F240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift */; };
+		C51F7B3B240B5A8A00A4D8A5 /* incomingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B39240B5A8A00A4D8A5 /* incomingMessageCell.swift */; };
+		C51F7B3C240B5A8A00A4D8A5 /* incomingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B39240B5A8A00A4D8A5 /* incomingMessageCell.swift */; };
+		C51F7B3D240B5A8A00A4D8A5 /* incomingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C51F7B3A240B5A8A00A4D8A5 /* incomingMessageCell.xib */; };
+		C51F7B3E240B5A8A00A4D8A5 /* incomingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C51F7B3A240B5A8A00A4D8A5 /* incomingMessageCell.xib */; };
+		C51F7B41240B5ADA00A4D8A5 /* outgoingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B3F240B5ADA00A4D8A5 /* outgoingMessageCell.swift */; };
+		C51F7B42240B5ADA00A4D8A5 /* outgoingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B3F240B5ADA00A4D8A5 /* outgoingMessageCell.swift */; };
+		C51F7B43240B5ADA00A4D8A5 /* outgoingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C51F7B40240B5ADA00A4D8A5 /* outgoingMessageCell.xib */; };
+		C51F7B44240B5ADA00A4D8A5 /* outgoingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C51F7B40240B5ADA00A4D8A5 /* outgoingMessageCell.xib */; };
+		C51F7B47240B5B1E00A4D8A5 /* MessageCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B46240B5B1E00A4D8A5 /* MessageCellModel.swift */; };
+		C51F7B48240B5B1E00A4D8A5 /* MessageCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B46240B5B1E00A4D8A5 /* MessageCellModel.swift */; };
+		C51F7B4A240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B49240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift */; };
+		C51F7B4B240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B49240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift */; };
 		C543E5DE2401EC8F000652B4 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */; };
 		C543E5DF2401EC90000652B4 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */; };
 		C58D767923F9C002000E739E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D767823F9C002000E739E /* AppDelegate.swift */; };
@@ -40,6 +52,8 @@
 		C5C61F9F240B1FC900ABBE7D /* UIfont+with.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61F9D240B1FC900ABBE7D /* UIfont+with.swift */; };
 		C5C61FA1240B22D800ABBE7D /* Date+isToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61FA0240B22D800ABBE7D /* Date+isToday.swift */; };
 		C5C61FA2240B22D800ABBE7D /* Date+isToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61FA0240B22D800ABBE7D /* Date+isToday.swift */; };
+		C5D6E2B8240B63D400543026 /* RandomHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6E2B7240B63D400543026 /* RandomHelper.swift */; };
+		C5D6E2B9240B63D400543026 /* RandomHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6E2B7240B63D400543026 /* RandomHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +68,12 @@
 
 /* Begin PBXFileReference section */
 		C51F7B2F240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+bindEdgesToSuperview.swift"; sourceTree = "<group>"; };
+		C51F7B39240B5A8A00A4D8A5 /* incomingMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = incomingMessageCell.swift; sourceTree = "<group>"; };
+		C51F7B3A240B5A8A00A4D8A5 /* incomingMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = incomingMessageCell.xib; sourceTree = "<group>"; };
+		C51F7B3F240B5ADA00A4D8A5 /* outgoingMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = outgoingMessageCell.swift; sourceTree = "<group>"; };
+		C51F7B40240B5ADA00A4D8A5 /* outgoingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = outgoingMessageCell.xib; sourceTree = "<group>"; };
+		C51F7B46240B5B1E00A4D8A5 /* MessageCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellModel.swift; sourceTree = "<group>"; };
+		C51F7B49240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableViewProtocol.swift; sourceTree = "<group>"; };
 		C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		C58D767523F9C002000E739E /* TinkoffMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C58D767823F9C002000E739E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +96,7 @@
 		C5C61F95240B0CB800ABBE7D /* ConversationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversationCell.xib; sourceTree = "<group>"; };
 		C5C61F9D240B1FC900ABBE7D /* UIfont+with.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIfont+with.swift"; sourceTree = "<group>"; };
 		C5C61FA0240B22D800ABBE7D /* Date+isToday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+isToday.swift"; sourceTree = "<group>"; };
+		C5D6E2B7240B63D400543026 /* RandomHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +124,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C51F7B38240B5A8A00A4D8A5 /* incomingMessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				C51F7B39240B5A8A00A4D8A5 /* incomingMessageCell.swift */,
+				C51F7B3A240B5A8A00A4D8A5 /* incomingMessageCell.xib */,
+			);
+			path = incomingMessageCell;
+			sourceTree = "<group>";
+		};
+		C51F7B45240B5AE000A4D8A5 /* outgoingMessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				C51F7B3F240B5ADA00A4D8A5 /* outgoingMessageCell.swift */,
+				C51F7B40240B5ADA00A4D8A5 /* outgoingMessageCell.xib */,
+			);
+			path = outgoingMessageCell;
+			sourceTree = "<group>";
+		};
 		C58D766C23F9C002000E739E = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +173,7 @@
 				C58D768423F9C004000E739E /* Assets.xcassets */,
 				C58D768923F9C004000E739E /* Info.plist */,
 				C58D768123F9C002000E739E /* TinkoffMessenger.xcdatamodeld */,
+				C51F7B49240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift */,
 			);
 			path = TinkoffMessenger;
 			sourceTree = "<group>";
@@ -154,6 +194,7 @@
 				C5C61F9D240B1FC900ABBE7D /* UIfont+with.swift */,
 				C5C61FA0240B22D800ABBE7D /* Date+isToday.swift */,
 				C51F7B2F240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift */,
+				C5D6E2B7240B63D400543026 /* RandomHelper.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -181,8 +222,11 @@
 		C5C61F83240AD00C00ABBE7D /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
+				C51F7B38240B5A8A00A4D8A5 /* incomingMessageCell */,
 				C5C61F84240AD00C00ABBE7D /* Conversation.storyboard */,
 				C5C61F85240AD00C00ABBE7D /* ConversationViewController.swift */,
+				C51F7B45240B5AE000A4D8A5 /* outgoingMessageCell */,
+				C51F7B46240B5B1E00A4D8A5 /* MessageCellModel.swift */,
 			);
 			name = Conversation;
 			path = TinkoffMessenger/Conversation;
@@ -300,6 +344,8 @@
 				C5C61F81240AD00500ABBE7D /* ConverationsList.storyboard in Resources */,
 				C5C61F86240AD00C00ABBE7D /* Conversation.storyboard in Resources */,
 				C5C61F8D240AD01500ABBE7D /* Profile.storyboard in Resources */,
+				C51F7B3D240B5A8A00A4D8A5 /* incomingMessageCell.xib in Resources */,
+				C51F7B43240B5ADA00A4D8A5 /* outgoingMessageCell.xib in Resources */,
 				C58D768523F9C004000E739E /* Assets.xcassets in Resources */,
 				C5C61F98240B0CB800ABBE7D /* ConversationCell.xib in Resources */,
 			);
@@ -319,6 +365,8 @@
 				C5C61F82240AD00500ABBE7D /* ConverationsList.storyboard in Resources */,
 				C5C61F87240AD00C00ABBE7D /* Conversation.storyboard in Resources */,
 				C5C61F8E240AD01500ABBE7D /* Profile.storyboard in Resources */,
+				C51F7B3E240B5A8A00A4D8A5 /* incomingMessageCell.xib in Resources */,
+				C51F7B44240B5ADA00A4D8A5 /* outgoingMessageCell.xib in Resources */,
 				C58D76A623F9C178000E739E /* Assets.xcassets in Resources */,
 				C5C61F99240B0CB800ABBE7D /* ConversationCell.xib in Resources */,
 			);
@@ -335,13 +383,18 @@
 				C58D767923F9C002000E739E /* AppDelegate.swift in Sources */,
 				C5C61F7B240AD00500ABBE7D /* ConversationsListViewController.swift in Sources */,
 				C5C61F92240AD0EF00ABBE7D /* ConversationCellModel.swift in Sources */,
+				C51F7B41240B5ADA00A4D8A5 /* outgoingMessageCell.swift in Sources */,
 				C51F7B30240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift in Sources */,
+				C51F7B3B240B5A8A00A4D8A5 /* incomingMessageCell.swift in Sources */,
 				C5C61F88240AD00C00ABBE7D /* ConversationViewController.swift in Sources */,
 				C5C61F96240B0CB800ABBE7D /* ConversationCell.swift in Sources */,
 				C58D768323F9C002000E739E /* TinkoffMessenger.xcdatamodeld in Sources */,
 				C5C61FA1240B22D800ABBE7D /* Date+isToday.swift in Sources */,
 				C5C61F8F240AD01500ABBE7D /* ProfileViewController.swift in Sources */,
 				C543E5DE2401EC8F000652B4 /* ImagePickerManager.swift in Sources */,
+				C51F7B4A240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift in Sources */,
+				C5D6E2B8240B63D400543026 /* RandomHelper.swift in Sources */,
+				C51F7B47240B5B1E00A4D8A5 /* MessageCellModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,13 +414,18 @@
 				C58D76A023F9C178000E739E /* AppDelegate.swift in Sources */,
 				C5C61F7C240AD00500ABBE7D /* ConversationsListViewController.swift in Sources */,
 				C5C61F93240AD0EF00ABBE7D /* ConversationCellModel.swift in Sources */,
+				C51F7B42240B5ADA00A4D8A5 /* outgoingMessageCell.swift in Sources */,
 				C51F7B31240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift in Sources */,
+				C51F7B3C240B5A8A00A4D8A5 /* incomingMessageCell.swift in Sources */,
 				C5C61F89240AD00C00ABBE7D /* ConversationViewController.swift in Sources */,
 				C5C61F97240B0CB800ABBE7D /* ConversationCell.swift in Sources */,
 				C58D76A223F9C178000E739E /* TinkoffMessenger.xcdatamodeld in Sources */,
 				C5C61FA2240B22D800ABBE7D /* Date+isToday.swift in Sources */,
 				C5C61F90240AD01500ABBE7D /* ProfileViewController.swift in Sources */,
 				C543E5DF2401EC90000652B4 /* ImagePickerManager.swift in Sources */,
+				C51F7B4B240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift in Sources */,
+				C5D6E2B9240B63D400543026 /* RandomHelper.swift in Sources */,
+				C51F7B48240B5B1E00A4D8A5 /* MessageCellModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

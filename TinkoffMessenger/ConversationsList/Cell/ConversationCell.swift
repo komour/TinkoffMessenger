@@ -8,12 +8,6 @@
 
 import UIKit
 
-protocol ConfigurableView {
-    associatedtype ConfigurationModel
-    
-    func configure(with model: ConfigurationModel)
-}
-
 class ConversationCell: UITableViewCell, ConfigurableView {
     
     @IBOutlet weak var nameLabel: UILabel!
