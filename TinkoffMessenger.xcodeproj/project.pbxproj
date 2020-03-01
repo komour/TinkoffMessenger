@@ -9,14 +9,10 @@
 /* Begin PBXBuildFile section */
 		C51F7B30240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B2F240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift */; };
 		C51F7B31240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B2F240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift */; };
-		C51F7B3B240B5A8A00A4D8A5 /* incomingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B39240B5A8A00A4D8A5 /* incomingMessageCell.swift */; };
-		C51F7B3C240B5A8A00A4D8A5 /* incomingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B39240B5A8A00A4D8A5 /* incomingMessageCell.swift */; };
-		C51F7B3D240B5A8A00A4D8A5 /* incomingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C51F7B3A240B5A8A00A4D8A5 /* incomingMessageCell.xib */; };
-		C51F7B3E240B5A8A00A4D8A5 /* incomingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C51F7B3A240B5A8A00A4D8A5 /* incomingMessageCell.xib */; };
-		C51F7B41240B5ADA00A4D8A5 /* outgoingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B3F240B5ADA00A4D8A5 /* outgoingMessageCell.swift */; };
-		C51F7B42240B5ADA00A4D8A5 /* outgoingMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B3F240B5ADA00A4D8A5 /* outgoingMessageCell.swift */; };
-		C51F7B43240B5ADA00A4D8A5 /* outgoingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C51F7B40240B5ADA00A4D8A5 /* outgoingMessageCell.xib */; };
-		C51F7B44240B5ADA00A4D8A5 /* outgoingMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C51F7B40240B5ADA00A4D8A5 /* outgoingMessageCell.xib */; };
+		C51F7B3B240B5A8A00A4D8A5 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B39240B5A8A00A4D8A5 /* MessageCell.swift */; };
+		C51F7B3C240B5A8A00A4D8A5 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B39240B5A8A00A4D8A5 /* MessageCell.swift */; };
+		C51F7B3D240B5A8A00A4D8A5 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C51F7B3A240B5A8A00A4D8A5 /* MessageCell.xib */; };
+		C51F7B3E240B5A8A00A4D8A5 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C51F7B3A240B5A8A00A4D8A5 /* MessageCell.xib */; };
 		C51F7B47240B5B1E00A4D8A5 /* MessageCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B46240B5B1E00A4D8A5 /* MessageCellModel.swift */; };
 		C51F7B48240B5B1E00A4D8A5 /* MessageCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B46240B5B1E00A4D8A5 /* MessageCellModel.swift */; };
 		C51F7B4A240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B49240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift */; };
@@ -68,10 +64,8 @@
 
 /* Begin PBXFileReference section */
 		C51F7B2F240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+bindEdgesToSuperview.swift"; sourceTree = "<group>"; };
-		C51F7B39240B5A8A00A4D8A5 /* incomingMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = incomingMessageCell.swift; sourceTree = "<group>"; };
-		C51F7B3A240B5A8A00A4D8A5 /* incomingMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = incomingMessageCell.xib; sourceTree = "<group>"; };
-		C51F7B3F240B5ADA00A4D8A5 /* outgoingMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = outgoingMessageCell.swift; sourceTree = "<group>"; };
-		C51F7B40240B5ADA00A4D8A5 /* outgoingMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = outgoingMessageCell.xib; sourceTree = "<group>"; };
+		C51F7B39240B5A8A00A4D8A5 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		C51F7B3A240B5A8A00A4D8A5 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		C51F7B46240B5B1E00A4D8A5 /* MessageCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellModel.swift; sourceTree = "<group>"; };
 		C51F7B49240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableViewProtocol.swift; sourceTree = "<group>"; };
 		C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
@@ -124,24 +118,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C51F7B38240B5A8A00A4D8A5 /* incomingMessageCell */ = {
-			isa = PBXGroup;
-			children = (
-				C51F7B39240B5A8A00A4D8A5 /* incomingMessageCell.swift */,
-				C51F7B3A240B5A8A00A4D8A5 /* incomingMessageCell.xib */,
-			);
-			path = incomingMessageCell;
-			sourceTree = "<group>";
-		};
-		C51F7B45240B5AE000A4D8A5 /* outgoingMessageCell */ = {
-			isa = PBXGroup;
-			children = (
-				C51F7B3F240B5ADA00A4D8A5 /* outgoingMessageCell.swift */,
-				C51F7B40240B5ADA00A4D8A5 /* outgoingMessageCell.xib */,
-			);
-			path = outgoingMessageCell;
-			sourceTree = "<group>";
-		};
 		C58D766C23F9C002000E739E = {
 			isa = PBXGroup;
 			children = (
@@ -222,11 +198,9 @@
 		C5C61F83240AD00C00ABBE7D /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
-				C51F7B38240B5A8A00A4D8A5 /* incomingMessageCell */,
+				C5D6E2BA240BFF9F00543026 /* Cell */,
 				C5C61F84240AD00C00ABBE7D /* Conversation.storyboard */,
 				C5C61F85240AD00C00ABBE7D /* ConversationViewController.swift */,
-				C51F7B45240B5AE000A4D8A5 /* outgoingMessageCell */,
-				C51F7B46240B5B1E00A4D8A5 /* MessageCellModel.swift */,
 			);
 			name = Conversation;
 			path = TinkoffMessenger/Conversation;
@@ -241,6 +215,16 @@
 			name = Profile;
 			path = TinkoffMessenger/Profile;
 			sourceTree = SOURCE_ROOT;
+		};
+		C5D6E2BA240BFF9F00543026 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C51F7B46240B5B1E00A4D8A5 /* MessageCellModel.swift */,
+				C51F7B39240B5A8A00A4D8A5 /* MessageCell.swift */,
+				C51F7B3A240B5A8A00A4D8A5 /* MessageCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -344,8 +328,7 @@
 				C5C61F81240AD00500ABBE7D /* ConverationsList.storyboard in Resources */,
 				C5C61F86240AD00C00ABBE7D /* Conversation.storyboard in Resources */,
 				C5C61F8D240AD01500ABBE7D /* Profile.storyboard in Resources */,
-				C51F7B3D240B5A8A00A4D8A5 /* incomingMessageCell.xib in Resources */,
-				C51F7B43240B5ADA00A4D8A5 /* outgoingMessageCell.xib in Resources */,
+				C51F7B3D240B5A8A00A4D8A5 /* MessageCell.xib in Resources */,
 				C58D768523F9C004000E739E /* Assets.xcassets in Resources */,
 				C5C61F98240B0CB800ABBE7D /* ConversationCell.xib in Resources */,
 			);
@@ -365,8 +348,7 @@
 				C5C61F82240AD00500ABBE7D /* ConverationsList.storyboard in Resources */,
 				C5C61F87240AD00C00ABBE7D /* Conversation.storyboard in Resources */,
 				C5C61F8E240AD01500ABBE7D /* Profile.storyboard in Resources */,
-				C51F7B3E240B5A8A00A4D8A5 /* incomingMessageCell.xib in Resources */,
-				C51F7B44240B5ADA00A4D8A5 /* outgoingMessageCell.xib in Resources */,
+				C51F7B3E240B5A8A00A4D8A5 /* MessageCell.xib in Resources */,
 				C58D76A623F9C178000E739E /* Assets.xcassets in Resources */,
 				C5C61F99240B0CB800ABBE7D /* ConversationCell.xib in Resources */,
 			);
@@ -383,9 +365,8 @@
 				C58D767923F9C002000E739E /* AppDelegate.swift in Sources */,
 				C5C61F7B240AD00500ABBE7D /* ConversationsListViewController.swift in Sources */,
 				C5C61F92240AD0EF00ABBE7D /* ConversationCellModel.swift in Sources */,
-				C51F7B41240B5ADA00A4D8A5 /* outgoingMessageCell.swift in Sources */,
 				C51F7B30240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift in Sources */,
-				C51F7B3B240B5A8A00A4D8A5 /* incomingMessageCell.swift in Sources */,
+				C51F7B3B240B5A8A00A4D8A5 /* MessageCell.swift in Sources */,
 				C5C61F88240AD00C00ABBE7D /* ConversationViewController.swift in Sources */,
 				C5C61F96240B0CB800ABBE7D /* ConversationCell.swift in Sources */,
 				C58D768323F9C002000E739E /* TinkoffMessenger.xcdatamodeld in Sources */,
@@ -414,9 +395,8 @@
 				C58D76A023F9C178000E739E /* AppDelegate.swift in Sources */,
 				C5C61F7C240AD00500ABBE7D /* ConversationsListViewController.swift in Sources */,
 				C5C61F93240AD0EF00ABBE7D /* ConversationCellModel.swift in Sources */,
-				C51F7B42240B5ADA00A4D8A5 /* outgoingMessageCell.swift in Sources */,
 				C51F7B31240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift in Sources */,
-				C51F7B3C240B5A8A00A4D8A5 /* incomingMessageCell.swift in Sources */,
+				C51F7B3C240B5A8A00A4D8A5 /* MessageCell.swift in Sources */,
 				C5C61F89240AD00C00ABBE7D /* ConversationViewController.swift in Sources */,
 				C5C61F97240B0CB800ABBE7D /* ConversationCell.swift in Sources */,
 				C58D76A223F9C178000E739E /* TinkoffMessenger.xcdatamodeld in Sources */,

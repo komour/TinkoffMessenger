@@ -10,4 +10,5 @@ import Foundation
 
 struct MessageCellModel {
     let text: String
+    let isIncoming: Bool
 }

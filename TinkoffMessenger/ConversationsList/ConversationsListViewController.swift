@@ -22,35 +22,22 @@ class ConversationsListViewController: UIViewController {
         tableView.register(UINib(nibName: String(describing: ConversationCell.self), bundle: nil), forCellReuseIdentifier: String(describing: ConversationCell.self))
     }
     
-    
+//  go to profile vc
     @IBAction func profileButtonAction(_ sender: Any) {
         let profileNavigationController = UIStoryboard(name: "Profile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileNavigationController")
         present(profileNavigationController, animated: true, completion: nil)
     }
     
-    //MARK: temporary test dataset
-    
-    /* timeIntervalSinceReferenceDate dates:
-     * 604800000: 02 Mar
-     * 604900000: 03 Mar
-     * 604990000: 04 Mar
-     * 605090000: 05 Mar
-     * 605190000: 06 Mar
-     * 605290000: 07 Mar
-     * 605390000: 08 Mar
-     * 605410000: 09 Mar
-     * 605490000: 10 Mar
-     */
-    private lazy var onlinePersons: [ConversationCellModel] = {
-        return (0...Int.random(in: 10...15)).map { _ in
+//  MARK: temporary test dataset
+    private lazy var onlinePersons: [ConversationCellModel] = (0...Int.random(in: 10...15)).map { _ in
                 ConversationCellModel(name: randomString(length: .random(in: 3...42)),
                 message: randomMessage(length: .random(in: 0...200)),
                 date: randomDate(),
                 isOnline: true,
                 hasUnreadMessages: Bool.random())
             }.sorted(by: {
-                if let message0 = $0.message {
-                    if let message1 = $1.message {
+                if let _ = $0.message {
+                    if let _ = $1.message {
                         return $1.date < $0.date
                     } else {
                         return true
@@ -62,20 +49,17 @@ class ConversationsListViewController: UIViewController {
                         return false
                     }
                 }
-            })
-    }()
+            }) //the newest chats at the top and chats with nil messages at the bottom
     
-    private lazy var offlinePersons: [ConversationCellModel] = {
-        return (0...Int.random(in: 10...15)).map { _ in
-                ConversationCellModel(
-                    name: randomString(length: .random(in: 3...42)),
-                    message: String?(randomString(length: .random(in: 0...200))),
-                    date: randomDate(),
-                    isOnline: false,
-                    hasUnreadMessages: Bool.random()
-                )
-        }.sorted(by: { $1.date < $0.date })
-    }()
+    private lazy var offlinePersons: [ConversationCellModel] = (0...Int.random(in: 10...15)).map { _ in
+            ConversationCellModel(
+                name: randomString(length: .random(in: 3...42)),
+                message: String?(randomString(length: .random(in: 0...200))),
+                date: randomDate(),
+                isOnline: false,
+                hasUnreadMessages: Bool.random()
+            )
+    }.sorted(by: { $1.date < $0.date })
             
 }
 
@@ -93,6 +77,7 @@ extension ConversationsListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         2
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = String(describing: ConversationCell.self)
@@ -114,19 +99,32 @@ extension ConversationsListViewController: UITableViewDataSource {
 extension ConversationsListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let conversationViewController = UIStoryboard(name: "Conversation", bundle: Bundle.main).instantiateViewController(withIdentifier: String(describing: ConversationViewController.self))
+//      get conversationViewController as destination
+        let conversationViewController = UIStoryboard(name: "Conversation", bundle: Bundle.main).instantiateViewController(withIdentifier: String(describing: ConversationViewController.self)) as? ConversationViewController
+        guard let destination = conversationViewController else {
+            print(#function)
+            return
+        }
+        
+//      get the title of the current chat
+//      and check whether it has messages (temporary crutches for mock data)
         var currentName: String?
         if indexPath.section == 0 {
             currentName = onlinePersons[indexPath.row].name
+            destination.hasMessages = onlinePersons[indexPath.row].message != nil
         } else {
+            destination.hasMessages = offlinePersons[indexPath.row].message != nil
             currentName = offlinePersons[indexPath.row].name
         }
         guard let curName = currentName else {
             print("nil current name in \(#function)")
             return
         }
-        ConversationViewController.newTitle = curName
-        navigationController?.pushViewController(conversationViewController, animated: true)
+//      set new titile and navigate to conversationVC
+        destination.title = curName
+        navigationController?.pushViewController(destination, animated: true)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
         
     }
     
@@ -179,4 +177,15 @@ extension ConversationsListViewController {
     func randomDate() -> Date {
         Date(timeIntervalSinceReferenceDate: Double.random(in: 604600000...605210000))
     }
+    /* timeIntervalSinceReferenceDate dates:
+     * 604800000: 02 Mar
+     * 604900000: 03 Mar
+     * 604990000: 04 Mar
+     * 605090000: 05 Mar
+     * 605190000: 06 Mar
+     * 605290000: 07 Mar
+     * 605390000: 08 Mar
+     * 605410000: 09 Mar
+     * 605490000: 10 Mar
+     */
 }

@@ -12,63 +12,43 @@ class ConversationViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    static var newTitle: String?
-    
-    private lazy var messages: [MessageCellModel] = {
-        return (0...Int.random(in: 10...100)).map { _ in
-            MessageCellModel(text: randomString(length: Int.random(in: 10...500)))
-        }
-    }()
+//  random data
+    static var messages: [MessageCellModel] = (0...Int.random(in: 10...100)).map { _ in
+        MessageCellModel(text: randomString(length: Int.random(in: 10...300)), isIncoming: Bool.random())
+    }
+//  temporary crutch for mock data
+    var hasMessages = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UINib(nibName: String(describing: incomingMessageCell.self), bundle: nil), forCellReuseIdentifier: String(describing: incomingMessageCell.self))
-        tableView.register(UINib(nibName: String(describing: outgoingMessageCell.self), bundle: nil), forCellReuseIdentifier: String(describing: outgoingMessageCell.self))
+        tableView.register(UINib(nibName: String(describing: MessageCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MessageCell.self))
         tableView.dataSource = self
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        guard let title = ConversationViewController.newTitle else {
-            print("nil newTitle in \(#function)")
-            return
-        }
-        navigationItem.title = title
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        ConversationViewController.newTitle = nil
-    }
+
 }
 
 // MARK: UITableViewDataSource
 extension ConversationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return ConversationViewController.messages.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        1
+//      temporary crutch for chats with no messages
+        if hasMessages {
+            return 1
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if Bool.random() {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: outgoingMessageCell.self), for: indexPath) as? outgoingMessageCell else {
-                return UITableViewCell()
-            }
-            cell.configure(with: messages[indexPath.row])
-            return cell
-        } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: incomingMessageCell.self), for: indexPath) as? incomingMessageCell else {
-                return UITableViewCell()
-            }
-            cell.configure(with: messages[indexPath.row])
-            return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MessageCell.self), for: indexPath) as? MessageCell else {
+            return UITableViewCell()
         }
+        cell.configure(with: ConversationViewController.messages[indexPath.row])
+        return cell
     }
     
     
