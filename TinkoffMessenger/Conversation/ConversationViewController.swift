@@ -22,7 +22,7 @@ class ConversationViewController: UIViewController {
 //  temporary crutch for mock data
     var hasMessages = false
     
-    private let toolbarHeight: CGFloat = 30
+    private let toolbarHeight: CGFloat = 25
     private let textFieldBottomConstraintDefault: CGFloat = 4
     private let sendBottomConstraintDefault: CGFloat = 2
     
@@ -49,36 +49,48 @@ class ConversationViewController: UIViewController {
             return
         }
         let keyboardHeight = keyboardFrame.cgRectValue.height
-        textFieldBottomConstraint.constant += keyboardHeight + toolbarHeight
-        sendBottomConstraint.constant += keyboardHeight + toolbarHeight
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
+        DispatchQueue.main.async {
+            self.textFieldBottomConstraint.constant += keyboardHeight + self.toolbarHeight - 10
+            self.sendBottomConstraint.constant += keyboardHeight + self.toolbarHeight - 10
+            UIView.animate(withDuration: 0.15, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        }
     }
     
     @objc private func keyboardWillHide(_ notification: Notification) {
-        textFieldBottomConstraint.constant = textFieldBottomConstraintDefault
-        sendBottomConstraint.constant = sendBottomConstraintDefault
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
+        DispatchQueue.main.async {
+            self.textFieldBottomConstraint.constant = self.textFieldBottomConstraintDefault
+            self.sendBottomConstraint.constant = self.sendBottomConstraintDefault
+            UIView.animate(withDuration: 0.15, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        }
     }
     
     private func setupToolBar() {
-        
         let toolBar = UIToolbar(frame: CGRect(origin: .zero, size: .init(width: view.frame.size.width, height: toolbarHeight)))
-            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            let doneButton = UIBarButtonItem(title: "Done", style: .done
-                , target: self, action: #selector(doneButtonAction))
-            toolBar.setItems([flexSpace, doneButton], animated: false)
-            toolBar.sizeToFit()
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done
+            , target: self, action: #selector(doneButtonAction))
+        toolBar.setItems([flexSpace, doneButton], animated: false)
+        toolBar.sizeToFit()
         newMessageTextField.inputAccessoryView = toolBar
     }
     
     @objc private func doneButtonAction() {
         self.view.endEditing(true)
     }
-
+    
+    @IBAction func sendAction() {
+        if let newMessage = newMessageTextField.text {
+            if newMessage == "" { return }
+            ConversationViewController.messages.append(MessageCellModel(text: newMessage, isIncoming: false))
+            tableView.reloadData()
+            newMessageTextField.text = ""
+        }
+    }
+    
 }
 
 // MARK: UITableViewDataSource
