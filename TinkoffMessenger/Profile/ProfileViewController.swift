@@ -25,15 +25,9 @@ class ProfileViewController: UIViewController {
         
         editButtonOutlet.layer.borderWidth = 1
         editButtonOutlet.layer.borderColor = UIColor.black.cgColor
-        
-        print(editButtonOutlet.frame)
-        
-        printLog("\(#function)\n")
     }
     
     override func viewDidLayoutSubviews() {
-        printLog("\(#function)\n")
-        
         let cornerRadius = choosePhotoButtonOutlet.bounds.size.width / 2
         let edgeInset = choosePhotoButtonOutlet.bounds.size.width / 4
         
@@ -41,18 +35,19 @@ class ProfileViewController: UIViewController {
         choosePhotoButtonOutlet.layer.cornerRadius = cornerRadius
         
         choosePhotoButtonOutlet.imageEdgeInsets = UIEdgeInsets(top: edgeInset, left: edgeInset, bottom: edgeInset, right: edgeInset)
-        
-        editButtonOutlet.layer.cornerRadius = editButtonOutlet.bounds.size.width / 25
 
+        editButtonOutlet.layer.cornerRadius = editButtonOutlet.bounds.size.width / 25
     }
         
     @IBAction func choosePhotoAction() {
-        print("Выбери изображение профиля")
         imagePicker!.pickImage({ image in
             self.avatarImage.image = image
         })
     }
     
-
+    @IBAction func xButtonAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
 

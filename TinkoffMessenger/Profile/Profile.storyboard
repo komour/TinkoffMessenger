@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profile-->
+        <scene sceneID="blU-BP-qQW">
+            <objects>
+                <viewController storyboardIdentifier="ProfileViewController" id="pWM-Ms-ZIq" customClass="ProfileViewController" customModule="TinkoffMessenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AMf-Zn-KNy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="DaM-PW-4pT">
+                                <rect key="frame" x="16" y="60" width="288" height="288"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="DaM-PW-4pT" secondAttribute="height" multiplier="1:1" id="RRk-ZG-Jgz"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNJ-E1-iD2" userLabel="ChoosePhoto">
+                                <rect key="frame" x="223.5" y="267.5" width="80.5" height="80.5"/>
+                                <color key="backgroundColor" red="0.2470588235" green="0.47058823529999999" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hNJ-E1-iD2" secondAttribute="height" multiplier="1:1" id="Z0h-uv-F8S"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" image="choosePhotoButton">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                </state>
+                                <connections>
+                                    <action selector="choosePhotoAction" destination="pWM-Ms-ZIq" eventType="touchUpInside" id="pj4-xb-SMs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBe-Sa-41L">
+                                <rect key="frame" x="16" y="519" width="288" height="33"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Edit">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Александр Федоров" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="juz-VJ-FGH">
+                                <rect key="frame" x="16" y="356" width="288" height="40"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xfJ-vx-qsA">
+                                <rect key="frame" x="16" y="406" width="288" height="97"/>
+                                <string key="text">👨‍💻Люблю программировать под iOS
+👩‍🎓Изучать новые технологии
+👨‍🏫Помогаю развиваться другим 👨‍💻Люблю программировать под iOS
+👩‍🎓Изучать новые технологии 👨‍🏫Помогаю развиваться другим</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="DaM-PW-4pT" firstAttribute="top" secondItem="QF6-cm-Dxx" secondAttribute="top" constant="16" id="4kx-pX-XW6"/>
+                            <constraint firstItem="DaM-PW-4pT" firstAttribute="leading" secondItem="QF6-cm-Dxx" secondAttribute="leading" constant="16" id="8dn-43-eRK"/>
+                            <constraint firstItem="QF6-cm-Dxx" firstAttribute="trailing" secondItem="tBe-Sa-41L" secondAttribute="trailing" constant="16" id="GGH-eN-wgR"/>
+                            <constraint firstItem="tBe-Sa-41L" firstAttribute="leading" secondItem="QF6-cm-Dxx" secondAttribute="leading" constant="16" id="XLU-rS-f0X"/>
+                            <constraint firstItem="QF6-cm-Dxx" firstAttribute="trailing" secondItem="DaM-PW-4pT" secondAttribute="trailing" constant="16" id="XWK-Wn-KWE"/>
+                            <constraint firstItem="juz-VJ-FGH" firstAttribute="leading" secondItem="QF6-cm-Dxx" secondAttribute="leading" constant="16" id="bDZ-xW-hrV"/>
+                            <constraint firstItem="hNJ-E1-iD2" firstAttribute="width" secondItem="DaM-PW-4pT" secondAttribute="width" multiplier="0.28" id="gKc-kx-llW"/>
+                            <constraint firstItem="QF6-cm-Dxx" firstAttribute="trailing" secondItem="xfJ-vx-qsA" secondAttribute="trailing" constant="16" id="k9u-5z-3kD"/>
+                            <constraint firstItem="tBe-Sa-41L" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xfJ-vx-qsA" secondAttribute="bottom" constant="16" id="kqO-wC-3SJ"/>
+                            <constraint firstItem="xfJ-vx-qsA" firstAttribute="leading" secondItem="QF6-cm-Dxx" secondAttribute="leading" constant="16" id="m4p-Yt-gfi"/>
+                            <constraint firstItem="xfJ-vx-qsA" firstAttribute="top" secondItem="juz-VJ-FGH" secondAttribute="bottom" constant="10" id="nqV-D0-1xu"/>
+                            <constraint firstItem="QF6-cm-Dxx" firstAttribute="trailing" secondItem="juz-VJ-FGH" secondAttribute="trailing" constant="16" id="poV-rR-7MY"/>
+                            <constraint firstItem="QF6-cm-Dxx" firstAttribute="bottom" secondItem="tBe-Sa-41L" secondAttribute="bottom" constant="16" id="x6t-lb-9lT"/>
+                            <constraint firstItem="hNJ-E1-iD2" firstAttribute="bottom" secondItem="DaM-PW-4pT" secondAttribute="bottom" id="y20-r8-MOz"/>
+                            <constraint firstItem="hNJ-E1-iD2" firstAttribute="trailing" secondItem="DaM-PW-4pT" secondAttribute="trailing" id="yC8-ql-Ux6"/>
+                            <constraint firstItem="juz-VJ-FGH" firstAttribute="top" secondItem="DaM-PW-4pT" secondAttribute="bottom" constant="8" id="z8f-88-o21"/>
+                            <constraint firstItem="juz-VJ-FGH" firstAttribute="height" secondItem="AMf-Zn-KNy" secondAttribute="height" multiplier="0.07" id="zCQ-uT-XNR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QF6-cm-Dxx"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="53m-DW-a7D">
+                        <barButtonItem key="leftBarButtonItem" image="x" id="acX-i4-76P">
+                            <connections>
+                                <action selector="xButtonAction:" destination="pWM-Ms-ZIq" id="7wm-BC-K4G"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="avatarImage" destination="DaM-PW-4pT" id="KUn-Xs-cVS"/>
+                        <outlet property="choosePhotoButtonOutlet" destination="hNJ-E1-iD2" id="oOY-iM-aco"/>
+                        <outlet property="descriptionLabel" destination="xfJ-vx-qsA" id="CB0-ty-H87"/>
+                        <outlet property="editButtonOutlet" destination="tBe-Sa-41L" id="3Mj-CR-3FR"/>
+                        <outlet property="nameLabel" destination="juz-VJ-FGH" id="Tia-iP-VNj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mTx-bW-NDD" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3583.125" y="133.09859154929578"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LvV-Cl-LbN">
+            <objects>
+                <navigationController storyboardIdentifier="ProfileNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="nCr-yx-v5l" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1X3-bR-VBQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="pWM-Ms-ZIq" kind="relationship" relationship="rootViewController" id="xGE-eN-Mgs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fdc-Da-CKa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2701.875" y="130.98591549295776"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="choosePhotoButton" width="256" height="256"/>
+        <image name="defaultAvatar" width="600" height="600"/>
+        <image name="x" width="50" height="50"/>
+    </resources>
+</document>
