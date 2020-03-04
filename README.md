@@ -6,4 +6,5 @@
 
 1. Application and ViewController LifeCycle  
 To run in debug mode (with logs) select TinkoffMessengerDebug Scheme, otherwise - TinkoffMessenger Scheme.
-2. ProfileViewController
+2. Profile screen
+3. Chat list and dialogue screen via UITableView

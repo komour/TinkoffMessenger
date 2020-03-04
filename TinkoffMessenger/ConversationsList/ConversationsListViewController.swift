@@ -36,17 +36,17 @@ class ConversationsListViewController: UIViewController {
                 isOnline: true,
                 hasUnreadMessages: Bool.random())
             }.sorted(by: {
-                if let _ = $0.message {
-                    if let _ = $1.message {
+                if $0.message != nil {
+                    if $1.message != nil {
                         return $1.date < $0.date
                     } else {
                         return true
                     }
                 } else {
-                    if let message1 = $1.message {
-                        return $1.date > $0.date
-                    } else {
+                    if $1.message != nil {
                         return false
+                    } else {
+                        return $1.date < $0.date
                     }
                 }
             }) //the newest chats at the top and chats with nil messages at the bottom

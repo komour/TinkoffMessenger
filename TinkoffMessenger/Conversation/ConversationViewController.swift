@@ -10,14 +10,21 @@ import UIKit
 
 class ConversationViewController: UIViewController {
 
+    @IBOutlet weak var newMessageTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var textFieldBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var sendBottomConstraint: NSLayoutConstraint!
     
-//  random data
+    //  random data
     static var messages: [MessageCellModel] = (0...Int.random(in: 10...100)).map { _ in
         MessageCellModel(text: randomString(length: Int.random(in: 10...300)), isIncoming: Bool.random())
     }
 //  temporary crutch for mock data
     var hasMessages = false
+    
+    private let toolbarHeight: CGFloat = 30
+    private let textFieldBottomConstraintDefault: CGFloat = 4
+    private let sendBottomConstraintDefault: CGFloat = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +36,47 @@ class ConversationViewController: UIViewController {
         if hasMessages {
             tableView.scrollToBottom()
         }
+        
+        setupToolBar()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+    }
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        guard let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
+            print(#function)
+            return
+        }
+        let keyboardHeight = keyboardFrame.cgRectValue.height
+        textFieldBottomConstraint.constant += keyboardHeight + toolbarHeight
+        sendBottomConstraint.constant += keyboardHeight + toolbarHeight
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        textFieldBottomConstraint.constant = textFieldBottomConstraintDefault
+        sendBottomConstraint.constant = sendBottomConstraintDefault
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    private func setupToolBar() {
+        
+        let toolBar = UIToolbar(frame: CGRect(origin: .zero, size: .init(width: view.frame.size.width, height: toolbarHeight)))
+            let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+            let doneButton = UIBarButtonItem(title: "Done", style: .done
+                , target: self, action: #selector(doneButtonAction))
+            toolBar.setItems([flexSpace, doneButton], animated: false)
+            toolBar.sizeToFit()
+        newMessageTextField.inputAccessoryView = toolBar
+    }
+    
+    @objc private func doneButtonAction() {
+        self.view.endEditing(true)
     }
 
 }

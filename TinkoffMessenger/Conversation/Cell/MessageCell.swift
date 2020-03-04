@@ -10,24 +10,26 @@ import UIKit
 
 class MessageCell: UITableViewCell, ConfigurableView {
     
-    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var messageLeading: NSLayoutConstraint!
     @IBOutlet weak var messageTrailing: NSLayoutConstraint!
+    @IBOutlet weak var messageView: UIView!
+    @IBOutlet weak var messageLabel: UILabel!
     
     func configure(with model: MessageCellModel) {
         messageLabel.text = model.text
-        if model.isIncoming {
-            messageLabel.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
-            messageLabel.text = "INCOMING: " + model.text
-            messageLeading.isActive = true
-            messageTrailing.isActive = false
-        } else {
-            messageLabel.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.5)
-            messageLabel.text = "OUTGOING: " + model.text
-            messageLeading.isActive = false
-            messageTrailing.isActive = true
+        DispatchQueue.main.async {
+            self.messageView.layer.cornerRadius = 12
+            if model.isIncoming {
+                self.messageView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
+                self.messageLabel.text = "INCOMING: " + model.text
+                self.messageLeading.isActive = true
+                self.messageTrailing.isActive = false
+            } else {
+                self.messageView.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.5)
+                self.messageLabel.text = "OUTGOING: " + model.text
+                self.messageLeading.isActive = false
+                self.messageTrailing.isActive = true
+            }
         }
     }
 }
-
-
