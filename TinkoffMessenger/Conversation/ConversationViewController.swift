@@ -33,7 +33,6 @@ class ConversationViewController: UIViewController {
         if hasMessages {
             tableView.scrollToBottom()
         }
-        
         setupToolBar()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -75,6 +74,7 @@ class ConversationViewController: UIViewController {
             , target: self, action: #selector(doneButtonAction))
         toolBar.setItems([flexSpace, doneButton], animated: false)
         toolBar.sizeToFit()
+        toolBar.backgroundColor = UIColor.yellow
         newMessageTextField.inputAccessoryView = toolBar
     }
     
@@ -88,7 +88,7 @@ class ConversationViewController: UIViewController {
             ConversationViewController.messages.append(MessageCellModel(text: newMessage, isIncoming: false))
             tableView.reloadData()
             newMessageTextField.text = ""
-            tableView.scrollToBottom()
+            tableView.scrollToBottomAnimated()
         }
     }
     
