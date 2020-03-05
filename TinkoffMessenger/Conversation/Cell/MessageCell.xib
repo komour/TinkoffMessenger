@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQv-rZ-zDw">
                         <rect key="frame" x="16" y="4" width="224" height="62"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdX-AE-d51" userLabel="Message">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdX-AE-d51" userLabel="Message">
                                 <rect key="frame" x="8" y="4" width="208" height="54"/>
                                 <string key="text">message message message message message message message message message message message message message message message message message message message message message message </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>

@@ -44,11 +44,12 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" red="1" green="0.8964461853918565" blue="0.22233160164395227" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.99695080520000001" green="0.89736598729999995" blue="0.22323200109999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="w17-aJ-UNb" secondAttribute="bottom" constant="4" id="9lg-8w-ToA"/>
                                             <constraint firstItem="qIe-GX-yAR" firstAttribute="leading" secondItem="w17-aJ-UNb" secondAttribute="trailing" constant="6" id="ItF-qx-YuK"/>
                                             <constraint firstItem="w17-aJ-UNb" firstAttribute="leading" secondItem="iGh-7X-TzX" secondAttribute="leading" constant="4" id="RyC-Ya-WpL"/>
+                                            <constraint firstItem="qIe-GX-yAR" firstAttribute="top" secondItem="nrl-A7-fcF" secondAttribute="bottom" constant="2" id="ap5-BW-Mtx"/>
                                             <constraint firstAttribute="bottom" secondItem="qIe-GX-yAR" secondAttribute="bottom" constant="4" id="cYt-63-13J"/>
                                             <constraint firstItem="nrl-A7-fcF" firstAttribute="top" secondItem="iGh-7X-TzX" secondAttribute="top" id="hqt-dc-OTy"/>
                                             <constraint firstAttribute="trailing" secondItem="qIe-GX-yAR" secondAttribute="trailing" constant="4" id="l4C-kJ-G8G"/>
@@ -71,7 +72,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="N61-BO-8aa"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="1" green="0.90074825452172158" blue="0.23128251827793489" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="ALG-C1-81d" firstAttribute="top" secondItem="rxO-ot-YFo" secondAttribute="top" id="DLM-m4-apV"/>
                             <constraint firstItem="ALG-C1-81d" firstAttribute="leading" secondItem="rxO-ot-YFo" secondAttribute="leading" id="YlC-5u-3v4"/>
