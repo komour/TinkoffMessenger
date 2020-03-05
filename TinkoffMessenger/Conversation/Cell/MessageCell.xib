@@ -37,6 +37,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" red="0.9778052346500723" green="1" blue="0.82246260541885285" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                 <constraints>
                     <constraint firstItem="dQv-rZ-zDw" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottom" constant="-4" id="46k-NX-qhb"/>
                     <constraint firstItem="dQv-rZ-zDw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="FuQ-Hx-Bxg"/>

@@ -20,7 +20,7 @@ class MessageCell: UITableViewCell, ConfigurableView {
         DispatchQueue.main.async {
             self.messageView.layer.cornerRadius = 12
             if model.isIncoming {
-                self.messageView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
+                self.messageView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.4)
                 self.messageLabel.text = "INCOMING: " + model.text
                 self.messageLeading.isActive = true
                 self.messageTrailing.isActive = false

@@ -12,8 +12,7 @@ class ConversationViewController: UIViewController {
 
     @IBOutlet weak var newMessageTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var textFieldBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var sendBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     //  random data
     static var messages: [MessageCellModel] = (0...Int.random(in: 10...100)).map { _ in
@@ -23,8 +22,6 @@ class ConversationViewController: UIViewController {
     var hasMessages = false
     
     private let toolbarHeight: CGFloat = 25
-    private let textFieldBottomConstraintDefault: CGFloat = 4
-    private let sendBottomConstraintDefault: CGFloat = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,11 +45,14 @@ class ConversationViewController: UIViewController {
             print(#function)
             return
         }
+        let animationDuration = ((notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]) as! NSNumber).doubleValue
+        let animationOptions = ((notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey]) as! NSNumber).uintValue
         let keyboardHeight = keyboardFrame.cgRectValue.height
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+        scrollView.contentInset = insets
+        scrollView.scrollIndicatorInsets = insets
         DispatchQueue.main.async {
-            self.textFieldBottomConstraint.constant += keyboardHeight + self.toolbarHeight - 10
-            self.sendBottomConstraint.constant += keyboardHeight + self.toolbarHeight - 10
-            UIView.animate(withDuration: 0.15, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+            UIView.animate(withDuration: animationDuration, delay: 0.0, options: UIView.AnimationOptions(rawValue: animationOptions), animations: {
                 self.view.layoutIfNeeded()
             }, completion: nil)
         }
@@ -60,8 +60,8 @@ class ConversationViewController: UIViewController {
     
     @objc private func keyboardWillHide(_ notification: Notification) {
         DispatchQueue.main.async {
-            self.textFieldBottomConstraint.constant = self.textFieldBottomConstraintDefault
-            self.sendBottomConstraint.constant = self.sendBottomConstraintDefault
+            self.scrollView.contentInset = UIEdgeInsets.zero
+            self.scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
             UIView.animate(withDuration: 0.15, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
                 self.view.layoutIfNeeded()
             }, completion: nil)
@@ -88,6 +88,7 @@ class ConversationViewController: UIViewController {
             ConversationViewController.messages.append(MessageCellModel(text: newMessage, isIncoming: false))
             tableView.reloadData()
             newMessageTextField.text = ""
+            tableView.scrollToBottom()
         }
     }
     
