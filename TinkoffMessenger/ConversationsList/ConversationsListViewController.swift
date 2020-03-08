@@ -25,6 +25,7 @@ class ConversationsListViewController: UIViewController {
 //  go to profile vc
     @IBAction func profileButtonAction(_ sender: Any) {
         let profileNavigationController = UIStoryboard(name: "Profile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileNavigationController")
+        profileNavigationController.modalPresentationStyle = .fullScreen
         present(profileNavigationController, animated: true, completion: nil)
     }
     
