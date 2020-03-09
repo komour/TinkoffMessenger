@@ -25,6 +25,8 @@ class ProfileViewController: UIViewController {
         
         editButtonOutlet.layer.borderWidth = 1
         editButtonOutlet.layer.borderColor = UIColor.black.cgColor
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "brightYellow")
     }
     
     override func viewDidLayoutSubviews() {

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +25,7 @@
                                         <subviews>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nrl-A7-fcF">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="526"/>
-                                                <color key="backgroundColor" red="0.97780523470000003" green="1" blue="0.82246260540000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="backgroundColor" name="cream"/>
                                             </tableView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIe-GX-yAR" userLabel="Send">
                                                 <rect key="frame" x="278" y="528" width="38" height="36"/>
@@ -39,12 +40,12 @@
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w17-aJ-UNb" userLabel="New Message">
                                                 <rect key="frame" x="4" y="530" width="268" height="34"/>
-                                                <color key="backgroundColor" red="0.97780523470000003" green="1" blue="0.82246260540000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="backgroundColor" name="cream"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.99695080520000001" green="0.89736598729999995" blue="0.22323200109999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" name="brightYellow"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="w17-aJ-UNb" secondAttribute="bottom" constant="4" id="9lg-8w-ToA"/>
                                             <constraint firstItem="qIe-GX-yAR" firstAttribute="leading" secondItem="w17-aJ-UNb" secondAttribute="trailing" constant="6" id="ItF-qx-YuK"/>
@@ -72,7 +73,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="N61-BO-8aa"/>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.90074825452172158" blue="0.23128251827793489" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" name="brightYellow"/>
                         <constraints>
                             <constraint firstItem="ALG-C1-81d" firstAttribute="top" secondItem="rxO-ot-YFo" secondAttribute="top" id="DLM-m4-apV"/>
                             <constraint firstItem="ALG-C1-81d" firstAttribute="leading" secondItem="rxO-ot-YFo" secondAttribute="leading" id="YlC-5u-3v4"/>
@@ -94,5 +95,11 @@
     </scenes>
     <resources>
         <image name="Send" width="50" height="50"/>
+        <namedColor name="brightYellow">
+            <color red="1" green="0.89411764705882357" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="cream">
+            <color red="1" green="0.99215686274509807" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

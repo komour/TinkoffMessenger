@@ -40,7 +40,7 @@ class ConversationCell: UITableViewCell, ConfigurableView {
         }
         
         if model.isOnline {
-            self.backgroundColor = UIColor.yellow.withAlphaComponent(0.1)
+            self.backgroundColor = UIColor(named: "cream")
         } else {
             self.backgroundColor = UIColor.white
         }

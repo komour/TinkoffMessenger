@@ -20,6 +20,8 @@ class ConversationsListViewController: UIViewController {
         tableView.delegate = self
         
         tableView.register(UINib(nibName: String(describing: ConversationCell.self), bundle: nil), forCellReuseIdentifier: String(describing: ConversationCell.self))
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "brightYellow")
     }
     
 //  go to profile vc
@@ -31,7 +33,7 @@ class ConversationsListViewController: UIViewController {
     
 //  MARK: temporary test dataset
     private lazy var onlinePersons: [ConversationCellModel] = (0...Int.random(in: 10...15)).map { _ in
-                ConversationCellModel(name: randomString(length: .random(in: 3...42)),
+        ConversationCellModel(name: randomString(length: .random(in: 3...42)),
                 message: randomMessage(length: .random(in: 0...200)),
                 date: randomDate(),
                 isOnline: true,
@@ -130,7 +132,7 @@ extension ConversationsListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat(50.0)
+        return CGFloat(30.0)
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -144,7 +146,7 @@ extension ConversationsListViewController: UITableViewDelegate {
         view.addSubview(label)
         label.bindEdgesToSuperview()
 
-        label.backgroundColor = .systemOrange
+        label.backgroundColor = UIColor(named: "lemon")
         label.font = UIFont.systemFont(ofSize: 17)
         label.font = label.font.with(.traitBold)
         label.textColor = UIColor.black
