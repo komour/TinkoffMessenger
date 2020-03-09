@@ -1,5 +1,3 @@
-import UIKit
-
 class Company {
     var ceo: CEO
     
@@ -23,12 +21,16 @@ class CEO {
         print("CEO asks PDM to print the company..")
         if let productManager = self?.productManager {
             productManager.printCompany()
+        } else {
+            print("nil PDM")
         }
     }
     
     lazy var printManager: () -> () = { [weak self] in
         if let productManager = self?.productManager {
             print("CEO prints PDM")
+        } else {
+            print("nil PDM")
         }
     }
     
@@ -36,6 +38,8 @@ class CEO {
         print("CEO asks PDM to print developers...")
         if let productManager = self?.productManager {
             productManager.printDevelopers()
+        } else {
+            print("nil PDM")
         }
     }
     

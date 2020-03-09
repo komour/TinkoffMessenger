@@ -8,3 +8,4 @@
 To run in debug mode (with logs) select TinkoffMessengerDebug Scheme, otherwise - TinkoffMessenger Scheme.
 2. Profile screen
 3. Chat list and dialogue screen via UITableView
+4. Memory Management playground (understanding how to work without retain cycles)
