@@ -71,6 +71,7 @@
 		C51F7B46240B5B1E00A4D8A5 /* MessageCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellModel.swift; sourceTree = "<group>"; };
 		C51F7B49240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableViewProtocol.swift; sourceTree = "<group>"; };
 		C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
+		C586922F24158F69000700C1 /* MemoryManagement.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MemoryManagement.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C58D767523F9C002000E739E /* TinkoffMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C58D767823F9C002000E739E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C58D768223F9C002000E739E /* TinkoffMessenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinkoffMessenger.xcdatamodel; sourceTree = "<group>"; };
@@ -124,6 +125,7 @@
 		C58D766C23F9C002000E739E = {
 			isa = PBXGroup;
 			children = (
+				C586922F24158F69000700C1 /* MemoryManagement.playground */,
 				C58D767723F9C002000E739E /* TinkoffMessenger */,
 				C58D769123F9C004000E739E /* TinkoffMessengerTests */,
 				C58D767623F9C002000E739E /* Products */,
