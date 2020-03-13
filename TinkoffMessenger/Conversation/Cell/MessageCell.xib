@@ -16,48 +16,8 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQv-rZ-zDw">
-                        <rect key="frame" x="16" y="4" width="224" height="62"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EdX-AE-d51" userLabel="Message">
-                                <rect key="frame" x="8" y="4" width="208" height="54"/>
-                                <string key="text">message message message message message message message message message message message message message message message message message message message message message message </string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="EdX-AE-d51" firstAttribute="leading" secondItem="dQv-rZ-zDw" secondAttribute="leadingMargin" id="PzQ-Zm-bz7"/>
-                            <constraint firstItem="EdX-AE-d51" firstAttribute="bottom" secondItem="dQv-rZ-zDw" secondAttribute="bottom" constant="-4" id="XSt-ff-pxW"/>
-                            <constraint firstItem="EdX-AE-d51" firstAttribute="top" secondItem="dQv-rZ-zDw" secondAttribute="top" constant="4" id="YtU-A6-QA3"/>
-                            <constraint firstItem="EdX-AE-d51" firstAttribute="trailing" secondItem="dQv-rZ-zDw" secondAttribute="trailingMargin" id="leL-of-485"/>
-                        </constraints>
-                    </view>
-                </subviews>
-                <color key="backgroundColor" red="0.9778052346500723" green="1" blue="0.82246260541885285" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                <constraints>
-                    <constraint firstItem="dQv-rZ-zDw" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottom" constant="-4" id="46k-NX-qhb"/>
-                    <constraint firstItem="dQv-rZ-zDw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="FuQ-Hx-Bxg"/>
-                    <constraint firstItem="dQv-rZ-zDw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="GbS-Pf-qCM"/>
-                    <constraint firstItem="dQv-rZ-zDw" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.7" id="e5m-5h-NEV"/>
-                    <constraint firstItem="dQv-rZ-zDw" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" priority="999" id="yJJ-Q0-B2K"/>
-                </constraints>
-                <variation key="default">
-                    <mask key="constraints">
-                        <exclude reference="yJJ-Q0-B2K"/>
-                    </mask>
-                </variation>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <connections>
-                <outlet property="messageLabel" destination="EdX-AE-d51" id="CJV-rT-NZO"/>
-                <outlet property="messageLeading" destination="FuQ-Hx-Bxg" id="GVj-VD-KaI"/>
-                <outlet property="messageTrailing" destination="yJJ-Q0-B2K" id="fQE-Uz-4fs"/>
-                <outlet property="messageView" destination="dQv-rZ-zDw" id="Qf7-TT-xZJ"/>
-            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="149.33035714285714"/>
         </tableViewCell>
     </objects>
