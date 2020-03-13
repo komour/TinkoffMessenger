@@ -13,11 +13,11 @@ class Company {
 class CEO {
     var productManager: ProductManager?
     
-    lazy var receiveMessage = { (fromId: Int, message: String) -> () in
+    let receiveMessage = { (fromId: Int, message: String) -> () in
         print("CEO recieved \"\(message)\" from developer:\(fromId)", terminator: "\n\n")
     }
     
-    lazy var printCompany: () -> () = { [weak self] in
+    lazy var printCompany = { [weak self] in
         print("CEO asks PDM to print the company..")
         if let productManager = self?.productManager {
             productManager.printCompany()
@@ -26,7 +26,7 @@ class CEO {
         }
     }
     
-    lazy var printManager: () -> () = { [weak self] in
+    lazy var printManager = { [weak self] in
         if let productManager = self?.productManager {
             print("CEO prints PDM")
         } else {
@@ -34,7 +34,7 @@ class CEO {
         }
     }
     
-    lazy var printDevelopers: () -> () = { [weak self] in
+    lazy var printDevelopers = { [weak self] in
         print("CEO asks PDM to print developers...")
         if let productManager = self?.productManager {
             productManager.printDevelopers()
