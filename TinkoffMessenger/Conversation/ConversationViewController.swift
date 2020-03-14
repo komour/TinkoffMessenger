@@ -33,51 +33,42 @@ class ConversationViewController: UIViewController {
         if hasMessages {
             tableView.scrollToBottom()
         }
-        setupToolBar()
+        
+        addKeyboardNotifications()
+        let tapEndEditing = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        view.addGestureRecognizer(tapEndEditing)
+        
+    }
+    
+    deinit {
+        removeKeyboardNotifications()
+    }
+    
+    private func addKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
+    private func removeKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
+        NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
+    }
+    
     @objc private func keyboardWillShow(_ notification: Notification) {
-        guard let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
-            print(#function)
+        let userInfo = notification.userInfo
+        guard let keyboardFrame: NSValue = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
+            print("something went wrong in \(#function)")
             return
         }
-        let animationDuration = ((notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey]) as! NSNumber).doubleValue
-        let animationOptions = ((notification.userInfo?[UIResponder.keyboardAnimationCurveUserInfoKey]) as! NSNumber).uintValue
         let keyboardHeight = keyboardFrame.cgRectValue.height
-        let insets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
-        scrollView.contentInset = insets
-        scrollView.scrollIndicatorInsets = insets
-        DispatchQueue.main.async {
-            UIView.animate(withDuration: animationDuration, delay: 0.0, options: UIView.AnimationOptions(rawValue: animationOptions), animations: {
-                self.view.layoutIfNeeded()
-            }, completion: nil)
-        }
+        scrollView.contentOffset = CGPoint(x: 0, y: keyboardHeight)
     }
     
-    @objc private func keyboardWillHide(_ notification: Notification) {
-        DispatchQueue.main.async {
-            self.scrollView.contentInset = UIEdgeInsets.zero
-            self.scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
-            UIView.animate(withDuration: 0.15, delay: 0.0, options: UIView.AnimationOptions.curveEaseIn, animations: {
-                self.view.layoutIfNeeded()
-            }, completion: nil)
-        }
+    @objc private func keyboardWillHide() {
+        self.scrollView.contentOffset = CGPoint.zero
     }
     
-    private func setupToolBar() {
-        let toolBar = UIToolbar(frame: CGRect(origin: .zero, size: .init(width: view.frame.size.width, height: toolbarHeight)))
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(title: "Done", style: .done
-            , target: self, action: #selector(doneButtonAction))
-        toolBar.setItems([flexSpace, doneButton], animated: false)
-        toolBar.sizeToFit()
-        toolBar.backgroundColor = UIColor.yellow
-        newMessageTextField.inputAccessoryView = toolBar
-    }
-    
-    @objc private func doneButtonAction() {
+    @objc private func endEditing() {
         self.view.endEditing(true)
     }
     
