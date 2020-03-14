@@ -19,6 +19,7 @@ class ProfileViewController: UIViewController {
   @IBOutlet weak var stackView: UIStackView!
   @IBOutlet weak var nameTextField: UITextField!
   @IBOutlet weak var descriptionTextView: UITextView!
+  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   
   var imagePicker: ImagePickerManager?
   
@@ -113,17 +114,51 @@ class ProfileViewController: UIViewController {
   }
   
   @IBAction func operationAction() {
-    switchEditingMode()
-    
     nameLabel.text = nameTextField.text
     descriptionLabel.text = descriptionTextView.text
+    activityIndicator.startAnimating()
+    saveDataWithOperation()
   }
   
   @IBAction func gcdAction() {
-    switchEditingMode()
-    
     nameLabel.text = nameTextField.text
     descriptionLabel.text = descriptionTextView.text
+    activityIndicator.startAnimating()
+    saveDataWithGcd()
+  }
+  
+  private func saveDataWithGcd() {
+    // on completion
+    createErrorAlert()
+    activityIndicator.stopAnimating()
+  }
+  
+  private func saveDataWithOperation() {
+    // on completion
+    createSuccessAlert()
+    activityIndicator.stopAnimating()
+  }
+  
+  func createSuccessAlert() {
+    let alert = UIAlertController(title: "Success!", message: "Data has been successfully changed.", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+      alert.dismiss(animated: true, completion: nil)
+      self?.switchEditingMode()
+    }))
+    self.present(alert, animated: true, completion: nil)
+  }
+  
+  func createErrorAlert() {
+    let alert = UIAlertController(title: "Error!", message: "An error has occurred while saving the new data.", preferredStyle: .alert)
+    // just let user to try to save again
+    alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { _ in
+      alert.dismiss(animated: true, completion: nil)
+    }))
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {[weak self] _ in
+      alert.dismiss(animated: true, completion: nil)
+      self?.switchEditingMode()
+    }))
+    self.present(alert, animated: true, completion: nil)
   }
   
 }

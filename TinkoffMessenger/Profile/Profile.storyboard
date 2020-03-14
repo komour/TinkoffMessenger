@@ -100,6 +100,9 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="TrU-jl-XSb">
+                                                <rect key="frame" x="141.5" y="243.5" width="37" height="37"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
@@ -108,8 +111,10 @@
                                             <constraint firstItem="hNJ-E1-iD2" firstAttribute="width" secondItem="DaM-PW-4pT" secondAttribute="width" multiplier="0.28" id="8Je-D1-kzu"/>
                                             <constraint firstItem="tBe-Sa-41L" firstAttribute="top" secondItem="jy0-L9-2lR" secondAttribute="bottom" constant="16" id="AG6-iB-jaB"/>
                                             <constraint firstItem="jy0-L9-2lR" firstAttribute="top" secondItem="juz-VJ-FGH" secondAttribute="bottom" constant="10" id="IQs-nI-N6v"/>
+                                            <constraint firstItem="TrU-jl-XSb" firstAttribute="centerY" secondItem="WSY-8x-2Re" secondAttribute="centerY" id="Jyo-di-wdU"/>
                                             <constraint firstAttribute="trailing" secondItem="juz-VJ-FGH" secondAttribute="trailing" constant="16" id="KD4-he-x9a"/>
                                             <constraint firstItem="juz-VJ-FGH" firstAttribute="height" secondItem="WSY-8x-2Re" secondAttribute="height" multiplier="0.07" constant="2.759999999999998" id="MjG-YP-r5l"/>
+                                            <constraint firstItem="TrU-jl-XSb" firstAttribute="centerX" secondItem="WSY-8x-2Re" secondAttribute="centerX" id="OuK-aw-NKl"/>
                                             <constraint firstItem="Ztx-iz-b3C" firstAttribute="top" secondItem="DaM-PW-4pT" secondAttribute="bottom" constant="12" id="Oxn-kC-c4Y"/>
                                             <constraint firstAttribute="trailing" secondItem="yqC-cv-pAx" secondAttribute="trailing" constant="16" id="RqG-dy-SyY"/>
                                             <constraint firstAttribute="trailing" secondItem="tBe-Sa-41L" secondAttribute="trailing" constant="16" id="U4l-Pz-azq"/>
@@ -164,6 +169,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="TrU-jl-XSb" id="k6E-2r-HCN"/>
                         <outlet property="avatarImage" destination="DaM-PW-4pT" id="KUn-Xs-cVS"/>
                         <outlet property="choosePhotoButtonOutlet" destination="hNJ-E1-iD2" id="oOY-iM-aco"/>
                         <outlet property="descriptionLabel" destination="xfJ-vx-qsA" id="CB0-ty-H87"/>
