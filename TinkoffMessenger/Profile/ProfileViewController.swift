@@ -37,10 +37,10 @@ class ProfileViewController: UIViewController {
         choosePhotoButtonOutlet.layer.cornerRadius = cornerRadius
         
         choosePhotoButtonOutlet.imageEdgeInsets = UIEdgeInsets(top: edgeInset, left: edgeInset, bottom: edgeInset, right: edgeInset)
-
+        
         editButtonOutlet.layer.cornerRadius = editButtonOutlet.bounds.size.width / 25
     }
-        
+    
     @IBAction func choosePhotoAction() {
         guard let imagePicker = imagePicker else {
             print("nil imagePicker in \(#function)")

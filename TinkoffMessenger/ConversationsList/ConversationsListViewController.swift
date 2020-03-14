@@ -25,47 +25,47 @@ class ConversationsListViewController: UIViewController {
         self.navigationController?.navigationBar.barTintColor = UIColor(named: "brightYellow")
     }
     
-//  go to profile vc
+    //  go to profile vc
     @IBAction func profileButtonAction(_ sender: Any) {
         let profileNavigationController = mainStoryboard.instantiateViewController(withIdentifier: "ProfileNavigationController")
         profileNavigationController.modalPresentationStyle = .fullScreen
         present(profileNavigationController, animated: true, completion: nil)
     }
     
-// MARK: - Temporary test dataset
+    // MARK: - Temporary test dataset
     
     private lazy var onlinePersons: [ConversationCellModel] = (0...Int.random(in: 10...15)).map { _ in
         ConversationCellModel(name: randomString(length: .random(in: 3...42)),
-                message: randomMessage(length: .random(in: 0...200)),
-                date: randomDate(),
-                isOnline: true,
-                hasUnreadMessages: Bool.random())
-            }.sorted(by: {
-                if $0.message != nil {
-                    if $1.message != nil {
-                        return $1.date < $0.date
-                    } else {
-                        return true
-                    }
-                } else {
-                    if $1.message != nil {
-                        return false
-                    } else {
-                        return $1.date < $0.date
-                    }
-                }
-            }) //the newest chats at the top and chats with nil messages at the bottom
+                              message: randomMessage(length: .random(in: 0...200)),
+                              date: randomDate(),
+                              isOnline: true,
+                              hasUnreadMessages: Bool.random())
+    }.sorted(by: {
+        if $0.message != nil {
+            if $1.message != nil {
+                return $1.date < $0.date
+            } else {
+                return true
+            }
+        } else {
+            if $1.message != nil {
+                return false
+            } else {
+                return $1.date < $0.date
+            }
+        }
+    }) //the newest chats at the top and chats with nil messages at the bottom
     
     private lazy var offlinePersons: [ConversationCellModel] = (0...Int.random(in: 10...15)).map { _ in
-            ConversationCellModel(
-                name: randomString(length: .random(in: 3...42)),
-                message: String?(randomString(length: .random(in: 0...200))),
-                date: randomDate(),
-                isOnline: false,
-                hasUnreadMessages: Bool.random()
-            )
+        ConversationCellModel(
+            name: randomString(length: .random(in: 3...42)),
+            message: String?(randomString(length: .random(in: 0...200))),
+            date: randomDate(),
+            isOnline: false,
+            hasUnreadMessages: Bool.random()
+        )
     }.sorted(by: { $1.date < $0.date })
-            
+    
 }
 
 // MARK: - UITableViewDataSource
@@ -97,7 +97,7 @@ extension ConversationsListViewController: UITableViewDataSource {
         }
         return cell
     }
-        
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -105,7 +105,7 @@ extension ConversationsListViewController: UITableViewDataSource {
 extension ConversationsListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//      get conversationViewController as destination
+        //      get conversationViewController as destination
         let conversationVCId = String(describing: ConversationViewController.self)
         let conversationViewController = mainStoryboard.instantiateViewController(withIdentifier: conversationVCId) as? ConversationViewController
         guard let destination = conversationViewController else {
@@ -113,8 +113,8 @@ extension ConversationsListViewController: UITableViewDelegate {
             return
         }
         
-//      get the title of the current chat
-//      and check whether it has messages (temporary crutches for mock data)
+        //      get the title of the current chat
+        //      and check whether it has messages (temporary crutches for mock data)
         var currentName: String?
         if indexPath.section == 0 {
             currentName = onlinePersons[indexPath.row].name
@@ -127,7 +127,7 @@ extension ConversationsListViewController: UITableViewDelegate {
             print("nil current name in \(#function)")
             return
         }
-//      set new titile and navigate to conversationVC
+        //      set new titile and navigate to conversationVC
         destination.title = curName
         navigationController?.pushViewController(destination, animated: true)
         
@@ -146,26 +146,26 @@ extension ConversationsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
         let label = UILabel()
-
+        
         view.addSubview(label)
         label.bindEdgesToSuperview()
-
+        
         label.backgroundColor = UIColor(named: "lemon")
         label.font = UIFont.systemFont(ofSize: 17)
         label.font = label.font.with(.traitBold)
         label.textColor = UIColor.black
         label.textAlignment = .center
-
+        
         switch section {
         case 0:
             label.text =  "Online"
         default:
             label.text =  "History"
         }
-
+        
         return view
     }
-
+    
 }
 
 // MARK: - utils to create test dataset

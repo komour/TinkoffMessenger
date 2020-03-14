@@ -35,7 +35,7 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
         alert.addAction(cancelAction)
         alert.popoverPresentationController?.sourceView = self.viewController?.view
     }
-
+    
     func pickImage(_ callback: @escaping ((UIImage) -> Void)) {
         pickImageCallback = callback
         viewController?.present(alert, animated: true, completion: nil)
@@ -60,11 +60,11 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
         picker.sourceType = .photoLibrary
         viewController?.present(picker, animated: true, completion: nil)
     }
-
+    
     internal func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true, completion: nil)
         guard let image = info[.originalImage] as? UIImage else {

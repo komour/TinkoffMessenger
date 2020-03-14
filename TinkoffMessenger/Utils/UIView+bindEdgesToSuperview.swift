@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 extension UIView {
-
+    
     func bindEdgesToSuperview() {
-
+        
         guard let superview = superview else {
             preconditionFailure("`superview` is nil in bindEdgesToSuperview")
         }

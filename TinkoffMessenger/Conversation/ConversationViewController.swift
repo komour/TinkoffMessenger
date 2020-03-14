@@ -9,16 +9,16 @@
 import UIKit
 
 class ConversationViewController: UIViewController {
-
+    
     @IBOutlet weak var newMessageTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-//  random data
+    //random data
     static var messages: [MessageCellModel] = (0...Int.random(in: 10...100)).map { _ in
         MessageCellModel(text: randomString(length: Int.random(in: 10...300)), isIncoming: Bool.random())
     }
-//  temporary crutch for mock data
+    //temporary crutch for mock data
     var hasMessages = false
     
     private let toolbarHeight: CGFloat = 25
@@ -92,7 +92,7 @@ extension ConversationViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-//      temporary crutch for chats with no messages
+        //temporary crutch for chats with no messages
         if hasMessages {
             return 1
         } else {
