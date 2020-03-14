@@ -14,7 +14,7 @@ class ConversationViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    //  random data
+//  random data
     static var messages: [MessageCellModel] = (0...Int.random(in: 10...100)).map { _ in
         MessageCellModel(text: randomString(length: Int.random(in: 10...300)), isIncoming: Bool.random())
     }
@@ -26,10 +26,10 @@ class ConversationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UINib(nibName: String(describing: MessageCell.self), bundle: nil), forCellReuseIdentifier: String(describing: MessageCell.self))
+        tableView.register(UINib(nibName: String(describing: MessageCell.self), bundle: nil),
+                           forCellReuseIdentifier: String(describing: MessageCell.self))
         tableView.dataSource = self
         tableView.reloadData()
-        
         if hasMessages {
             tableView.scrollToBottom()
         }
@@ -84,7 +84,8 @@ class ConversationViewController: UIViewController {
     
 }
 
-// MARK: UITableViewDataSource
+// MARK: - UITableViewDataSource
+
 extension ConversationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ConversationViewController.messages.count

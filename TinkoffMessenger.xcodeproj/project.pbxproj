@@ -239,6 +239,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C58D769723F9C004000E739E /* Build configuration list for PBXNativeTarget "TinkoffMessenger" */;
 			buildPhases = (
+				C5654877241D1A6200C93996 /* ShellScript */,
 				C58D767123F9C002000E739E /* Sources */,
 				C58D767223F9C002000E739E /* Frameworks */,
 				C58D767323F9C002000E739E /* Resources */,
@@ -361,6 +362,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C5654877241D1A6200C93996 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C58D767123F9C002000E739E /* Sources */ = {

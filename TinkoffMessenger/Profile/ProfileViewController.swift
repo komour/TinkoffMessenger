@@ -42,7 +42,11 @@ class ProfileViewController: UIViewController {
     }
         
     @IBAction func choosePhotoAction() {
-        imagePicker!.pickImage({ image in
+        guard let imagePicker = imagePicker else {
+            print("nil imagePicker in \(#function)")
+            return
+        }
+        imagePicker.pickImage({ image in
             self.avatarImage.image = image
         })
     }
@@ -52,4 +56,3 @@ class ProfileViewController: UIViewController {
     }
     
 }
-

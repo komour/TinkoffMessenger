@@ -13,7 +13,7 @@ class Company {
 class CEO {
     var productManager: ProductManager?
     
-    let receiveMessage = { (fromId: Int, message: String) -> () in
+    let receiveMessage = { (fromId: Int, message: String) -> Void in
         print("CEO recieved \"\(message)\" from developer:\(fromId)", terminator: "\n\n")
     }
     

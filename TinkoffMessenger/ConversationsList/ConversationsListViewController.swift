@@ -11,27 +11,29 @@ import UIKit
 class ConversationsListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    let mainStoryboard = UIStoryboard(name: "Conversation", bundle: Bundle.main)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.register(UINib(nibName: String(describing: ConversationCell.self), bundle: nil), forCellReuseIdentifier: String(describing: ConversationCell.self))
+        let conversationCellId = String(describing: ConversationCell.self)
+        tableView.register(UINib(nibName: conversationCellId, bundle: nil), forCellReuseIdentifier: conversationCellId)
         
         self.navigationController?.navigationBar.barTintColor = UIColor(named: "brightYellow")
     }
     
 //  go to profile vc
     @IBAction func profileButtonAction(_ sender: Any) {
-        let profileNavigationController = UIStoryboard(name: "Profile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileNavigationController")
+        let profileNavigationController = mainStoryboard.instantiateViewController(withIdentifier: "ProfileNavigationController")
         profileNavigationController.modalPresentationStyle = .fullScreen
         present(profileNavigationController, animated: true, completion: nil)
     }
     
-//  MARK: temporary test dataset
+// MARK: - Temporary test dataset
+    
     private lazy var onlinePersons: [ConversationCellModel] = (0...Int.random(in: 10...15)).map { _ in
         ConversationCellModel(name: randomString(length: .random(in: 3...42)),
                 message: randomMessage(length: .random(in: 0...200)),
@@ -66,7 +68,8 @@ class ConversationsListViewController: UIViewController {
             
 }
 
-// MARK: UITableViewDataSource
+// MARK: - UITableViewDataSource
+
 extension ConversationsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
@@ -80,7 +83,6 @@ extension ConversationsListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         2
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = String(describing: ConversationCell.self)
@@ -98,12 +100,14 @@ extension ConversationsListViewController: UITableViewDataSource {
         
 }
 
-// MARK: UITableViewDelegate
+// MARK: - UITableViewDelegate
+
 extension ConversationsListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //      get conversationViewController as destination
-        let conversationViewController = UIStoryboard(name: "Conversation", bundle: Bundle.main).instantiateViewController(withIdentifier: String(describing: ConversationViewController.self)) as? ConversationViewController
+        let conversationVCId = String(describing: ConversationViewController.self)
+        let conversationViewController = mainStoryboard.instantiateViewController(withIdentifier: conversationVCId) as? ConversationViewController
         guard let destination = conversationViewController else {
             print(#function)
             return
@@ -164,7 +168,8 @@ extension ConversationsListViewController: UITableViewDelegate {
 
 }
 
-//MARK: utils to create test dataset
+// MARK: - utils to create test dataset
+
 extension ConversationsListViewController {
     
     func randomMessage(length: Int) -> String? {

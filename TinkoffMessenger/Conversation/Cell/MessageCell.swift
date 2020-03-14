@@ -33,7 +33,6 @@ class MessageCell: UITableViewCell, ConfigurableView {
         messageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.7).isActive = true
         messageView.topAnchor.constraint(equalTo: topAnchor, constant: 4).isActive = true
         
-        
         messageLabel.leadingAnchor.constraint(equalTo: messageView.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
             
         messageLabel.trailingAnchor.constraint(equalTo: messageView.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
