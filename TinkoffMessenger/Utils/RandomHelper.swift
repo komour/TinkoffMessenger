@@ -9,6 +9,6 @@
 import Foundation
 
 func randomString(length: Int) -> String {
-    let letters = "abcdefghijkl mnopqrstuvwxyz ABCDEFGHIJKLMN OPQRSTUVWXYZ 0123456789"
-    return String((0..<length).map { _ in letters.randomElement() ?? "z" })
+  let letters = "abcdefghijkl mnopqrstuvwxyz ABCDEFGHIJKLMN OPQRSTUVWXYZ 0123456789"
+  return String((0..<length).map { _ in letters.randomElement() ?? "z" })
 }

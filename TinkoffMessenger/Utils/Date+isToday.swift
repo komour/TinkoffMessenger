@@ -9,9 +9,9 @@
 import Foundation
 
 extension Date {
-    
-    func isToday() -> Bool {
-        return Calendar.current.isDateInToday(self)
-    }
-    
+  
+  func isToday() -> Bool {
+    return Calendar.current.isDateInToday(self)
+  }
+  
 }

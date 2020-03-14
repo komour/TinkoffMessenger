@@ -10,32 +10,32 @@ import Foundation
 import UIKit
 
 extension UITableView {
+  
+  func scrollToBottom() {
     
-    func scrollToBottom() {
-        
-        DispatchQueue.main.async {
-            let indexPath = IndexPath(
-                row: self.numberOfRows(inSection: self.numberOfSections - 1) - 1,
-                section: self.numberOfSections - 1)
-            self.scrollToRow(at: indexPath, at: .bottom, animated: false)
-        }
+    DispatchQueue.main.async {
+      let indexPath = IndexPath(
+        row: self.numberOfRows(inSection: self.numberOfSections - 1) - 1,
+        section: self.numberOfSections - 1)
+      self.scrollToRow(at: indexPath, at: .bottom, animated: false)
     }
+  }
+  
+  func scrollToBottomAnimated() {
     
-    func scrollToBottomAnimated() {
-        
-        DispatchQueue.main.async {
-            let indexPath = IndexPath(
-                row: self.numberOfRows(inSection: self.numberOfSections - 1) - 1,
-                section: self.numberOfSections - 1)
-            self.scrollToRow(at: indexPath, at: .bottom, animated: true)
-        }
+    DispatchQueue.main.async {
+      let indexPath = IndexPath(
+        row: self.numberOfRows(inSection: self.numberOfSections - 1) - 1,
+        section: self.numberOfSections - 1)
+      self.scrollToRow(at: indexPath, at: .bottom, animated: true)
     }
+  }
+  
+  func scrollToTop() {
     
-    func scrollToTop() {
-        
-        DispatchQueue.main.async {
-            let indexPath = IndexPath(row: 0, section: 0)
-            self.scrollToRow(at: indexPath, at: .top, animated: false)
-        }
+    DispatchQueue.main.async {
+      let indexPath = IndexPath(row: 0, section: 0)
+      self.scrollToRow(at: indexPath, at: .top, animated: false)
     }
+  }
 }
