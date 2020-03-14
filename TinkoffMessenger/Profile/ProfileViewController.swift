@@ -12,9 +12,13 @@ class ProfileViewController: UIViewController {
   
   @IBOutlet weak var avatarImage: UIImageView!
   @IBOutlet weak var choosePhotoButtonOutlet: UIButton!
-  @IBOutlet weak var editButtonOutlet: UIButton!
+  @IBOutlet weak var editButton: UIButton!
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
+  @IBOutlet weak var scrollView: UIScrollView!
+  @IBOutlet weak var stackView: UIStackView!
+  @IBOutlet weak var nameTextField: UITextField!
+  @IBOutlet weak var descriptionTextView: UITextView!
   
   var imagePicker: ImagePickerManager?
   
@@ -23,10 +27,33 @@ class ProfileViewController: UIViewController {
     
     imagePicker = ImagePickerManager(for: self)
     
-    editButtonOutlet.layer.borderWidth = 1
-    editButtonOutlet.layer.borderColor = UIColor.black.cgColor
+    editButton.layer.borderWidth = 1
+    editButton.layer.borderColor = UIColor.black.cgColor
+    
+    nameTextField.font = nameLabel.font
     
     self.navigationController?.navigationBar.barTintColor = UIColor(named: "brightYellow")
+    
+    addKeyboardNotifications()
+    let tapEndEditing = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+    view.addGestureRecognizer(tapEndEditing)
+  }
+  
+  private func switchEditingMode() {
+    nameLabel.isHidden = !nameLabel.isHidden
+    descriptionLabel.isHidden = !descriptionLabel.isHidden
+    nameTextField.isHidden = !nameTextField.isHidden
+    descriptionTextView.isHidden = !descriptionTextView.isHidden
+    stackView.isHidden = !stackView.isHidden
+    editButton.isHidden = !editButton.isHidden
+  }
+  
+  deinit {
+    removeKeyboardNotifications()
+  }
+  
+  @objc private func endEditing() {
+    self.view.endEditing(true)
   }
   
   override func viewDidLayoutSubviews() {
@@ -38,7 +65,31 @@ class ProfileViewController: UIViewController {
     
     choosePhotoButtonOutlet.imageEdgeInsets = UIEdgeInsets(top: edgeInset, left: edgeInset, bottom: edgeInset, right: edgeInset)
     
-    editButtonOutlet.layer.cornerRadius = editButtonOutlet.bounds.size.width / 25
+    editButton.layer.cornerRadius = editButton.bounds.size.width / 25
+  }
+  
+  private func addKeyboardNotifications() {
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+  }
+  
+  private func removeKeyboardNotifications() {
+    NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
+    NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
+  }
+  
+  @objc private func keyboardWillShow(_ notification: Notification) {
+    let userInfo = notification.userInfo
+    guard let keyboardFrame: NSValue = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
+      print("something went wrong in \(#function)")
+      return
+    }
+    let keyboardHeight = keyboardFrame.cgRectValue.height
+    scrollView.contentOffset = CGPoint(x: 0, y: keyboardHeight)
+  }
+  
+  @objc private func keyboardWillHide() {
+    self.scrollView.contentOffset = CGPoint.zero
   }
   
   @IBAction func choosePhotoAction() {
@@ -51,8 +102,28 @@ class ProfileViewController: UIViewController {
     })
   }
   
-  @IBAction func xButtonAction(_ sender: Any) {
+  @IBAction func exitButtonAction(_ sender: Any) {
     self.dismiss(animated: true, completion: nil)
+  }
+  @IBAction func editAction() {
+    switchEditingMode()
+    
+    nameTextField.text = nameLabel.text
+    descriptionTextView.text = descriptionLabel.text
+  }
+  
+  @IBAction func operationAction() {
+    switchEditingMode()
+    
+    nameLabel.text = nameTextField.text
+    descriptionLabel.text = descriptionTextView.text
+  }
+  
+  @IBAction func gcdAction() {
+    switchEditingMode()
+    
+    nameLabel.text = nameTextField.text
+    descriptionLabel.text = descriptionTextView.text
   }
   
 }
