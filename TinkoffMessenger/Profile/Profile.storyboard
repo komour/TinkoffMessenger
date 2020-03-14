@@ -28,7 +28,7 @@
                                                     <constraint firstAttribute="width" secondItem="DaM-PW-4pT" secondAttribute="height" multiplier="1:1" id="RRk-ZG-Jgz"/>
                                                 </constraints>
                                             </imageView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNJ-E1-iD2" userLabel="ChoosePhoto">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hNJ-E1-iD2" userLabel="ChoosePhoto">
                                                 <rect key="frame" x="223.5" y="223.5" width="80.5" height="80.5"/>
                                                 <color key="backgroundColor" red="0.2470588235" green="0.47058823529999999" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -171,7 +171,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="TrU-jl-XSb" id="k6E-2r-HCN"/>
                         <outlet property="avatarImage" destination="DaM-PW-4pT" id="KUn-Xs-cVS"/>
-                        <outlet property="choosePhotoButtonOutlet" destination="hNJ-E1-iD2" id="oOY-iM-aco"/>
+                        <outlet property="choosePhotoButton" destination="hNJ-E1-iD2" id="oOY-iM-aco"/>
                         <outlet property="descriptionLabel" destination="xfJ-vx-qsA" id="CB0-ty-H87"/>
                         <outlet property="descriptionTextView" destination="jy0-L9-2lR" id="mPw-u6-v7O"/>
                         <outlet property="editButton" destination="tBe-Sa-41L" id="3Mj-CR-3FR"/>

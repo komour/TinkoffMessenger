@@ -11,7 +11,7 @@ import UIKit
 class ProfileViewController: UIViewController {
   
   @IBOutlet weak var avatarImage: UIImageView!
-  @IBOutlet weak var choosePhotoButtonOutlet: UIButton!
+  @IBOutlet weak var choosePhotoButton: UIButton!
   @IBOutlet weak var editButton: UIButton!
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var descriptionLabel: UILabel!
@@ -20,6 +20,10 @@ class ProfileViewController: UIViewController {
   @IBOutlet weak var nameTextField: UITextField!
   @IBOutlet weak var descriptionTextView: UITextView!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+  
+  let nameFile = "name.txt"
+  let descriptionFile = "description.txt"
+  let avatarFile = "avatar.jpg"
   
   var imagePicker: ImagePickerManager?
   
@@ -38,9 +42,26 @@ class ProfileViewController: UIViewController {
     addKeyboardNotifications()
     let tapEndEditing = UITapGestureRecognizer(target: self, action: #selector(endEditing))
     view.addGestureRecognizer(tapEndEditing)
+    
+    if let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+      let nameFileUrl = directory.appendingPathComponent(nameFile)
+      let descriptionFileUrl = directory.appendingPathComponent(descriptionFile)
+      let imageURL = directory.appendingPathComponent(avatarFile)
+      do {
+        let nameText = try String(contentsOf: nameFileUrl, encoding: .utf8)
+        nameLabel.text = nameText
+        
+        let descriptionText = try String(contentsOf: descriptionFileUrl, encoding: .utf8)
+        descriptionLabel.text = descriptionText
+        
+        let avatar = UIImage(contentsOfFile: imageURL.path)
+        avatarImage.image = avatar
+      } catch { print("nothing to read in \(#function)") }
+    }
   }
   
   private func switchEditingMode() {
+    choosePhotoButton.isHidden = !choosePhotoButton.isHidden
     nameLabel.isHidden = !nameLabel.isHidden
     descriptionLabel.isHidden = !descriptionLabel.isHidden
     nameTextField.isHidden = !nameTextField.isHidden
@@ -58,13 +79,13 @@ class ProfileViewController: UIViewController {
   }
   
   override func viewDidLayoutSubviews() {
-    let cornerRadius = choosePhotoButtonOutlet.bounds.size.width / 2
-    let edgeInset = choosePhotoButtonOutlet.bounds.size.width / 4
+    let cornerRadius = choosePhotoButton.bounds.size.width / 2
+    let edgeInset = choosePhotoButton.bounds.size.width / 4
     
     avatarImage.layer.cornerRadius = cornerRadius
-    choosePhotoButtonOutlet.layer.cornerRadius = cornerRadius
+    choosePhotoButton.layer.cornerRadius = cornerRadius
     
-    choosePhotoButtonOutlet.imageEdgeInsets = UIEdgeInsets(top: edgeInset, left: edgeInset, bottom: edgeInset, right: edgeInset)
+    choosePhotoButton.imageEdgeInsets = UIEdgeInsets(top: edgeInset, left: edgeInset, bottom: edgeInset, right: edgeInset)
     
     editButton.layer.cornerRadius = editButton.bounds.size.width / 25
   }
@@ -114,9 +135,30 @@ class ProfileViewController: UIViewController {
   }
   
   @IBAction func operationAction() {
-    nameLabel.text = nameTextField.text
-    descriptionLabel.text = descriptionTextView.text
     activityIndicator.startAnimating()
+    if let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+      let nameFileUrl = directory.appendingPathComponent(nameFile)
+      let descriptionFileUrl = directory.appendingPathComponent(descriptionFile)
+      let imageFileUrl = directory.appendingPathComponent(avatarFile)
+      do {
+        if let nameText = nameTextField.text {
+          try nameText.write(to: nameFileUrl, atomically: false, encoding: .utf8)
+          nameLabel.text = nameText //have to read here
+        }
+        if let descriptionText = descriptionTextView.text {
+          try descriptionText.write(to: descriptionFileUrl, atomically: false, encoding: .utf8)
+          descriptionLabel.text = descriptionText //have to read here
+        }
+        
+        if let image = avatarImage.image {
+          if let data = image.jpegData(compressionQuality: 1.0) {
+            //!FileManager.default.fileExists(atPath: fileURL.path)
+            try data.write(to: imageFileUrl)
+          }
+        }
+        
+      } catch { print("Smth went wrong in \(#function) 1st catch"); createErrorAlert() }
+    }
     saveDataWithOperation()
   }
   
@@ -124,6 +166,7 @@ class ProfileViewController: UIViewController {
     nameLabel.text = nameTextField.text
     descriptionLabel.text = descriptionTextView.text
     activityIndicator.startAnimating()
+    
     saveDataWithGcd()
   }
   
@@ -144,6 +187,7 @@ class ProfileViewController: UIViewController {
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
       alert.dismiss(animated: true, completion: nil)
       self?.switchEditingMode()
+      self?.endEditing()
     }))
     self.present(alert, animated: true, completion: nil)
   }
@@ -157,6 +201,7 @@ class ProfileViewController: UIViewController {
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {[weak self] _ in
       alert.dismiss(animated: true, completion: nil)
       self?.switchEditingMode()
+      self?.endEditing()
     }))
     self.present(alert, animated: true, completion: nil)
   }
