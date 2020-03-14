@@ -11,7 +11,8 @@ import UIKit
 class ConversationsListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    let mainStoryboard = UIStoryboard(name: "Conversation", bundle: Bundle.main)
+    let conversationStoryboard = UIStoryboard(name: "Conversation", bundle: Bundle.main)
+    let profileStoryboard = UIStoryboard(name: "Profile", bundle: Bundle.main)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,7 @@ class ConversationsListViewController: UIViewController {
     
     //  go to profile vc
     @IBAction func profileButtonAction(_ sender: Any) {
-        let profileNavigationController = mainStoryboard.instantiateViewController(withIdentifier: "ProfileNavigationController")
+        let profileNavigationController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileNavigationController")
         profileNavigationController.modalPresentationStyle = .fullScreen
         present(profileNavigationController, animated: true, completion: nil)
     }
@@ -107,7 +108,7 @@ extension ConversationsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //      get conversationViewController as destination
         let conversationVCId = String(describing: ConversationViewController.self)
-        let conversationViewController = mainStoryboard.instantiateViewController(withIdentifier: conversationVCId) as? ConversationViewController
+        let conversationViewController = conversationStoryboard.instantiateViewController(withIdentifier: conversationVCId) as? ConversationViewController
         guard let destination = conversationViewController else {
             print(#function)
             return
