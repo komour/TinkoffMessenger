@@ -31,6 +31,7 @@
 		C5A344FA241EA83B00922BFB /* OperationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A344F9241EA83B00922BFB /* OperationDataManager.swift */; };
 		C5A344FC241EA91700922BFB /* AllSaveHandleOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A344FB241EA91700922BFB /* AllSaveHandleOperation.swift */; };
 		C5A344FE241EAAFA00922BFB /* UpdateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A344FD241EAAFA00922BFB /* UpdateOperation.swift */; };
+		C5A34500241EBF1200922BFB /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A344FF241EBF1200922BFB /* DataManager.swift */; };
 		C5C61F7B240AD00500ABBE7D /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61F76240AD00500ABBE7D /* ConversationsListViewController.swift */; };
 		C5C61F7C240AD00500ABBE7D /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61F76240AD00500ABBE7D /* ConversationsListViewController.swift */; };
 		C5C61F81240AD00500ABBE7D /* ConverationsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C61F7A240AD00500ABBE7D /* ConverationsList.storyboard */; };
@@ -92,6 +93,7 @@
 		C5A344F9241EA83B00922BFB /* OperationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationDataManager.swift; sourceTree = "<group>"; };
 		C5A344FB241EA91700922BFB /* AllSaveHandleOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSaveHandleOperation.swift; sourceTree = "<group>"; };
 		C5A344FD241EAAFA00922BFB /* UpdateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateOperation.swift; sourceTree = "<group>"; };
+		C5A344FF241EBF1200922BFB /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C5C61F76240AD00500ABBE7D /* ConversationsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
 		C5C61F7A240AD00500ABBE7D /* ConverationsList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConverationsList.storyboard; sourceTree = "<group>"; };
 		C5C61F84240AD00C00ABBE7D /* Conversation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				C5A344F9241EA83B00922BFB /* OperationDataManager.swift */,
 				C5A344FB241EA91700922BFB /* AllSaveHandleOperation.swift */,
 				C5A344FD241EAAFA00922BFB /* UpdateOperation.swift */,
+				C5A344FF241EBF1200922BFB /* DataManager.swift */,
 			);
 			path = DataUtils;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				C543E5DE2401EC8F000652B4 /* ImagePickerManager.swift in Sources */,
 				C5A344FA241EA83B00922BFB /* OperationDataManager.swift in Sources */,
 				C5A344FC241EA91700922BFB /* AllSaveHandleOperation.swift in Sources */,
+				C5A34500241EBF1200922BFB /* DataManager.swift in Sources */,
 				C51F7B4A240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift in Sources */,
 				C5D6E2B8240B63D400543026 /* RandomHelper.swift in Sources */,
 				C5D6E2BC240C294900543026 /* UITableView+scroll.swift in Sources */,
