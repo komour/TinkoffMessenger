@@ -11,7 +11,7 @@ import UIKit
 class OperationDataManager {
   weak var profileVC: ProfileViewController?
   let updateOperation: UpdateOperation
-  let allSaveHandleOperation: AllSaveHandleOperation
+  var allSaveHandleOperation: AllSaveHandleOperation
   let queue = OperationQueue()
   
   init(for profileVC: ProfileViewController) {
@@ -28,7 +28,7 @@ class OperationDataManager {
     DispatchQueue.main.async {
       profileVC.activityIndicator.startAnimating()
     }
-    
+    allSaveHandleOperation = AllSaveHandleOperation(for: profileVC)
     allSaveHandleOperation.completionBlock = {
       DispatchQueue.main.async { [weak self] in
         guard let self = self else { return }

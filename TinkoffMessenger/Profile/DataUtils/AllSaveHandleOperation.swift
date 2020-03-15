@@ -63,7 +63,7 @@ class AllSaveHandleOperation: Operation {
         }
       }
     }
-    
+    sleep(1)
     if successFlag {
       dataManager.updateProfileData()
     }
