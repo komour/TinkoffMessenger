@@ -20,9 +20,13 @@ class ProfileViewController: UIViewController {
   @IBOutlet weak var nameTextField: UITextField!
   @IBOutlet weak var descriptionTextView: UITextView!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+  @IBOutlet weak var gcdButton: UIButton!
+  @IBOutlet weak var operationButton: UIButton!
   
   private let dataManager = DataManager()
   private var imagePicker: ImagePickerManager?
+  
+  var didSetAvatar = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -40,17 +44,10 @@ class ProfileViewController: UIViewController {
     let tapEndEditing = UITapGestureRecognizer(target: self, action: #selector(endEditing))
     view.addGestureRecognizer(tapEndEditing)
     
+    nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+    descriptionTextView.delegate = self
+    
     updateProfileData()
-  }
-  
-  private func switchEditingMode() {
-    choosePhotoButton.isHidden = !choosePhotoButton.isHidden
-    nameLabel.isHidden = !nameLabel.isHidden
-    descriptionLabel.isHidden = !descriptionLabel.isHidden
-    nameTextField.isHidden = !nameTextField.isHidden
-    descriptionTextView.isHidden = !descriptionTextView.isHidden
-    stackView.isHidden = !stackView.isHidden
-    editButton.isHidden = !editButton.isHidden
   }
   
   deinit {
@@ -102,19 +99,24 @@ class ProfileViewController: UIViewController {
       print("nil imagePicker in \(#function)")
       return
     }
-    imagePicker.pickImage({ image in
-      self.avatarImageView.image = image
+    imagePicker.pickImage({ [weak self] image in
+      self?.avatarImageView.image = image
+      self?.didSetAvatar = true
+      self?.handleSaveButtons()
     })
   }
+  
+  // MARK: - All editing logic
   
   @IBAction func exitButtonAction(_ sender: Any) {
     self.dismiss(animated: true, completion: nil)
   }
   @IBAction func editAction() {
     switchEditingMode()
-    
+    didSetAvatar = false
     nameTextField.text = nameLabel.text
     descriptionTextView.text = descriptionLabel.text
+    handleSaveButtons()
   }
   
   @IBAction func operationAction() {
@@ -128,14 +130,14 @@ class ProfileViewController: UIViewController {
       }
     }
     if needToSaveName() {
-      if let newName = nameLabel.text {
+      if let newName = nameTextField.text {
         successFlag = successFlag && dataManager.saveName(nameText: newName)
       } else {
         successFlag = false
       }
     }
     if needToSaveDescription() {
-      if let newDescription = descriptionLabel.text {
+      if let newDescription = descriptionTextView.text {
         successFlag = successFlag && dataManager.saveDescription(descriptionText: newDescription)
       } else {
         successFlag = false
@@ -143,13 +145,13 @@ class ProfileViewController: UIViewController {
     }
     
     if successFlag {
-      createSuccessAlert()
       endEditing()
+      createSuccessAlert()
       updateProfileData()
       activityIndicator.stopAnimating()
     } else {
-      createErrorAlert(isOperation: true)
       endEditing()
+      createErrorAlert(isOperation: true)
       activityIndicator.stopAnimating()
     }
   }
@@ -189,33 +191,11 @@ class ProfileViewController: UIViewController {
       createErrorAlert(isOperation: false)
       activityIndicator.stopAnimating()
     }
-    
   }
+  
   @IBAction func cancelEditMode() {
     switchEditingMode()
     endEditing()
-  }
-  
-  func createSuccessAlert() {
-    let alert = UIAlertController(title: "Success!", message: "Data has been successfully changed.", preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
-      alert.dismiss(animated: true, completion: nil)
-      self?.switchEditingMode()
-    }))
-    self.present(alert, animated: true, completion: nil)
-  }
-  
-  func createErrorAlert(isOperation: Bool) {
-    let alert = UIAlertController(title: "Error!", message: "An error has occurred while saving the new data.", preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { [weak self] _ in
-      if isOperation { self?.operationAction() } else { self?.gcdAction() }
-      alert.dismiss(animated: true, completion: nil)
-    }))
-    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {[weak self] _ in
-      alert.dismiss(animated: true, completion: nil)
-      self?.switchEditingMode()
-    }))
-    self.present(alert, animated: true, completion: nil)
   }
   
   func needToSaveAvatar() -> Bool {
@@ -251,4 +231,71 @@ class ProfileViewController: UIViewController {
     }
   }
   
+  @objc func textFieldDidChange(_ textField: UITextField) {
+    handleSaveButtons()
+  }
+  
+  private func hasChanges() -> Bool {
+    if let newName = nameTextField.text, newName != nameLabel.text {
+      return true
+    } else if let newDescription = descriptionTextView.text, newDescription != descriptionLabel.text {
+      return true
+    } else if didSetAvatar {
+      return true
+    }
+    return false
+  }
+  
+  private func handleSaveButtons() {
+    if hasChanges() {
+      gcdButton.isEnabled = true
+      operationButton.isEnabled = true
+    } else {
+      gcdButton.isEnabled = false
+      operationButton.isEnabled = false
+    }
+  }
+  
+  private func switchEditingMode() {
+    choosePhotoButton.isHidden = !choosePhotoButton.isHidden
+    nameLabel.isHidden = !nameLabel.isHidden
+    descriptionLabel.isHidden = !descriptionLabel.isHidden
+    nameTextField.isHidden = !nameTextField.isHidden
+    descriptionTextView.isHidden = !descriptionTextView.isHidden
+    stackView.isHidden = !stackView.isHidden
+    editButton.isHidden = !editButton.isHidden
+  }
+  
+  // MARK: - Success/Error alerts
+  
+  func createSuccessAlert() {
+    let alert = UIAlertController(title: "Success!", message: "Data has been successfully changed.", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+      alert.dismiss(animated: true, completion: nil)
+      self?.switchEditingMode()
+    }))
+    self.present(alert, animated: true, completion: nil)
+  }
+  
+  func createErrorAlert(isOperation: Bool) {
+    let alert = UIAlertController(title: "Error!", message: "An error has occurred while saving the new data.", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { [weak self] _ in
+      if isOperation { self?.operationAction() } else { self?.gcdAction() }
+      alert.dismiss(animated: true, completion: nil)
+    }))
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {[weak self] _ in
+      alert.dismiss(animated: true, completion: nil)
+      self?.switchEditingMode()
+    }))
+    self.present(alert, animated: true, completion: nil)
+  }
+  
+}
+
+// MARK: - UITextViewDelegate
+
+extension ProfileViewController: UITextViewDelegate {
+  func textViewDidChange(_ textView: UITextView) {
+    handleSaveButtons()
+  }
 }

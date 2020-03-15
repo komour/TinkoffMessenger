@@ -107,8 +107,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="TrU-jl-XSb">
-                                                <rect key="frame" x="141.5" y="243.5" width="37" height="37"/>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TrU-jl-XSb">
+                                                <rect key="frame" x="150" y="381.5" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -118,7 +118,6 @@
                                             <constraint firstItem="hNJ-E1-iD2" firstAttribute="width" secondItem="DaM-PW-4pT" secondAttribute="width" multiplier="0.28" id="8Je-D1-kzu"/>
                                             <constraint firstItem="tBe-Sa-41L" firstAttribute="top" secondItem="jy0-L9-2lR" secondAttribute="bottom" constant="16" id="AG6-iB-jaB"/>
                                             <constraint firstItem="jy0-L9-2lR" firstAttribute="top" secondItem="juz-VJ-FGH" secondAttribute="bottom" constant="10" id="IQs-nI-N6v"/>
-                                            <constraint firstItem="TrU-jl-XSb" firstAttribute="centerY" secondItem="WSY-8x-2Re" secondAttribute="centerY" id="Jyo-di-wdU"/>
                                             <constraint firstAttribute="trailing" secondItem="juz-VJ-FGH" secondAttribute="trailing" constant="16" id="KD4-he-x9a"/>
                                             <constraint firstItem="juz-VJ-FGH" firstAttribute="height" secondItem="WSY-8x-2Re" secondAttribute="height" multiplier="0.07" constant="2.759999999999998" id="MjG-YP-r5l"/>
                                             <constraint firstItem="TrU-jl-XSb" firstAttribute="centerX" secondItem="WSY-8x-2Re" secondAttribute="centerX" id="OuK-aw-NKl"/>
@@ -138,6 +137,7 @@
                                             <constraint firstItem="hNJ-E1-iD2" firstAttribute="trailing" secondItem="DaM-PW-4pT" secondAttribute="trailing" id="nvw-Li-K7d"/>
                                             <constraint firstAttribute="trailing" secondItem="jy0-L9-2lR" secondAttribute="trailing" constant="16" id="uJS-mo-V85"/>
                                             <constraint firstItem="xfJ-vx-qsA" firstAttribute="top" secondItem="juz-VJ-FGH" secondAttribute="bottom" constant="10" id="uL9-eU-ysE"/>
+                                            <constraint firstItem="TrU-jl-XSb" firstAttribute="top" secondItem="juz-VJ-FGH" secondAttribute="bottom" constant="30" id="wag-YJ-XRb"/>
                                             <constraint firstAttribute="bottom" secondItem="yqC-cv-pAx" secondAttribute="bottom" constant="16" id="whb-BB-c1m"/>
                                             <constraint firstItem="juz-VJ-FGH" firstAttribute="top" secondItem="DaM-PW-4pT" secondAttribute="bottom" constant="8" id="xMS-bg-ofF"/>
                                             <constraint firstItem="yqC-cv-pAx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xfJ-vx-qsA" secondAttribute="bottom" constant="16" id="xdc-iL-0bm"/>
@@ -182,8 +182,10 @@
                         <outlet property="descriptionLabel" destination="xfJ-vx-qsA" id="CB0-ty-H87"/>
                         <outlet property="descriptionTextView" destination="jy0-L9-2lR" id="mPw-u6-v7O"/>
                         <outlet property="editButton" destination="tBe-Sa-41L" id="3Mj-CR-3FR"/>
+                        <outlet property="gcdButton" destination="d4W-AV-WYM" id="wJb-wD-aoO"/>
                         <outlet property="nameLabel" destination="juz-VJ-FGH" id="Tia-iP-VNj"/>
                         <outlet property="nameTextField" destination="Ztx-iz-b3C" id="7MW-iP-eNB"/>
+                        <outlet property="operationButton" destination="x2A-dE-rnm" id="2Ip-9W-jxZ"/>
                         <outlet property="scrollView" destination="PJj-Mz-sPY" id="Ewt-rk-XQ7"/>
                         <outlet property="stackView" destination="yqC-cv-pAx" id="GRZ-rp-dvo"/>
                     </connections>
