@@ -22,9 +22,11 @@ class ProfileViewController: UIViewController {
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   @IBOutlet weak var gcdButton: UIButton!
   @IBOutlet weak var operationButton: UIButton!
+  @IBOutlet weak var cancelEditButton: UIButton!
   
   private var imagePicker: ImagePickerManager?
   private var gcdDataManager: GCDDataManager?
+  private var operationDataManager: OperationDataManager?
   
   var didSetAvatar = false
   
@@ -33,6 +35,7 @@ class ProfileViewController: UIViewController {
     
     imagePicker = ImagePickerManager(for: self)
     gcdDataManager = GCDDataManager(for: self)
+    operationDataManager = OperationDataManager(for: self)
     
     editButton.layer.borderWidth = 1
     editButton.layer.borderColor = UIColor.black.cgColor
@@ -47,7 +50,7 @@ class ProfileViewController: UIViewController {
     
     nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
     descriptionTextView.delegate = self
-    if let gcdDataManager = gcdDataManager { gcdDataManager.updateProfileData() }
+    if let operationDataManager = operationDataManager { operationDataManager.updateProfileData() }
   }
   
   deinit {
@@ -111,6 +114,7 @@ class ProfileViewController: UIViewController {
   }
   @IBAction func editAction() {
     switchEditingMode()
+    cancelEditButton.isEnabled = true
     didSetAvatar = false
     nameTextField.text = nameLabel.text
     descriptionTextView.text = descriptionLabel.text
@@ -118,7 +122,12 @@ class ProfileViewController: UIViewController {
   }
   
   @IBAction func operationAction() {
-
+    endEditing()
+    guard let operationDataManager = operationDataManager else { return }
+    gcdButton.isEnabled = false
+    operationButton.isEnabled = false
+    cancelEditButton.isEnabled = false
+    operationDataManager.allSaveHandle()
   }
   
   @IBAction func gcdAction() {
@@ -126,6 +135,7 @@ class ProfileViewController: UIViewController {
     guard let gcdDataManager = gcdDataManager else { return }
     gcdButton.isEnabled = false
     operationButton.isEnabled = false
+    cancelEditButton.isEnabled = false
     gcdDataManager.allSaveHandle()
   }
   
@@ -175,7 +185,8 @@ class ProfileViewController: UIViewController {
     let alert = UIAlertController(title: "Success!", message: "Data has been successfully changed.", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
       alert.dismiss(animated: true, completion: nil)
-      self?.switchEditingMode()
+      guard let self = self else { return }
+      self.switchEditingMode()
     }))
     self.present(alert, animated: true, completion: nil)
   }
@@ -188,7 +199,8 @@ class ProfileViewController: UIViewController {
     }))
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {[weak self] _ in
       alert.dismiss(animated: true, completion: nil)
-      self?.switchEditingMode()
+      guard let self = self else { return }
+      self.switchEditingMode()
     }))
     self.present(alert, animated: true, completion: nil)
   }

@@ -1,5 +1,5 @@
 //
-//  GCDDataManager.swift
+//  ReadWriteOperation.swift
 //  TinkoffMessenger
 //
 //  Created by Always Strive And Prosper on 15.03.2020.
@@ -8,18 +8,23 @@
 
 import UIKit
 
-class GCDDataManager {
-  
+class AllSaveHandleOperation: Operation {
   let nameFile = "name.txt"
   let descriptionFile = "description.txt"
   let avatarFile = "avatar.jpg"
-  var profileVC: ProfileViewController?
+  var successFlag = true
+  
+  let profileVC: ProfileViewController
   
   init(for profileVC: ProfileViewController) {
     self.profileVC = profileVC
+    super.init()
   }
   
-  // MARK: - Read/Write methods
+  override func main() {
+    guard !isCancelled else { return }
+    allSaveHandle()
+  }
   
   private func readAvatar() -> UIImage? {
     guard let directory = self.getDocumentDirectory() else {
@@ -82,56 +87,40 @@ class GCDDataManager {
   // MARK: - main method with all edit logic
   
   func allSaveHandle() {
-    let queue = DispatchQueue.global(qos: .utility)
-    queue.async { [weak self] in
-      guard let self = self else { return }
-      guard let profileVC = self.profileVC else { return }
-      DispatchQueue.main.async {
-        profileVC.activityIndicator.startAnimating()
-      }
-      var successFlag = true
-      if self.needToSaveAvatar() {
-        DispatchQueue.main.async {
-          if let newAvatar = profileVC.avatarImageView.image {
-            successFlag = successFlag && self.saveAvatar(avatar: newAvatar)
-          } else {
-            successFlag = false
-          }
+    successFlag = true
+    if self.needToSaveAvatar() {
+      DispatchQueue.main.async { [weak self] in
+        guard let self = self else { return }
+        if let newAvatar = self.profileVC.avatarImageView.image {
+          self.successFlag = self.successFlag && self.saveAvatar(avatar: newAvatar)
+        } else {
+          self.successFlag = false
         }
       }
-      if self.needToSaveName() {
-        DispatchQueue.main.async {
-          if let newName = profileVC.nameTextField.text {
-            successFlag = successFlag && self.saveText(text: newName, to: self.nameFile)
-          } else {
-            successFlag = false
-          }
+    }
+    if self.needToSaveName() {
+      DispatchQueue.main.async { [weak self] in
+        guard let self = self else { return }
+        if let newName = self.profileVC.nameTextField.text {
+          self.successFlag = self.successFlag && self.saveText(text: newName, to: self.nameFile)
+        } else {
+          self.successFlag = false
         }
       }
-      if self.needToSaveDescription() {
-        DispatchQueue.main.async {
-          if let newDescription = profileVC.descriptionTextView.text {
-            successFlag = successFlag && self.saveText(text: newDescription, to: self.descriptionFile)
-          } else {
-            successFlag = false
-          }
+    }
+    if self.needToSaveDescription() {
+      DispatchQueue.main.async { [weak self] in
+        guard let self = self else { return }
+        if let newDescription = self.profileVC.descriptionTextView.text {
+          self.successFlag = self.successFlag && self.saveText(text: newDescription, to: self.descriptionFile)
+        } else {
+          self.successFlag = false
         }
       }
-      
-      if successFlag {
-        DispatchQueue.main.async {
-          profileVC.endEditing()
-          profileVC.createSuccessAlert()
-          self.updateProfileData()
-          profileVC.activityIndicator.stopAnimating()
-        }
-      } else {
-        DispatchQueue.main.async {
-          profileVC.endEditing()
-          profileVC.createErrorAlert(isOperation: false)
-          profileVC.activityIndicator.stopAnimating()
-        }
-      }
+    }
+    
+    if successFlag {
+      updateProfileData()
     }
   }
   
@@ -145,10 +134,10 @@ class GCDDataManager {
   }
   
   func needToSaveAvatar() -> Bool {
-    guard let profileVC = profileVC else { return false }
     var newAvatar: UIImage?
-    DispatchQueue.main.async {
-      newAvatar = profileVC.avatarImageView.image
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
+      newAvatar = self.profileVC.avatarImageView.image
     }
     if let oldAvatar = readAvatar(), let newAvatar = newAvatar, oldAvatar.isEqual(to: newAvatar) {
       return false
@@ -157,10 +146,10 @@ class GCDDataManager {
   }
   
   func needToSaveName() -> Bool {
-    guard let profileVC = profileVC else { return false }
     var newName: String?
-    DispatchQueue.main.async {
-      newName = profileVC.nameTextField.text
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
+      newName = self.profileVC.nameTextField.text
     }
     if let oldName = readText(from: nameFile), let newName = newName, newName == oldName {
       return false
@@ -169,10 +158,10 @@ class GCDDataManager {
   }
   
   func needToSaveDescription() -> Bool {
-    guard let profileVC = profileVC else { return false }
     var newDescription: String?
-    DispatchQueue.main.async {
-      newDescription = profileVC.nameTextField.text
+    DispatchQueue.main.async { [weak self] in
+      guard let self = self else { return }
+      newDescription = self.profileVC.nameTextField.text
     }
     if let oldDescription = readText(from: descriptionFile), let newDescription = newDescription, newDescription == oldDescription {
       return false
@@ -181,20 +170,22 @@ class GCDDataManager {
   }
   
   func updateProfileData() {
-    guard let profileVC = profileVC else { return }
     if let oldAvatar = readAvatar() {
-      DispatchQueue.main.async {
-        profileVC.avatarImageView.image = oldAvatar
+      DispatchQueue.main.async { [weak self] in
+        guard let self = self else { return }
+        self.profileVC.avatarImageView.image = oldAvatar
       }
     }
     if let oldName = readText(from: nameFile) {
-      DispatchQueue.main.async {
-        profileVC.nameLabel.text = oldName
+      DispatchQueue.main.async { [weak self] in
+        guard let self = self else { return }
+        self.profileVC.nameLabel.text = oldName
       }
     }
     if let oldDescription = readText(from: descriptionFile) {
-      DispatchQueue.main.async {
-        profileVC.descriptionLabel.text = oldDescription
+      DispatchQueue.main.async { [weak self] in
+        guard let self = self else { return }
+        self.profileVC.descriptionLabel.text = oldDescription
       }
     }
   }

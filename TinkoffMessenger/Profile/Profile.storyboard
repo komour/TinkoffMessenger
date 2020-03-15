@@ -178,6 +178,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="TrU-jl-XSb" id="k6E-2r-HCN"/>
                         <outlet property="avatarImageView" destination="DaM-PW-4pT" id="KUn-Xs-cVS"/>
+                        <outlet property="cancelEditButton" destination="Ddr-lS-Xo5" id="g6a-1r-f4c"/>
                         <outlet property="choosePhotoButton" destination="hNJ-E1-iD2" id="oOY-iM-aco"/>
                         <outlet property="descriptionLabel" destination="xfJ-vx-qsA" id="CB0-ty-H87"/>
                         <outlet property="descriptionTextView" destination="jy0-L9-2lR" id="mPw-u6-v7O"/>
