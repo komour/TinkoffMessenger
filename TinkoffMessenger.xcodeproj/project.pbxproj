@@ -26,8 +26,8 @@
 		C58D76A023F9C178000E739E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D767823F9C002000E739E /* AppDelegate.swift */; };
 		C58D76A223F9C178000E739E /* TinkoffMessenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C58D768123F9C002000E739E /* TinkoffMessenger.xcdatamodeld */; };
 		C58D76A623F9C178000E739E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C58D768423F9C004000E739E /* Assets.xcassets */; };
-		C5A344F3241E474300922BFB /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A344F2241E474300922BFB /* DataManager.swift */; };
 		C5A344F5241E4DBD00922BFB /* UIImage+isEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A344F4241E4DBD00922BFB /* UIImage+isEqual.swift */; };
+		C5A344F7241E77D500922BFB /* GCDDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A344F6241E77D500922BFB /* GCDDataManager.swift */; };
 		C5C61F7B240AD00500ABBE7D /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61F76240AD00500ABBE7D /* ConversationsListViewController.swift */; };
 		C5C61F7C240AD00500ABBE7D /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61F76240AD00500ABBE7D /* ConversationsListViewController.swift */; };
 		C5C61F81240AD00500ABBE7D /* ConverationsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C61F7A240AD00500ABBE7D /* ConverationsList.storyboard */; };
@@ -84,8 +84,8 @@
 		C58D769423F9C004000E739E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C58D76AB23F9C178000E739E /* TinkoffMessengerDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffMessengerDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C58D76AC23F9C178000E739E /* TinkoffMessengerDebug.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = TinkoffMessengerDebug.plist; path = /Users/asap/TinkoffMessenger/TinkoffMessengerDebug.plist; sourceTree = "<absolute>"; };
-		C5A344F2241E474300922BFB /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C5A344F4241E4DBD00922BFB /* UIImage+isEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+isEqual.swift"; sourceTree = "<group>"; };
+		C5A344F6241E77D500922BFB /* GCDDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDDataManager.swift; sourceTree = "<group>"; };
 		C5C61F76240AD00500ABBE7D /* ConversationsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
 		C5C61F7A240AD00500ABBE7D /* ConverationsList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConverationsList.storyboard; sourceTree = "<group>"; };
 		C5C61F84240AD00C00ABBE7D /* Conversation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
@@ -181,8 +181,8 @@
 				C51F7B2F240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift */,
 				C5D6E2B7240B63D400543026 /* RandomHelper.swift */,
 				C5D6E2BB240C294900543026 /* UITableView+scroll.swift */,
-				C5A344F2241E474300922BFB /* DataManager.swift */,
 				C5A344F4241E4DBD00922BFB /* UIImage+isEqual.swift */,
+				C5A344F6241E77D500922BFB /* GCDDataManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -402,9 +402,9 @@
 				C51F7B3B240B5A8A00A4D8A5 /* MessageCell.swift in Sources */,
 				C5C61F88240AD00C00ABBE7D /* ConversationViewController.swift in Sources */,
 				C5C61F96240B0CB800ABBE7D /* ConversationCell.swift in Sources */,
+				C5A344F7241E77D500922BFB /* GCDDataManager.swift in Sources */,
 				C5A344F5241E4DBD00922BFB /* UIImage+isEqual.swift in Sources */,
 				C58D768323F9C002000E739E /* TinkoffMessenger.xcdatamodeld in Sources */,
-				C5A344F3241E474300922BFB /* DataManager.swift in Sources */,
 				C5C61FA1240B22D800ABBE7D /* Date+isToday.swift in Sources */,
 				C5C61F8F240AD01500ABBE7D /* ProfileViewController.swift in Sources */,
 				C543E5DE2401EC8F000652B4 /* ImagePickerManager.swift in Sources */,

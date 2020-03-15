@@ -107,8 +107,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TrU-jl-XSb">
-                                                <rect key="frame" x="150" y="381.5" width="20" height="20"/>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="TrU-jl-XSb">
+                                                <rect key="frame" x="141.5" y="141.5" width="37" height="37"/>
                                             </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -135,9 +135,9 @@
                                             <constraint firstItem="xfJ-vx-qsA" firstAttribute="top" secondItem="Ztx-iz-b3C" secondAttribute="bottom" constant="8" id="lQc-BE-bF2"/>
                                             <constraint firstAttribute="trailing" secondItem="DaM-PW-4pT" secondAttribute="trailing" constant="16" id="mb9-8W-J0x"/>
                                             <constraint firstItem="hNJ-E1-iD2" firstAttribute="trailing" secondItem="DaM-PW-4pT" secondAttribute="trailing" id="nvw-Li-K7d"/>
+                                            <constraint firstItem="TrU-jl-XSb" firstAttribute="centerY" secondItem="DaM-PW-4pT" secondAttribute="centerY" id="qJb-va-Tsz"/>
                                             <constraint firstAttribute="trailing" secondItem="jy0-L9-2lR" secondAttribute="trailing" constant="16" id="uJS-mo-V85"/>
                                             <constraint firstItem="xfJ-vx-qsA" firstAttribute="top" secondItem="juz-VJ-FGH" secondAttribute="bottom" constant="10" id="uL9-eU-ysE"/>
-                                            <constraint firstItem="TrU-jl-XSb" firstAttribute="top" secondItem="juz-VJ-FGH" secondAttribute="bottom" constant="30" id="wag-YJ-XRb"/>
                                             <constraint firstAttribute="bottom" secondItem="yqC-cv-pAx" secondAttribute="bottom" constant="16" id="whb-BB-c1m"/>
                                             <constraint firstItem="juz-VJ-FGH" firstAttribute="top" secondItem="DaM-PW-4pT" secondAttribute="bottom" constant="8" id="xMS-bg-ofF"/>
                                             <constraint firstItem="yqC-cv-pAx" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xfJ-vx-qsA" secondAttribute="bottom" constant="16" id="xdc-iL-0bm"/>

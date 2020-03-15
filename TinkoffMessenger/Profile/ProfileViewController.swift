@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
   
-  @IBOutlet weak var avatarImageView: UIImageView!
+  @IBOutlet public weak var avatarImageView: UIImageView!
   @IBOutlet weak var choosePhotoButton: UIButton!
   @IBOutlet weak var editButton: UIButton!
   @IBOutlet weak var nameLabel: UILabel!
@@ -23,8 +23,8 @@ class ProfileViewController: UIViewController {
   @IBOutlet weak var gcdButton: UIButton!
   @IBOutlet weak var operationButton: UIButton!
   
-  private let dataManager = DataManager()
   private var imagePicker: ImagePickerManager?
+  private var gcdDataManager: GCDDataManager?
   
   var didSetAvatar = false
   
@@ -32,6 +32,7 @@ class ProfileViewController: UIViewController {
     super.viewDidLoad()
     
     imagePicker = ImagePickerManager(for: self)
+    gcdDataManager = GCDDataManager(for: self)
     
     editButton.layer.borderWidth = 1
     editButton.layer.borderColor = UIColor.black.cgColor
@@ -46,15 +47,14 @@ class ProfileViewController: UIViewController {
     
     nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
     descriptionTextView.delegate = self
-    
-    updateProfileData()
+    if let gcdDataManager = gcdDataManager { gcdDataManager.updateProfileData() }
   }
   
   deinit {
     removeKeyboardNotifications()
   }
   
-  @objc private func endEditing() {
+  @objc func endEditing() {
     self.view.endEditing(true)
   }
   
@@ -106,8 +106,6 @@ class ProfileViewController: UIViewController {
     })
   }
   
-  // MARK: - All editing logic
-  
   @IBAction func exitButtonAction(_ sender: Any) {
     self.dismiss(animated: true, completion: nil)
   }
@@ -120,115 +118,20 @@ class ProfileViewController: UIViewController {
   }
   
   @IBAction func operationAction() {
-    activityIndicator.startAnimating()
-    var successFlag = true
-    if needToSaveAvatar() {
-      if let newAvatar = avatarImageView.image {
-        successFlag = successFlag && dataManager.saveAvatar(avatar: newAvatar)
-      } else {
-        successFlag = false
-      }
-    }
-    if needToSaveName() {
-      if let newName = nameTextField.text {
-        successFlag = successFlag && dataManager.saveName(nameText: newName)
-      } else {
-        successFlag = false
-      }
-    }
-    if needToSaveDescription() {
-      if let newDescription = descriptionTextView.text {
-        successFlag = successFlag && dataManager.saveDescription(descriptionText: newDescription)
-      } else {
-        successFlag = false
-      }
-    }
-    
-    if successFlag {
-      endEditing()
-      createSuccessAlert()
-      updateProfileData()
-      activityIndicator.stopAnimating()
-    } else {
-      endEditing()
-      createErrorAlert(isOperation: true)
-      activityIndicator.stopAnimating()
-    }
+
   }
   
   @IBAction func gcdAction() {
-    activityIndicator.startAnimating()
-    var successFlag = true
-    if needToSaveAvatar() {
-      if let newAvatar = avatarImageView.image {
-        successFlag = successFlag && dataManager.saveAvatar(avatar: newAvatar)
-      } else {
-        successFlag = false
-      }
-    }
-    if needToSaveName() {
-      if let newName = nameTextField.text {
-        successFlag = successFlag && dataManager.saveName(nameText: newName)
-      } else {
-        successFlag = false
-      }
-    }
-    if needToSaveDescription() {
-      if let newDescription = descriptionTextView.text {
-        successFlag = successFlag && dataManager.saveDescription(descriptionText: newDescription)
-      } else {
-        successFlag = false
-      }
-    }
-    
-    if successFlag {
-      endEditing()
-      createSuccessAlert()
-      updateProfileData()
-      activityIndicator.stopAnimating()
-    } else {
-      endEditing()
-      createErrorAlert(isOperation: false)
-      activityIndicator.stopAnimating()
-    }
+    endEditing()
+    guard let gcdDataManager = gcdDataManager else { return }
+    gcdButton.isEnabled = false
+    operationButton.isEnabled = false
+    gcdDataManager.allSaveHandle()
   }
   
   @IBAction func cancelEditMode() {
     switchEditingMode()
     endEditing()
-  }
-  
-  func needToSaveAvatar() -> Bool {
-    if let oldAvatar = dataManager.readAvatar(), let newAvatar = avatarImageView.image, oldAvatar.isEqual(to: newAvatar) {
-      return false
-    }
-    return true
-  }
-  
-  func needToSaveName() -> Bool {
-    if let oldName = dataManager.readName(), let newName = nameTextField.text, newName == oldName {
-      return false
-    }
-    return true
-  }
-  
-  func needToSaveDescription() -> Bool {
-    if let oldDescription = dataManager.readDescription(), let newDescription = descriptionTextView.text, newDescription == oldDescription {
-      return false
-    }
-    return true
-  }
-  
-  func updateProfileData() {
-    if let oldAvatar = dataManager.readAvatar() {
-      avatarImageView.image = oldAvatar
-    }
-    if let oldName = dataManager.readName() {
-      nameLabel.text = oldName
-    }
-    if let oldDescription = dataManager.readDescription() {
-      descriptionLabel.text = oldDescription
-    }
   }
   
   @objc func textFieldDidChange(_ textField: UITextField) {
