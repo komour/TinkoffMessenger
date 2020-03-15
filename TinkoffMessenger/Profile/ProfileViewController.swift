@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileViewController: UIViewController {
   
-  @IBOutlet weak var avatarImage: UIImageView!
+  @IBOutlet weak var avatarImageView: UIImageView!
   @IBOutlet weak var choosePhotoButton: UIButton!
   @IBOutlet weak var editButton: UIButton!
   @IBOutlet weak var nameLabel: UILabel!
@@ -21,11 +21,8 @@ class ProfileViewController: UIViewController {
   @IBOutlet weak var descriptionTextView: UITextView!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   
-  let nameFile = "name.txt"
-  let descriptionFile = "description.txt"
-  let avatarFile = "avatar.jpg"
-  
-  var imagePicker: ImagePickerManager?
+  private let dataManager = DataManager()
+  private var imagePicker: ImagePickerManager?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -43,21 +40,7 @@ class ProfileViewController: UIViewController {
     let tapEndEditing = UITapGestureRecognizer(target: self, action: #selector(endEditing))
     view.addGestureRecognizer(tapEndEditing)
     
-    if let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-      let nameFileUrl = directory.appendingPathComponent(nameFile)
-      let descriptionFileUrl = directory.appendingPathComponent(descriptionFile)
-      let imageURL = directory.appendingPathComponent(avatarFile)
-      do {
-        let nameText = try String(contentsOf: nameFileUrl, encoding: .utf8)
-        nameLabel.text = nameText
-        
-        let descriptionText = try String(contentsOf: descriptionFileUrl, encoding: .utf8)
-        descriptionLabel.text = descriptionText
-        
-        let avatar = UIImage(contentsOfFile: imageURL.path)
-        avatarImage.image = avatar
-      } catch { print("nothing to read in \(#function)") }
-    }
+    updateProfileData()
   }
   
   private func switchEditingMode() {
@@ -82,7 +65,7 @@ class ProfileViewController: UIViewController {
     let cornerRadius = choosePhotoButton.bounds.size.width / 2
     let edgeInset = choosePhotoButton.bounds.size.width / 4
     
-    avatarImage.layer.cornerRadius = cornerRadius
+    avatarImageView.layer.cornerRadius = cornerRadius
     choosePhotoButton.layer.cornerRadius = cornerRadius
     
     choosePhotoButton.imageEdgeInsets = UIEdgeInsets(top: edgeInset, left: edgeInset, bottom: edgeInset, right: edgeInset)
@@ -120,7 +103,7 @@ class ProfileViewController: UIViewController {
       return
     }
     imagePicker.pickImage({ image in
-      self.avatarImage.image = image
+      self.avatarImageView.image = image
     })
   }
   
@@ -136,50 +119,81 @@ class ProfileViewController: UIViewController {
   
   @IBAction func operationAction() {
     activityIndicator.startAnimating()
-    if let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-      let nameFileUrl = directory.appendingPathComponent(nameFile)
-      let descriptionFileUrl = directory.appendingPathComponent(descriptionFile)
-      let imageFileUrl = directory.appendingPathComponent(avatarFile)
-      do {
-        if let nameText = nameTextField.text {
-          try nameText.write(to: nameFileUrl, atomically: false, encoding: .utf8)
-          nameLabel.text = nameText //have to read here
-        }
-        if let descriptionText = descriptionTextView.text {
-          try descriptionText.write(to: descriptionFileUrl, atomically: false, encoding: .utf8)
-          descriptionLabel.text = descriptionText //have to read here
-        }
-        
-        if let image = avatarImage.image {
-          if let data = image.jpegData(compressionQuality: 1.0) {
-            //!FileManager.default.fileExists(atPath: fileURL.path)
-            try data.write(to: imageFileUrl)
-          }
-        }
-        
-      } catch { print("Smth went wrong in \(#function) 1st catch"); createErrorAlert() }
+    var successFlag = true
+    if needToSaveAvatar() {
+      if let newAvatar = avatarImageView.image {
+        successFlag = successFlag && dataManager.saveAvatar(avatar: newAvatar)
+      } else {
+        successFlag = false
+      }
     }
-    saveDataWithOperation()
+    if needToSaveName() {
+      if let newName = nameLabel.text {
+        successFlag = successFlag && dataManager.saveName(nameText: newName)
+      } else {
+        successFlag = false
+      }
+    }
+    if needToSaveDescription() {
+      if let newDescription = descriptionLabel.text {
+        successFlag = successFlag && dataManager.saveDescription(descriptionText: newDescription)
+      } else {
+        successFlag = false
+      }
+    }
+    
+    if successFlag {
+      createSuccessAlert()
+      endEditing()
+      updateProfileData()
+      activityIndicator.stopAnimating()
+    } else {
+      createErrorAlert(isOperation: true)
+      endEditing()
+      activityIndicator.stopAnimating()
+    }
   }
   
   @IBAction func gcdAction() {
-    nameLabel.text = nameTextField.text
-    descriptionLabel.text = descriptionTextView.text
     activityIndicator.startAnimating()
+    var successFlag = true
+    if needToSaveAvatar() {
+      if let newAvatar = avatarImageView.image {
+        successFlag = successFlag && dataManager.saveAvatar(avatar: newAvatar)
+      } else {
+        successFlag = false
+      }
+    }
+    if needToSaveName() {
+      if let newName = nameTextField.text {
+        successFlag = successFlag && dataManager.saveName(nameText: newName)
+      } else {
+        successFlag = false
+      }
+    }
+    if needToSaveDescription() {
+      if let newDescription = descriptionTextView.text {
+        successFlag = successFlag && dataManager.saveDescription(descriptionText: newDescription)
+      } else {
+        successFlag = false
+      }
+    }
     
-    saveDataWithGcd()
+    if successFlag {
+      endEditing()
+      createSuccessAlert()
+      updateProfileData()
+      activityIndicator.stopAnimating()
+    } else {
+      endEditing()
+      createErrorAlert(isOperation: false)
+      activityIndicator.stopAnimating()
+    }
+    
   }
-  
-  private func saveDataWithGcd() {
-    // on completion
-    createErrorAlert()
-    activityIndicator.stopAnimating()
-  }
-  
-  private func saveDataWithOperation() {
-    // on completion
-    createSuccessAlert()
-    activityIndicator.stopAnimating()
+  @IBAction func cancelEditMode() {
+    switchEditingMode()
+    endEditing()
   }
   
   func createSuccessAlert() {
@@ -187,23 +201,54 @@ class ProfileViewController: UIViewController {
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
       alert.dismiss(animated: true, completion: nil)
       self?.switchEditingMode()
-      self?.endEditing()
     }))
     self.present(alert, animated: true, completion: nil)
   }
   
-  func createErrorAlert() {
+  func createErrorAlert(isOperation: Bool) {
     let alert = UIAlertController(title: "Error!", message: "An error has occurred while saving the new data.", preferredStyle: .alert)
-    // just let user to try to save again
-    alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { _ in
+    alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { [weak self] _ in
+      if isOperation { self?.operationAction() } else { self?.gcdAction() }
       alert.dismiss(animated: true, completion: nil)
     }))
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {[weak self] _ in
       alert.dismiss(animated: true, completion: nil)
       self?.switchEditingMode()
-      self?.endEditing()
     }))
     self.present(alert, animated: true, completion: nil)
+  }
+  
+  func needToSaveAvatar() -> Bool {
+    if let oldAvatar = dataManager.readAvatar(), let newAvatar = avatarImageView.image, oldAvatar.isEqual(to: newAvatar) {
+      return false
+    }
+    return true
+  }
+  
+  func needToSaveName() -> Bool {
+    if let oldName = dataManager.readName(), let newName = nameTextField.text, newName == oldName {
+      return false
+    }
+    return true
+  }
+  
+  func needToSaveDescription() -> Bool {
+    if let oldDescription = dataManager.readDescription(), let newDescription = descriptionTextView.text, newDescription == oldDescription {
+      return false
+    }
+    return true
+  }
+  
+  func updateProfileData() {
+    if let oldAvatar = dataManager.readAvatar() {
+      avatarImageView.image = oldAvatar
+    }
+    if let oldName = dataManager.readName() {
+      nameLabel.text = oldName
+    }
+    if let oldDescription = dataManager.readDescription() {
+      descriptionLabel.text = oldDescription
+    }
   }
   
 }

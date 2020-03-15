@@ -6,7 +6,6 @@
 //  Copyright © 2020 komarov. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension UIView {

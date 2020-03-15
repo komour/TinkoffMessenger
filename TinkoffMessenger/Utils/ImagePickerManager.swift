@@ -7,7 +7,6 @@
 //
 // Inspired by https://stackoverflow.com
 
-import Foundation
 import UIKit
 
 class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {

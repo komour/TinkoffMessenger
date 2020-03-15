@@ -56,15 +56,22 @@
                                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yqC-cv-pAx">
                                                 <rect key="frame" x="16" y="478" width="288" height="30"/>
                                                 <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ddr-lS-Xo5" userLabel="Cancel">
+                                                        <rect key="frame" x="0.0" y="0.0" width="96" height="30"/>
+                                                        <state key="normal" title="Cancel"/>
+                                                        <connections>
+                                                            <action selector="cancelEditMode" destination="pWM-Ms-ZIq" eventType="touchUpInside" id="zuf-WE-vNu"/>
+                                                        </connections>
+                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x2A-dE-rnm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="144" height="30"/>
+                                                        <rect key="frame" x="96" y="0.0" width="96" height="30"/>
                                                         <state key="normal" title="Operation"/>
                                                         <connections>
                                                             <action selector="operationAction" destination="pWM-Ms-ZIq" eventType="touchUpInside" id="aeu-8H-OcX"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4W-AV-WYM">
-                                                        <rect key="frame" x="144" y="0.0" width="144" height="30"/>
+                                                        <rect key="frame" x="192" y="0.0" width="96" height="30"/>
                                                         <state key="normal" title="GCD"/>
                                                         <connections>
                                                             <action selector="gcdAction" destination="pWM-Ms-ZIq" eventType="touchUpInside" id="1dd-Ya-uwr"/>
@@ -170,7 +177,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="TrU-jl-XSb" id="k6E-2r-HCN"/>
-                        <outlet property="avatarImage" destination="DaM-PW-4pT" id="KUn-Xs-cVS"/>
+                        <outlet property="avatarImageView" destination="DaM-PW-4pT" id="KUn-Xs-cVS"/>
                         <outlet property="choosePhotoButton" destination="hNJ-E1-iD2" id="oOY-iM-aco"/>
                         <outlet property="descriptionLabel" destination="xfJ-vx-qsA" id="CB0-ty-H87"/>
                         <outlet property="descriptionTextView" destination="jy0-L9-2lR" id="mPw-u6-v7O"/>
