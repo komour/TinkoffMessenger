@@ -15,12 +15,11 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
   let picker = UIImagePickerController()
   
   var pickImageCallback: ((UIImage) -> Void)?
-  var viewController: UIViewController?
+  var viewController: UIViewController
   
   init(for viewController: UIViewController) {
-    super.init()
-    
     self.viewController = viewController
+    super.init()
     let cameraAction = UIAlertAction(title: "Take a photo", style: .default) { _ in
       self.openCamera()
     }
@@ -32,32 +31,32 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
     alert.addAction(cameraAction)
     alert.addAction(galleryAction)
     alert.addAction(cancelAction)
-    alert.popoverPresentationController?.sourceView = self.viewController?.view
+    alert.popoverPresentationController?.sourceView = self.viewController.view
   }
   
   func pickImage(_ callback: @escaping ((UIImage) -> Void)) {
     pickImageCallback = callback
-    viewController?.present(alert, animated: true, completion: nil)
+    viewController.present(alert, animated: true, completion: nil)
   }
   
   private func openCamera() {
     alert.dismiss(animated: true, completion: nil)
     if UIImagePickerController.isSourceTypeAvailable(.camera) {
       picker.sourceType = .camera
-      viewController?.present(picker, animated: true, completion: nil)
+      viewController.present(picker, animated: true, completion: nil)
     } else {
       let warningAlert = UIAlertController(title: "WARNING", message: "You don't have camera", preferredStyle: .alert)
       warningAlert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: {_ in
         warningAlert.dismiss(animated: true, completion: nil)
       }))
-      viewController?.present(warningAlert, animated: true, completion: nil)
+      viewController.present(warningAlert, animated: true, completion: nil)
     }
   }
   
   private func openGallery() {
     alert.dismiss(animated: true, completion: nil)
     picker.sourceType = .photoLibrary
-    viewController?.present(picker, animated: true, completion: nil)
+    viewController.present(picker, animated: true, completion: nil)
   }
   
   internal func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

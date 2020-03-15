@@ -9,7 +9,7 @@
 import UIKit
 
 class OperationDataManager {
-  let profileVC: ProfileViewController
+  weak var profileVC: ProfileViewController?
   let updateOperation: UpdateOperation
   let allSaveHandleOperation: AllSaveHandleOperation
   let queue = OperationQueue()
@@ -21,20 +21,23 @@ class OperationDataManager {
   }
   
   func allSaveHandle() {
-    DispatchQueue.main.async { [weak self] in
-      guard let self = self else { return }
-      self.profileVC.activityIndicator.startAnimating()
+    guard let profileVC = profileVC else {
+      print("nil profileVC in \(#function)")
+      return
+    }
+    DispatchQueue.main.async {
+      profileVC.activityIndicator.startAnimating()
     }
     
     allSaveHandleOperation.completionBlock = {
       DispatchQueue.main.async { [weak self] in
         guard let self = self else { return }
-        self.profileVC.activityIndicator.stopAnimating()
-        self.profileVC.endEditing()
+        profileVC.activityIndicator.stopAnimating()
+        profileVC.endEditing()
         if self.allSaveHandleOperation.successFlag {
-          self.profileVC.createSuccessAlert()
+          profileVC.createSuccessAlert()
         } else {
-          self.profileVC.createErrorAlert(isOperation: true)
+          profileVC.createErrorAlert(isOperation: true)
         }
       }
     }
@@ -42,10 +45,13 @@ class OperationDataManager {
   }
   
   func updateProfileData() {
+    guard let profileVC = profileVC else {
+      print("nil profileVC in \(#function)")
+      return
+    }
     updateOperation.completionBlock = {
-      DispatchQueue.main.async { [weak self] in
-        guard let self = self else { return }
-        self.profileVC.activityIndicator.stopAnimating()
+      DispatchQueue.main.async {
+        profileVC.activityIndicator.stopAnimating()
       }
     }
     queue.addOperation(updateOperation)

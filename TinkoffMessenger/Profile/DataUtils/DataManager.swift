@@ -12,7 +12,7 @@ import UIKit
 
 class DataManager {
   
-  let profileVC: ProfileViewController
+  weak var profileVC: ProfileViewController?
   let nameFile = "name.txt"
   let descriptionFile = "description.txt"
   let avatarFile = "avatar.jpg"
@@ -31,10 +31,13 @@ class DataManager {
   }
   
   func needToSaveAvatar() -> Bool {
+    guard let profileVC = profileVC else {
+      print("nil profileVC in \(#function)")
+      return false
+    }
     var newAvatar: UIImage?
-    DispatchQueue.main.async { [weak self] in
-      guard let self = self else { return }
-      newAvatar = self.profileVC.avatarImageView.image
+    DispatchQueue.main.async {
+      newAvatar = profileVC.avatarImageView.image
     }
     if let oldAvatar = readAvatar(), let newAvatar = newAvatar, oldAvatar.isEqual(to: newAvatar) {
       return false
@@ -43,10 +46,13 @@ class DataManager {
   }
   
   func needToSaveName() -> Bool {
+    guard let profileVC = profileVC else {
+      print("nil profileVC in \(#function)")
+      return false
+    }
     var newName: String?
-    DispatchQueue.main.async { [weak self] in
-      guard let self = self else { return }
-      newName = self.profileVC.nameTextField.text
+    DispatchQueue.main.async {
+      newName = profileVC.nameTextField.text
     }
     if let oldName = readText(from: nameFile), let newName = newName, newName == oldName {
       return false
@@ -55,10 +61,13 @@ class DataManager {
   }
   
   func needToSaveDescription() -> Bool {
+    guard let profileVC = profileVC else {
+      print("nil profileVC in \(#function)")
+      return false
+    }
     var newDescription: String?
-    DispatchQueue.main.async { [weak self] in
-      guard let self = self else { return }
-      newDescription = self.profileVC.nameTextField.text
+    DispatchQueue.main.async {
+      newDescription = profileVC.nameTextField.text
     }
     if let oldDescription = readText(from: descriptionFile), let newDescription = newDescription, newDescription == oldDescription {
       return false
@@ -129,22 +138,23 @@ class DataManager {
   // MARK: - Update profile name, description and avatar
   
   func updateProfileData() {
+    guard let profileVC = profileVC else {
+      print("nil profileVC in \(#function)")
+      return
+    }
     if let oldAvatar = readAvatar() {
-      DispatchQueue.main.async { [weak self] in
-        guard let self = self else { return }
-        self.profileVC.avatarImageView.image = oldAvatar
+      DispatchQueue.main.async {
+        profileVC.avatarImageView.image = oldAvatar
       }
     }
     if let oldName = readText(from: nameFile) {
-      DispatchQueue.main.async { [weak self] in
-        guard let self = self else { return }
-        self.profileVC.nameLabel.text = oldName
+      DispatchQueue.main.async {
+        profileVC.nameLabel.text = oldName
       }
     }
     if let oldDescription = readText(from: descriptionFile) {
-      DispatchQueue.main.async { [weak self] in
-        guard let self = self else { return }
-        self.profileVC.descriptionLabel.text = oldDescription
+      DispatchQueue.main.async {
+        profileVC.descriptionLabel.text = oldDescription
       }
     }
   }

@@ -12,7 +12,7 @@ class AllSaveHandleOperation: Operation {
   var successFlag = true
   
   let dataManager: DataManager
-  let profileVC: ProfileViewController
+  weak var profileVC: ProfileViewController?
   
   init(for profileVC: ProfileViewController) {
     self.profileVC = profileVC
@@ -28,11 +28,15 @@ class AllSaveHandleOperation: Operation {
   // MARK: - main method with all edit logic
   
   func allSaveHandle() {
+    guard let profileVC = profileVC else {
+      print("nil profileVC in \(#function)")
+      return
+    }
     successFlag = true
     if dataManager.needToSaveAvatar() {
       DispatchQueue.main.async { [weak self] in
         guard let self = self else { return }
-        if let newAvatar = self.profileVC.avatarImageView.image {
+        if let newAvatar = profileVC.avatarImageView.image {
           self.successFlag = self.successFlag && self.dataManager.saveAvatar(avatar: newAvatar)
         } else {
           self.successFlag = false
@@ -42,7 +46,7 @@ class AllSaveHandleOperation: Operation {
     if dataManager.needToSaveName() {
       DispatchQueue.main.async { [weak self] in
         guard let self = self else { return }
-        if let newName = self.profileVC.nameTextField.text {
+        if let newName = profileVC.nameTextField.text {
           self.successFlag = self.successFlag && self.dataManager.saveText(text: newName, to: self.dataManager.nameFile)
         } else {
           self.successFlag = false
@@ -52,7 +56,7 @@ class AllSaveHandleOperation: Operation {
     if dataManager.needToSaveDescription() {
       DispatchQueue.main.async { [weak self] in
         guard let self = self else { return }
-        if let newDescription = self.profileVC.descriptionTextView.text {
+        if let newDescription = profileVC.descriptionTextView.text {
           self.successFlag = self.successFlag && self.dataManager.saveText(text: newDescription, to: self.dataManager.descriptionFile)
         } else {
           self.successFlag = false

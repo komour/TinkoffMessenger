@@ -11,7 +11,7 @@ import UIKit
 class UpdateOperation: Operation {
   
   let dataManager: DataManager
-  let profileVC: ProfileViewController
+  weak var profileVC: ProfileViewController?
   
   init(for profileVC: ProfileViewController) {
     self.profileVC = profileVC
@@ -20,10 +20,13 @@ class UpdateOperation: Operation {
   }
   
   override func main() {
+    guard let profileVC = profileVC else {
+      print("nil profileVC in \(#function)")
+      return
+    }
     guard !isCancelled else { return }
-    DispatchQueue.main.async { [weak self] in
-      guard let self = self else { return }
-      self.profileVC.activityIndicator.startAnimating()
+    DispatchQueue.main.async {
+      profileVC.activityIndicator.startAnimating()
     }
     dataManager.updateProfileData()
   }

@@ -10,7 +10,7 @@ import UIKit
 
 class GCDDataManager {
   
-  let profileVC: ProfileViewController
+  weak var profileVC: ProfileViewController?
   let dataManager: DataManager
   
   init(for profileVC: ProfileViewController) {
@@ -21,18 +21,21 @@ class GCDDataManager {
   // MARK: - main method with all edit logic
   
   func allSaveHandle() {
+    guard let profileVC = profileVC else {
+      print("nil profileVC in \(#function)")
+      return
+    }
     let queue = DispatchQueue.global(qos: .utility)
     queue.async { [weak self] in
       guard let self = self else { return }
-      DispatchQueue.main.async { [weak self] in
-        guard let self = self else { return }
-        self.profileVC.activityIndicator.startAnimating()
+      DispatchQueue.main.async {
+        profileVC.activityIndicator.startAnimating()
       }
       var successFlag = true
       if self.dataManager.needToSaveAvatar() {
         DispatchQueue.main.async { [weak self] in
           guard let self = self else { return }
-          if let newAvatar = self.profileVC.avatarImageView.image {
+          if let newAvatar = profileVC.avatarImageView.image {
             successFlag = successFlag && self.dataManager.saveAvatar(avatar: newAvatar)
           } else {
             successFlag = false
@@ -42,7 +45,7 @@ class GCDDataManager {
       if self.dataManager.needToSaveName() {
         DispatchQueue.main.async { [weak self] in
           guard let self = self else { return }
-          if let newName = self.profileVC.nameTextField.text {
+          if let newName = profileVC.nameTextField.text {
             successFlag = successFlag && self.dataManager.saveText(text: newName, to: self.dataManager.nameFile)
           } else {
             successFlag = false
@@ -52,7 +55,7 @@ class GCDDataManager {
       if self.dataManager.needToSaveDescription() {
         DispatchQueue.main.async { [weak self] in
           guard let self = self else { return }
-          if let newDescription = self.profileVC.descriptionTextView.text {
+          if let newDescription = profileVC.descriptionTextView.text {
             successFlag = successFlag && self.dataManager.saveText(text: newDescription, to: self.dataManager.descriptionFile)
           } else {
             successFlag = false
@@ -63,17 +66,16 @@ class GCDDataManager {
       if successFlag {
         DispatchQueue.main.async { [weak self] in
           guard let self = self else { return }
-          self.profileVC.endEditing()
-          self.profileVC.createSuccessAlert()
+          profileVC.endEditing()
+          profileVC.createSuccessAlert()
           self.dataManager.updateProfileData()
-          self.profileVC.activityIndicator.stopAnimating()
+          profileVC.activityIndicator.stopAnimating()
         }
       } else {
-        DispatchQueue.main.async { [weak self] in
-          guard let self = self else { return }
-          self.profileVC.endEditing()
-          self.profileVC.createErrorAlert(isOperation: false)
-          self.profileVC.activityIndicator.stopAnimating()
+        DispatchQueue.main.async {
+          profileVC.endEditing()
+          profileVC.createErrorAlert(isOperation: false)
+          profileVC.activityIndicator.stopAnimating()
         }
       }
     }
