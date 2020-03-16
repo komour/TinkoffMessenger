@@ -27,6 +27,7 @@ class ProfileViewController: UIViewController {
   private var imagePicker: ImagePickerManager?
   private var gcdDataManager: GCDDataManager?
   private var operationDataManager: OperationDataManager?
+  private var dataManager: DataManager?
   
   var didSetAvatar = false
   
@@ -36,9 +37,16 @@ class ProfileViewController: UIViewController {
     imagePicker = ImagePickerManager(for: self)
     gcdDataManager = GCDDataManager(for: self)
     operationDataManager = OperationDataManager(for: self)
+    dataManager = DataManager(for: self)
     
     editButton.layer.borderWidth = 1
-    editButton.layer.borderColor = UIColor.black.cgColor
+    editButton.layer.borderColor = UIColor.lightGray.cgColor
+    
+    descriptionTextView.layer.borderWidth = 1
+    descriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
+    
+    nameTextField.layer.borderWidth = 1
+    nameTextField.layer.borderColor = UIColor.lightGray.cgColor
     
     nameTextField.font = nameLabel.font
     
@@ -50,7 +58,7 @@ class ProfileViewController: UIViewController {
     
     nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
     descriptionTextView.delegate = self
-    if let operationDataManager = operationDataManager { operationDataManager.updateProfileData() }
+    if let dataManager = dataManager { dataManager.updateProfileData() }
   }
   
   deinit {
@@ -71,6 +79,8 @@ class ProfileViewController: UIViewController {
     choosePhotoButton.imageEdgeInsets = UIEdgeInsets(top: edgeInset, left: edgeInset, bottom: edgeInset, right: edgeInset)
     
     editButton.layer.cornerRadius = editButton.bounds.size.width / 25
+    nameTextField.layer.cornerRadius = 12
+    descriptionTextView.layer.cornerRadius = 12
   }
   
   private func addKeyboardNotifications() {

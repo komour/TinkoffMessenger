@@ -15,11 +15,12 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
   let picker = UIImagePickerController()
   
   var pickImageCallback: ((UIImage) -> Void)?
-  var viewController: UIViewController
+  weak var viewController: UIViewController?
   
   init(for viewController: UIViewController) {
     self.viewController = viewController
     super.init()
+    guard let viewController = self.viewController else { return }
     let cameraAction = UIAlertAction(title: "Take a photo", style: .default) { _ in
       self.openCamera()
     }
@@ -31,15 +32,17 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
     alert.addAction(cameraAction)
     alert.addAction(galleryAction)
     alert.addAction(cancelAction)
-    alert.popoverPresentationController?.sourceView = self.viewController.view
+    alert.popoverPresentationController?.sourceView = viewController.view
   }
   
   func pickImage(_ callback: @escaping ((UIImage) -> Void)) {
+    guard let viewController = self.viewController else { return }
     pickImageCallback = callback
     viewController.present(alert, animated: true, completion: nil)
   }
   
   private func openCamera() {
+    guard let viewController = self.viewController else { return }
     alert.dismiss(animated: true, completion: nil)
     if UIImagePickerController.isSourceTypeAvailable(.camera) {
       picker.sourceType = .camera
@@ -54,6 +57,7 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
   }
   
   private func openGallery() {
+    guard let viewController = self.viewController else { return }
     alert.dismiss(animated: true, completion: nil)
     picker.sourceType = .photoLibrary
     viewController.present(picker, animated: true, completion: nil)
