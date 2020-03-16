@@ -194,8 +194,9 @@ class ProfileViewController: UIViewController {
   func createErrorAlert(isOperation: Bool) {
     let alert = UIAlertController(title: "Error!", message: "An error has occurred while saving the new data.", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { [weak self] _ in
-      if isOperation { self?.operationAction() } else { self?.gcdAction() }
       alert.dismiss(animated: true, completion: nil)
+      guard let self = self else { return }
+      if isOperation { self.operationAction() } else { self.gcdAction() }
     }))
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {[weak self] _ in
       alert.dismiss(animated: true, completion: nil)
