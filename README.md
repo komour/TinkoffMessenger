@@ -4,8 +4,8 @@
 
 ## Educational project for [Fintech Tinkoff iOS course](https://fintech.tinkoff.ru/study/fintech/ios/).
 
-1. Application and ViewController LifeCycle  
-To run in debug mode (with logs) select TinkoffMessengerDebug Scheme, otherwise - TinkoffMessenger Scheme.
-2. Profile screen
-3. Chat list and dialogue screen via UITableView
-4. Memory Management playground (understanding how to work without retain cycles)
+1. Application and ViewController LifeCycle (to run in debug mode (with logs) select TinkoffMessengerDebug scheme, otherwise - TinkoffMessenger scheme)
+2. Profile screen UI
+3. Chat list and dialogue screen UI via `UITableView`
+4. Memory Management playground (understanding how to work without retain cycles)  
+5. Read/Write data from files (profile picture, name, description) using `GCD` and `Operation`  
