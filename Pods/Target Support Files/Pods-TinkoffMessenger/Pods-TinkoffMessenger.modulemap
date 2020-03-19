@@ -1,0 +1,6 @@
+framework module Pods_TinkoffMessenger {
+  umbrella header "Pods-TinkoffMessenger-umbrella.h"
+
+  export *
+  module * { export * }
+}
