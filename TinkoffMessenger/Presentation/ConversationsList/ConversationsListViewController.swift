@@ -34,9 +34,19 @@ class ConversationsListViewController: UIViewController {
   @IBAction func profileButtonAction(_ sender: Any) {
     let profileNavigationController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileNavigationController")
     profileNavigationController.modalPresentationStyle = .fullScreen
-    present(profileNavigationController, animated: true, completion: nil)
+    present(profileNavigationController, animated: true)
   }
   
+  @IBAction func createChannelAction(_ sender: Any) {
+    let conversationsListStoryboard = self.storyboard
+    guard let conversationsListStoryboard1 = conversationsListStoryboard else {
+      print("koka")
+      return
+    }
+    let createChannelNavigationController = conversationsListStoryboard1.instantiateViewController(withIdentifier: "CreateChannelNavigationController")
+    createChannelNavigationController.modalPresentationStyle = .fullScreen
+    present(createChannelNavigationController, animated: true)
+  }
   // MARK: - Temporary test dataset
   
   private lazy var onlinePersons: [ConversationCellModel] = (0...Int.random(in: 10...15)).map { _ in
@@ -135,12 +145,15 @@ extension ConversationsListViewController: UITableViewDelegate {
     
     //      set new titile and navigate to conversationVC
     destination.title = curName
-    reference.addSnapshotListener { snapshot, _ in
-      print(snapshot?.documents[0].documentID ?? "keke")
-//      destination.channel
-    }
-    navigationController?.pushViewController(destination, animated: true)
+//    reference.addSnapshotListener { snapshot, _ in
+//      print(snapshot?.documents[0].data() ?? "keke")
+//      if let channelId = snapshot?.documents[0].documentID {
+//        print("Yass")
+//        destination.channel = Channel(identifier: channelId, name: "kekeke", lastMessage: "kjk")
+//      }
+//    }
     
+//    self.navigationController?.pushViewController(destination, animated: true)
     tableView.deselectRow(at: indexPath, animated: true)
     
   }

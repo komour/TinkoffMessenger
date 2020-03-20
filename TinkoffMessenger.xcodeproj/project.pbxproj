@@ -61,6 +61,7 @@
 		C5C61F9F240B1FC900ABBE7D /* UIfont+with.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61F9D240B1FC900ABBE7D /* UIfont+with.swift */; };
 		C5C61FA1240B22D800ABBE7D /* Date+isToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61FA0240B22D800ABBE7D /* Date+isToday.swift */; };
 		C5C61FA2240B22D800ABBE7D /* Date+isToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61FA0240B22D800ABBE7D /* Date+isToday.swift */; };
+		C5D41CD124243C170062D681 /* CreateChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D41CD024243C170062D681 /* CreateChannelViewController.swift */; };
 		C5D6E2B8240B63D400543026 /* RandomHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6E2B7240B63D400543026 /* RandomHelper.swift */; };
 		C5D6E2B9240B63D400543026 /* RandomHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6E2B7240B63D400543026 /* RandomHelper.swift */; };
 		C5D6E2BC240C294900543026 /* UITableView+scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6E2BB240C294900543026 /* UITableView+scroll.swift */; };
@@ -137,6 +138,7 @@
 		C5C61F95240B0CB800ABBE7D /* ConversationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConversationCell.xib; sourceTree = "<group>"; };
 		C5C61F9D240B1FC900ABBE7D /* UIfont+with.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIfont+with.swift"; sourceTree = "<group>"; };
 		C5C61FA0240B22D800ABBE7D /* Date+isToday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+isToday.swift"; sourceTree = "<group>"; };
+		C5D41CD024243C170062D681 /* CreateChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChannelViewController.swift; sourceTree = "<group>"; };
 		C5D6E2B7240B63D400543026 /* RandomHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomHelper.swift; sourceTree = "<group>"; };
 		C5D6E2BB240C294900543026 /* UITableView+scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+scroll.swift"; sourceTree = "<group>"; };
 		ECB8DE563DC6C31F4C830E1D /* Pods-TinkoffMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffMessenger.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffMessenger/Pods-TinkoffMessenger.debug.xcconfig"; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				C5C61F76240AD00500ABBE7D /* ConversationsListViewController.swift */,
 				C5C61F77240AD00500ABBE7D /* Cell */,
 				C5C61F7A240AD00500ABBE7D /* ConverationsList.storyboard */,
+				C5D41CD024243C170062D681 /* CreateChannelViewController.swift */,
 			);
 			path = ConversationsList;
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 				C5C61F7B240AD00500ABBE7D /* ConversationsListViewController.swift in Sources */,
 				C5C61F92240AD0EF00ABBE7D /* ConversationCellModel.swift in Sources */,
 				C51F7B30240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift in Sources */,
+				C5D41CD124243C170062D681 /* CreateChannelViewController.swift in Sources */,
 				C51F7B3B240B5A8A00A4D8A5 /* MessageCell.swift in Sources */,
 				C5C61F88240AD00C00ABBE7D /* ConversationViewController.swift in Sources */,
 				C5C61F96240B0CB800ABBE7D /* ConversationCell.swift in Sources */,

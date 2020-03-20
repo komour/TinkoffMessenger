@@ -47,8 +47,7 @@ class ConversationViewController: UIViewController {
     view.addGestureRecognizer(tapEndEditing)
     
     reference.addSnapshotListener { snapshot, _ in
-      print(snapshot?.documents[0] ?? "kukak")
-      
+      print(snapshot?.documents[0].data() ?? "kukak")
     }
   }
   
@@ -92,6 +91,10 @@ class ConversationViewController: UIViewController {
       newMessageTextField.text = ""
       tableView.scrollToBottomAnimated()
     }
+    reference.addDocument(data: Message(content: "hello everyone",
+                                        created: Date(timeIntervalSinceReferenceDate: 605490000),
+                                        senderId: "42",
+                                        senderName: "kjk").toDict)
   }
   
 }
