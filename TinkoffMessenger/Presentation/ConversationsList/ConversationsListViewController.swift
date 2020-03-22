@@ -7,27 +7,29 @@
 //
 
 import UIKit
-import Firebase
 
 class ConversationsListViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   let conversationStoryboard = UIStoryboard(name: "Conversation", bundle: Bundle.main)
   let profileStoryboard = UIStoryboard(name: "Profile", bundle: Bundle.main)
   
-  private lazy var db = Firestore.firestore()
-  private lazy var reference = db.collection("channels")
+  private var firebaseService: FirebaseProtocol?
+  
   private var onlineChannels = [ConversationCellModel]()
   private var offlineChannels = [ConversationCellModel]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    firebaseService = FirebaseService()
     let conversationCellId = String(describing: ConversationCell.self)
     tableView.register(UINib(nibName: conversationCellId, bundle: nil), forCellReuseIdentifier: conversationCellId)
     self.tableView.dataSource = self
     self.tableView.delegate = self
     self.navigationController?.navigationBar.barTintColor = UIColor(named: "brightYellow")
     
+    guard let firebaseService = firebaseService else { return }
+    let reference = firebaseService.channelsReference()
     reference.addSnapshotListener { [weak self] (querySnapshot, err) in
       guard let self = self else { return }
       self.onlineChannels.removeAll()
@@ -40,8 +42,7 @@ class ConversationsListViewController: UIViewController {
         for document in querySnapshot.documents {
           let name = document.data()["name"] as? String ?? "nil name"
           let lastMessage = document.data()["lastMessage"] as? String
-          let lastActivity = document.data()["lastActivity"] as? Timestamp ?? Timestamp(date: Date(timeIntervalSince1970: 10.0))
-          let channelActivityDate = lastActivity.dateValue()
+          let channelActivityDate = firebaseService.getDateFromTimestamp(receivedTimestamp: document.data()["lastActivity"])
           if tenMinutesAgo <= channelActivityDate {
             self.onlineChannels.append(ConversationCellModel(name: name,
                                                              message: lastMessage,
@@ -76,10 +77,7 @@ class ConversationsListViewController: UIViewController {
   
   @IBAction func createChannelAction(_ sender: Any) {
     let conversationsListStoryboard = self.storyboard
-    guard let conversationsListStoryboard1 = conversationsListStoryboard else {
-      print("koka")
-      return
-    }
+    guard let conversationsListStoryboard1 = conversationsListStoryboard else { return }
     let createChannelNavigationController = conversationsListStoryboard1.instantiateViewController(withIdentifier: "CreateChannelNavigationController")
     createChannelNavigationController.modalPresentationStyle = .fullScreen
     present(createChannelNavigationController, animated: true)
@@ -157,7 +155,6 @@ extension ConversationsListViewController: UITableViewDelegate {
       return
     }
     destination.title = curChannel.name
-    destination.hasMessages = curChannel.message != nil
     let lastMessage = curChannel.message ?? "nothing"
     destination.channel = Channel(identifier: curChannel.identifier, name: curChannel.name, lastMessage: lastMessage)
     self.navigationController?.pushViewController(destination, animated: true)

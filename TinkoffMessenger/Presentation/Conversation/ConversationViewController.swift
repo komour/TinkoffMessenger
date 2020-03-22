@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class ConversationViewController: UIViewController {
   
@@ -18,20 +17,11 @@ class ConversationViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var scrollView: UIScrollView!
   
-  //random data++
+  private let firebaseService: FirebaseProtocol = FirebaseService()
   private var messages = [MessageCellModel]()
-  
-  //temporary crutch for mock data
-  var hasMessages = false
-  
   private let toolbarHeight: CGFloat = 25
   
   var channel: Channel?
-  private lazy var db = Firestore.firestore()
-  private lazy var reference: CollectionReference = {
-    guard let channelIdentifier = channel?.identifier else { print("zulul"); fatalError() }
-    return db.collection("channels").document(channelIdentifier).collection("messages")
-  }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -44,6 +34,8 @@ class ConversationViewController: UIViewController {
     let tapEndEditing = UITapGestureRecognizer(target: self, action: #selector(endEditing))
     view.addGestureRecognizer(tapEndEditing)
     
+    guard let channelIdentifier = channel?.identifier else { return }
+    let reference = firebaseService.messagesReference(channelIdentifier: channelIdentifier)
     reference.addSnapshotListener { [weak self] (querySnapshot, err) in
       guard let self = self else { return }
       self.messages.removeAll()
@@ -55,10 +47,9 @@ class ConversationViewController: UIViewController {
           let name = document.data()["senderName"] as? String ?? "nil senderName"
           let content = document.data()["content"] as? String ?? "nil content"
           let senderID = document.data()["senderID"] as? String ?? "nil senderID"
-          let created = document.data()["created"] as? Timestamp ?? Timestamp(date: Date(timeIntervalSince1970: 10.0))
-          let messageDate = created.dateValue()
+          let created = self.firebaseService.getDateFromTimestamp(receivedTimestamp: document.data()["created"])
           let isIncoming = senderID != self.myId
-          self.messages.append(MessageCellModel(text: content, isIncoming: isIncoming, date: messageDate, sender: name))
+          self.messages.append(MessageCellModel(text: content, isIncoming: isIncoming, date: created, sender: name))
           
         }
       }
@@ -107,6 +98,8 @@ class ConversationViewController: UIViewController {
       if newMessage == "" { return }
       let createdDate = Date()
       let senderName = "Andrey Komarov"
+      guard let channelIdentifier = channel?.identifier else { return }
+      let reference = firebaseService.messagesReference(channelIdentifier: channelIdentifier)
       reference.addDocument(data: Message(content: newMessage,
                                           created: createdDate,
                                           senderId: myId,

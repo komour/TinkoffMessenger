@@ -7,13 +7,11 @@
 //
 
 import UIKit
-import Firebase
 
 class CreateChannelViewController: UIViewController {  
   @IBOutlet weak var newChannelName: UITextField!
   
-  private lazy var db = Firestore.firestore()
-  private lazy var reference = db.collection("channels")
+  private let firebaseService: FirebaseProtocol = FirebaseService()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -36,6 +34,7 @@ class CreateChannelViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
         return
       }
+      let reference = firebaseService.channelsReference()
       reference.addDocument(data: Channel(identifier: "123", name: name, lastMessage: "nothing").toDict)
       self.dismiss(animated: true, completion: nil)
     }

@@ -62,6 +62,8 @@
 		C5C61FA1240B22D800ABBE7D /* Date+isToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61FA0240B22D800ABBE7D /* Date+isToday.swift */; };
 		C5C61FA2240B22D800ABBE7D /* Date+isToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61FA0240B22D800ABBE7D /* Date+isToday.swift */; };
 		C5D41CD124243C170062D681 /* CreateChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D41CD024243C170062D681 /* CreateChannelViewController.swift */; };
+		C5D41CDA24280AAD0062D681 /* FirebaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D41CD924280AAD0062D681 /* FirebaseProtocol.swift */; };
+		C5D41CDC24280B3E0062D681 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D41CDB24280B3E0062D681 /* FirebaseService.swift */; };
 		C5D6E2B8240B63D400543026 /* RandomHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6E2B7240B63D400543026 /* RandomHelper.swift */; };
 		C5D6E2B9240B63D400543026 /* RandomHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6E2B7240B63D400543026 /* RandomHelper.swift */; };
 		C5D6E2BC240C294900543026 /* UITableView+scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6E2BB240C294900543026 /* UITableView+scroll.swift */; };
@@ -139,6 +141,8 @@
 		C5C61F9D240B1FC900ABBE7D /* UIfont+with.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIfont+with.swift"; sourceTree = "<group>"; };
 		C5C61FA0240B22D800ABBE7D /* Date+isToday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+isToday.swift"; sourceTree = "<group>"; };
 		C5D41CD024243C170062D681 /* CreateChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChannelViewController.swift; sourceTree = "<group>"; };
+		C5D41CD924280AAD0062D681 /* FirebaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseProtocol.swift; sourceTree = "<group>"; };
+		C5D41CDB24280B3E0062D681 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		C5D6E2B7240B63D400543026 /* RandomHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomHelper.swift; sourceTree = "<group>"; };
 		C5D6E2BB240C294900543026 /* UITableView+scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+scroll.swift"; sourceTree = "<group>"; };
 		ECB8DE563DC6C31F4C830E1D /* Pods-TinkoffMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffMessenger.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffMessenger/Pods-TinkoffMessenger.debug.xcconfig"; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 				C5A344F8241EA7E000922BFB /* DataUtils */,
 				C55B88D72424307B00A22314 /* Message.swift */,
 				C55B88D92424309300A22314 /* Channel.swift */,
+				C5D41CD924280AAD0062D681 /* FirebaseProtocol.swift */,
+				C5D41CDB24280B3E0062D681 /* FirebaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -590,6 +596,7 @@
 				C5C61F92240AD0EF00ABBE7D /* ConversationCellModel.swift in Sources */,
 				C5C61F9E240B1FC900ABBE7D /* UIfont+with.swift in Sources */,
 				C55B88DA2424309300A22314 /* Channel.swift in Sources */,
+				C5D41CDA24280AAD0062D681 /* FirebaseProtocol.swift in Sources */,
 				C58D767923F9C002000E739E /* AppDelegate.swift in Sources */,
 				C5C61F7B240AD00500ABBE7D /* ConversationsListViewController.swift in Sources */,
 				C51F7B30240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift in Sources */,
@@ -598,6 +605,7 @@
 				C5C61F88240AD00C00ABBE7D /* ConversationViewController.swift in Sources */,
 				C5C61F96240B0CB800ABBE7D /* ConversationCell.swift in Sources */,
 				C5A344FE241EAAFA00922BFB /* UpdateOperation.swift in Sources */,
+				C5D41CDC24280B3E0062D681 /* FirebaseService.swift in Sources */,
 				C5A344F7241E77D500922BFB /* GCDDataManager.swift in Sources */,
 				C5A344F5241E4DBD00922BFB /* UIImage+isEqual.swift in Sources */,
 				C58D768323F9C002000E739E /* TinkoffMessenger.xcdatamodeld in Sources */,
