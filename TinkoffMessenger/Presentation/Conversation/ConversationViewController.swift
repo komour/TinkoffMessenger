@@ -11,14 +11,16 @@ import Firebase
 
 class ConversationViewController: UIViewController {
   
+  //  unique ID
+  let myId = UIDevice.current.identifierForVendor?.uuidString ?? "123"
+  
   @IBOutlet weak var newMessageTextField: UITextField!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var scrollView: UIScrollView!
   
-  //random data
-  static var messages: [MessageCellModel] = (0...Int.random(in: 10...100)).map { _ in
-    MessageCellModel(text: randomString(length: Int.random(in: 10...300)), isIncoming: Bool.random())
-  }
+  //random data++
+  private var messages = [MessageCellModel]()
+  
   //temporary crutch for mock data
   var hasMessages = false
   
@@ -37,17 +39,34 @@ class ConversationViewController: UIViewController {
     tableView.register(UINib(nibName: String(describing: MessageCell.self), bundle: nil),
                        forCellReuseIdentifier: String(describing: MessageCell.self))
     tableView.dataSource = self
-    tableView.reloadData()
-    if hasMessages {
-      tableView.scrollToBottom()
-    }
     
     addKeyboardNotifications()
     let tapEndEditing = UITapGestureRecognizer(target: self, action: #selector(endEditing))
     view.addGestureRecognizer(tapEndEditing)
     
-    reference.addSnapshotListener { snapshot, _ in
-      print(snapshot?.documents[0].data() ?? "kukak")
+    reference.addSnapshotListener { [weak self] (querySnapshot, err) in
+      guard let self = self else { return }
+      self.messages.removeAll()
+      if let err = err {
+        print("Error getting documents: \(err)")
+      } else {
+        guard let querySnapshot = querySnapshot else { return }
+        for document in querySnapshot.documents {
+          let name = document.data()["senderName"] as? String ?? "nil senderName"
+          let content = document.data()["content"] as? String ?? "nil content"
+          let senderID = document.data()["senderID"] as? String ?? "nil senderID"
+          let created = document.data()["created"] as? Timestamp ?? Timestamp(date: Date(timeIntervalSince1970: 10.0))
+          let messageDate = created.dateValue()
+          let isIncoming = senderID != self.myId
+          self.messages.append(MessageCellModel(text: content, isIncoming: isIncoming, date: messageDate, sender: name))
+          
+        }
+      }
+      self.messages.sort(by: {(a0: MessageCellModel, a1: MessageCellModel) -> Bool in
+        return a0.date < a1.date
+      })
+      self.tableView.reloadData()
+      self.tableView.scrollToBottomAnimated()
     }
   }
   
@@ -86,15 +105,14 @@ class ConversationViewController: UIViewController {
   @IBAction func sendAction() {
     if let newMessage = newMessageTextField.text {
       if newMessage == "" { return }
-      ConversationViewController.messages.append(MessageCellModel(text: newMessage, isIncoming: false))
-      tableView.reloadData()
+      let createdDate = Date()
+      let senderName = "qwertyuilkjhgfdszxc vbnmjhgfdxcvbhgfcv b"
+      reference.addDocument(data: Message(content: newMessage,
+                                          created: createdDate,
+                                          senderId: myId,
+                                          senderName: senderName).toDict)
       newMessageTextField.text = ""
-      tableView.scrollToBottomAnimated()
     }
-    reference.addDocument(data: Message(content: "hello everyone",
-                                        created: Date(timeIntervalSinceReferenceDate: 605490000),
-                                        senderId: "42",
-                                        senderName: "kjk").toDict)
   }
   
 }
@@ -103,24 +121,49 @@ class ConversationViewController: UIViewController {
 
 extension ConversationViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return ConversationViewController.messages.count
+    return messages.count
   }
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    //temporary crutch for chats with no messages
-    if hasMessages {
-      return 1
-    } else {
+    if messages.isEmpty {
       return 0
     }
+    return 1
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MessageCell.self), for: indexPath) as? MessageCell else {
       return UITableViewCell()
     }
-    cell.configure(with: ConversationViewController.messages[indexPath.row])
+    cell.configure(with: messages[indexPath.row])
     cell.selectionStyle = .none
     return cell
   }
+  
+//  func loadMessages() {
+//    messages.removeAll()
+//    reference.getDocuments { [weak self] (querySnapshot, err) in
+//      guard let self = self else { return }
+//      if let err = err {
+//        print("Error getting documents: \(err)")
+//      } else {
+//        guard let querySnapshot = querySnapshot else { return }
+//        for document in querySnapshot.documents {
+//          let name = document.data()["senderName"] as? String ?? "nil senderName"
+//          let content = document.data()["content"] as? String ?? "nil content"
+//          let senderID = document.data()["senderID"] as? String ?? "nil senderID"
+//          let created = document.data()["created"] as? Timestamp ?? Timestamp(date: Date(timeIntervalSince1970: 10.0))
+//          let messageDate = created.dateValue()
+//          let isIncoming = senderID != self.myId
+//          self.messages.append(MessageCellModel(text: content, isIncoming: isIncoming, date: messageDate, sender: name))
+//
+//        }
+//      }
+//      self.messages.sort(by: {(a0: MessageCellModel, a1: MessageCellModel) -> Bool in
+//        return a0.date < a1.date
+//      })
+//      self.tableView.reloadData()
+//      self.tableView.scrollToBottomAnimated()
+//    }
+//  }
 }

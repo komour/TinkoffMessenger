@@ -7,23 +7,42 @@
 //
 
 import UIKit
+import Firebase
 
-class CreateChannelViewController: UIViewController {
-  @IBAction func dismissAction(_ sender: Any) {
-    self.dismiss(animated: true, completion: nil)
-  }
+class CreateChannelViewController: UIViewController {  
+  @IBOutlet weak var newChannelName: UITextField!
   
-  @IBAction func doneAction() {
-  }
-  
-  @IBAction func cancelAction(_ sender: Any) {
-  }
+  private lazy var db = Firestore.firestore()
+  private lazy var reference = db.collection("channels")
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    self.navigationController?.navigationBar.barTintColor = UIColor(named: "brightYellow")
     let tapEndEditing = UITapGestureRecognizer(target: self, action: #selector(endEditing))
     view.addGestureRecognizer(tapEndEditing)
+  }
+  
+  @IBAction func doneAction() {
+    endEditing()
+    if newChannelName.text == nil || newChannelName.text == "" {
+      let alert = UIAlertController(title: "WARNING", message: "Can't create channel with empty name.", preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+        alert.dismiss(animated: true, completion: nil)
+      }))
+      self.present(alert, animated: true, completion: nil)
+    } else {
+      guard let name = newChannelName.text else {
+        self.dismiss(animated: true, completion: nil)
+        return
+      }
+      reference.addDocument(data: Channel(identifier: "123", name: name, lastMessage: "nothing").toDict)
+      self.dismiss(animated: true, completion: nil)
+    }
+  }
+  
+  @IBAction func cancelAction(_ sender: Any) {
+    self.dismiss(animated: true, completion: nil)
   }
   
   @objc private func endEditing() {

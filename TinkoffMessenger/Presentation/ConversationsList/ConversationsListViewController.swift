@@ -10,24 +10,61 @@ import UIKit
 import Firebase
 
 class ConversationsListViewController: UIViewController {
-  
   @IBOutlet weak var tableView: UITableView!
   let conversationStoryboard = UIStoryboard(name: "Conversation", bundle: Bundle.main)
   let profileStoryboard = UIStoryboard(name: "Profile", bundle: Bundle.main)
   
   private lazy var db = Firestore.firestore()
   private lazy var reference = db.collection("channels")
-
+  private var onlineChannels = [ConversationCellModel]()
+  private var offlineChannels = [ConversationCellModel]()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    tableView.dataSource = self
-    tableView.delegate = self
-    
     let conversationCellId = String(describing: ConversationCell.self)
     tableView.register(UINib(nibName: conversationCellId, bundle: nil), forCellReuseIdentifier: conversationCellId)
-    
+    self.tableView.dataSource = self
+    self.tableView.delegate = self
     self.navigationController?.navigationBar.barTintColor = UIColor(named: "brightYellow")
+    
+    reference.addSnapshotListener { [weak self] (querySnapshot, err) in
+      guard let self = self else { return }
+      self.onlineChannels.removeAll()
+      self.offlineChannels.removeAll()
+      if let err = err {
+        print("Error getting documents: \(err)")
+      } else {
+        let tenMinutesAgo = Date().addingTimeInterval(-10.0 * 60.0)
+        guard let querySnapshot = querySnapshot else { return }
+        for document in querySnapshot.documents {
+          let name = document.data()["name"] as? String ?? "nil name"
+          let lastMessage = document.data()["lastMessage"] as? String
+          let lastActivity = document.data()["lastActivity"] as? Timestamp ?? Timestamp(date: Date(timeIntervalSince1970: 10.0))
+          let channelActivityDate = lastActivity.dateValue()
+          if tenMinutesAgo <= channelActivityDate {
+            self.onlineChannels.append(ConversationCellModel(name: name,
+                                                             message: lastMessage,
+                                                             date: channelActivityDate,
+                                                             isOnline: true,
+                                                             hasUnreadMessages: false,
+                                                             identifier: document.documentID))
+          } else {
+            self.offlineChannels.append(
+              ConversationCellModel(name: name,
+                                    message: lastMessage,
+                                    date: channelActivityDate,
+                                    isOnline: false,
+                                    hasUnreadMessages: false,
+                                    identifier: document.documentID))
+          }
+          
+        }
+      }
+      self.onlineChannels.sort(by: self.sortingClosure)
+      self.offlineChannels.sort(by: self.sortingClosure)
+      self.tableView.reloadData()
+    }
   }
   
   //  go to profile vc
@@ -47,40 +84,22 @@ class ConversationsListViewController: UIViewController {
     createChannelNavigationController.modalPresentationStyle = .fullScreen
     present(createChannelNavigationController, animated: true)
   }
-  // MARK: - Temporary test dataset
   
-  private lazy var onlinePersons: [ConversationCellModel] = (0...Int.random(in: 10...15)).map { _ in
-    ConversationCellModel(name: randomString(length: .random(in: 3...42)),
-                          message: randomMessage(length: .random(in: 0...200)),
-                          date: randomDate(),
-                          isOnline: true,
-                          hasUnreadMessages: Bool.random())
-  }.sorted(by: {
-    if $0.message != nil {
-      if $1.message != nil {
-        return $1.date < $0.date
+  lazy var sortingClosure = { (a0: ConversationCellModel, a1: ConversationCellModel) -> Bool in
+    if a0.message != nil {
+      if a1.message != nil {
+        return a1.date < a0.date
       } else {
         return true
       }
     } else {
-      if $1.message != nil {
+      if a1.message != nil {
         return false
       } else {
-        return $1.date < $0.date
+        return a0.name < a1.name
       }
     }
-  }) //the newest chats at the top and chats with nil messages at the bottom
-  
-  private lazy var offlinePersons: [ConversationCellModel] = (0...Int.random(in: 10...15)).map { _ in
-    ConversationCellModel(
-      name: randomString(length: .random(in: 3...42)),
-      message: String?(randomString(length: .random(in: 0...200))),
-      date: randomDate(),
-      isOnline: false,
-      hasUnreadMessages: Bool.random()
-    )
-  }.sorted(by: { $1.date < $0.date })
-  
+  }
 }
 
 // MARK: - UITableViewDataSource
@@ -89,9 +108,9 @@ extension ConversationsListViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     switch section {
     case 0:
-      return onlinePersons.count
+      return onlineChannels.count
     default:
-      return offlinePersons.count
+      return offlineChannels.count
     }
   }
   
@@ -106,9 +125,9 @@ extension ConversationsListViewController: UITableViewDataSource {
     }
     switch indexPath.section {
     case 0:
-      cell.configure(with: onlinePersons[indexPath.row])
+      cell.configure(with: onlineChannels[indexPath.row])
     default:
-      cell.configure(with: offlinePersons[indexPath.row])
+      cell.configure(with: offlineChannels[indexPath.row])
     }
     return cell
   }
@@ -120,7 +139,6 @@ extension ConversationsListViewController: UITableViewDataSource {
 extension ConversationsListViewController: UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //      get conversationViewController as destination
     let conversationVCId = String(describing: ConversationViewController.self)
     let conversationViewController = conversationStoryboard.instantiateViewController(withIdentifier: conversationVCId) as? ConversationViewController
     guard let destination = conversationViewController else {
@@ -128,38 +146,26 @@ extension ConversationsListViewController: UITableViewDelegate {
       return
     }
     
-    //      get the title of the current chat
-    //      and check whether it has messages (temporary crutches for mock data)
-    var currentName: String?
+    var chosenChanel: ConversationCellModel?
     if indexPath.section == 0 {
-      currentName = onlinePersons[indexPath.row].name
-      destination.hasMessages = onlinePersons[indexPath.row].message != nil
+      chosenChanel = onlineChannels[indexPath.row]
     } else {
-      destination.hasMessages = offlinePersons[indexPath.row].message != nil
-      currentName = offlinePersons[indexPath.row].name
+      chosenChanel = offlineChannels[indexPath.row]
     }
-    guard let curName = currentName else {
-      print("nil current name in \(#function)")
+    guard let curChannel = chosenChanel else {
+      print("nil chosenChanel in \(#function)")
       return
     }
-    
-    //      set new titile and navigate to conversationVC
-    destination.title = curName
-//    reference.addSnapshotListener { snapshot, _ in
-//      print(snapshot?.documents[0].data() ?? "keke")
-//      if let channelId = snapshot?.documents[0].documentID {
-//        print("Yass")
-//        destination.channel = Channel(identifier: channelId, name: "kekeke", lastMessage: "kjk")
-//      }
-//    }
-    
-//    self.navigationController?.pushViewController(destination, animated: true)
+    destination.title = curChannel.name
+    destination.hasMessages = curChannel.message != nil
+    let lastMessage = curChannel.message ?? "nothing"
+    destination.channel = Channel(identifier: curChannel.identifier, name: curChannel.name, lastMessage: lastMessage)
+    self.navigationController?.pushViewController(destination, animated: true)
     tableView.deselectRow(at: indexPath, animated: true)
-    
   }
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return CGFloat(30.0)
+    return CGFloat(20.0)
   }
   
   func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -191,32 +197,45 @@ extension ConversationsListViewController: UITableViewDelegate {
   
 }
 
-// MARK: - utils to create test dataset
-
 extension ConversationsListViewController {
   
-  func randomMessage(length: Int) -> String? {
-    switch Bool.random() {
-    case true:
-      return nil
-    default:
-      return randomString(length: length)
+  func loadChannels() {
+    onlineChannels.removeAll()
+    offlineChannels.removeAll()
+    reference.getDocuments { [weak self] (querySnapshot, err) in
+      guard let self = self else { return }
+      if let err = err {
+        print("Error getting documents: \(err)")
+      } else {
+        let tenMinutesAgo = Date().addingTimeInterval(-10.0 * 60.0)
+        guard let querySnapshot = querySnapshot else { return }
+        for document in querySnapshot.documents {
+          let name = document.data()["name"] as? String ?? "nil name"
+          let lastMessage = document.data()["lastMessage"] as? String
+          let lastActivity = document.data()["lastActivity"] as? Timestamp ?? Timestamp(date: Date(timeIntervalSince1970: 10.0))
+          let channelActivityDate = lastActivity.dateValue()
+          if tenMinutesAgo <= channelActivityDate {
+            self.onlineChannels.append(ConversationCellModel(name: name,
+                                                             message: lastMessage,
+                                                             date: channelActivityDate,
+                                                             isOnline: true,
+                                                             hasUnreadMessages: false,
+                                                             identifier: document.documentID))
+          } else {
+            self.offlineChannels.append(
+              ConversationCellModel(name: name,
+                                    message: lastMessage,
+                                    date: channelActivityDate,
+                                    isOnline: false,
+                                    hasUnreadMessages: false,
+                                    identifier: document.documentID))
+          }
+          
+        }
+      }
+      self.onlineChannels.sort(by: self.sortingClosure)
+      self.offlineChannels.sort(by: self.sortingClosure)
+      self.tableView.reloadData()
     }
   }
-  
-  //random date from 28 Feb to 06 Mar
-  func randomDate() -> Date {
-    Date(timeIntervalSinceReferenceDate: Double.random(in: 604600000...605210000))
-  }
-  /* timeIntervalSinceReferenceDate dates:
-   * 604800000: 02 Mar
-   * 604900000: 03 Mar
-   * 604990000: 04 Mar
-   * 605090000: 05 Mar
-   * 605190000: 06 Mar
-   * 605290000: 07 Mar
-   * 605390000: 08 Mar
-   * 605410000: 09 Mar
-   * 605490000: 10 Mar
-   */
 }

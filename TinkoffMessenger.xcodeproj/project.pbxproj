@@ -198,6 +198,8 @@
 		C55B88D52424301B00A22314 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C5C61F91240AD0EF00ABBE7D /* ConversationCellModel.swift */,
+				C51F7B46240B5B1E00A4D8A5 /* MessageCellModel.swift */,
 				C51F7B49240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift */,
 				C5C61F662409CC9400ABBE7D /* Utils */,
 				C5A344F8241EA7E000922BFB /* DataUtils */,
@@ -303,7 +305,6 @@
 		C5C61F77240AD00500ABBE7D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				C5C61F91240AD0EF00ABBE7D /* ConversationCellModel.swift */,
 				C5C61F94240B0CB800ABBE7D /* ConversationCell.swift */,
 				C5C61F95240B0CB800ABBE7D /* ConversationCell.xib */,
 			);
@@ -334,7 +335,6 @@
 		C5D6E2BA240BFF9F00543026 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				C51F7B46240B5B1E00A4D8A5 /* MessageCellModel.swift */,
 				C51F7B39240B5A8A00A4D8A5 /* MessageCell.swift */,
 				C51F7B3A240B5A8A00A4D8A5 /* MessageCell.xib */,
 			);
@@ -348,8 +348,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C58D769723F9C004000E739E /* Build configuration list for PBXNativeTarget "TinkoffMessenger" */;
 			buildPhases = (
+				C5D41CD22427BD3B0062D681 /* ShellScript */,
 				407421585FF35E17E64ED401 /* [CP] Check Pods Manifest.lock */,
-				C5654877241D1A6200C93996 /* ShellScript */,
 				C58D767123F9C002000E739E /* Sources */,
 				C58D767223F9C002000E739E /* Frameworks */,
 				C58D767323F9C002000E739E /* Resources */,
@@ -562,7 +562,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C5654877241D1A6200C93996 /* ShellScript */ = {
+		C5D41CD22427BD3B0062D681 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -586,11 +586,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C51F7B47240B5B1E00A4D8A5 /* MessageCellModel.swift in Sources */,
+				C5C61F92240AD0EF00ABBE7D /* ConversationCellModel.swift in Sources */,
 				C5C61F9E240B1FC900ABBE7D /* UIfont+with.swift in Sources */,
 				C55B88DA2424309300A22314 /* Channel.swift in Sources */,
 				C58D767923F9C002000E739E /* AppDelegate.swift in Sources */,
 				C5C61F7B240AD00500ABBE7D /* ConversationsListViewController.swift in Sources */,
-				C5C61F92240AD0EF00ABBE7D /* ConversationCellModel.swift in Sources */,
 				C51F7B30240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift in Sources */,
 				C5D41CD124243C170062D681 /* CreateChannelViewController.swift in Sources */,
 				C51F7B3B240B5A8A00A4D8A5 /* MessageCell.swift in Sources */,
@@ -610,7 +611,6 @@
 				C51F7B4A240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift in Sources */,
 				C5D6E2B8240B63D400543026 /* RandomHelper.swift in Sources */,
 				C5D6E2BC240C294900543026 /* UITableView+scroll.swift in Sources */,
-				C51F7B47240B5B1E00A4D8A5 /* MessageCellModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,7 +784,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.ifmo.rain.komarov.TinkoffMessenger;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.tcsbank.TinkoffChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -806,7 +806,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.ifmo.rain.komarov.TinkoffMessenger;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.tcsbank.TinkoffChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

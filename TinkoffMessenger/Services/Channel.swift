@@ -12,4 +12,8 @@ struct Channel {
   let identifier: String
   let name: String
   let lastMessage: String
+  
+  var toDict: [String: Any] {
+    return ["name": name]
+  }
 }
