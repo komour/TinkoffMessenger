@@ -106,7 +106,7 @@ class ConversationViewController: UIViewController {
     if let newMessage = newMessageTextField.text {
       if newMessage == "" { return }
       let createdDate = Date()
-      let senderName = "qwertyuilkjhgfdszxc vbnmjhgfdxcvbhgfcv b"
+      let senderName = "Andrey Komarov"
       reference.addDocument(data: Message(content: newMessage,
                                           created: createdDate,
                                           senderId: myId,
@@ -139,31 +139,5 @@ extension ConversationViewController: UITableViewDataSource {
     cell.selectionStyle = .none
     return cell
   }
-  
-//  func loadMessages() {
-//    messages.removeAll()
-//    reference.getDocuments { [weak self] (querySnapshot, err) in
-//      guard let self = self else { return }
-//      if let err = err {
-//        print("Error getting documents: \(err)")
-//      } else {
-//        guard let querySnapshot = querySnapshot else { return }
-//        for document in querySnapshot.documents {
-//          let name = document.data()["senderName"] as? String ?? "nil senderName"
-//          let content = document.data()["content"] as? String ?? "nil content"
-//          let senderID = document.data()["senderID"] as? String ?? "nil senderID"
-//          let created = document.data()["created"] as? Timestamp ?? Timestamp(date: Date(timeIntervalSince1970: 10.0))
-//          let messageDate = created.dateValue()
-//          let isIncoming = senderID != self.myId
-//          self.messages.append(MessageCellModel(text: content, isIncoming: isIncoming, date: messageDate, sender: name))
-//
-//        }
-//      }
-//      self.messages.sort(by: {(a0: MessageCellModel, a1: MessageCellModel) -> Bool in
-//        return a0.date < a1.date
-//      })
-//      self.tableView.reloadData()
-//      self.tableView.scrollToBottomAnimated()
-//    }
-//  }
+
 }
