@@ -30,6 +30,9 @@ class ConversationViewController: UIViewController {
                        forCellReuseIdentifier: String(describing: MessageCell.self))
     tableView.dataSource = self
     
+    tableView.transform = CGAffineTransform(rotationAngle: -(CGFloat)(Double.pi))
+    tableView.scrollIndicatorInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: tableView.bounds.size.width - 8.0)
+    
     addKeyboardNotifications()
     let tapEndEditing = UITapGestureRecognizer(target: self, action: #selector(endEditing))
     view.addGestureRecognizer(tapEndEditing)
@@ -54,10 +57,9 @@ class ConversationViewController: UIViewController {
         }
       }
       self.messages.sort(by: {(a0: MessageCellModel, a1: MessageCellModel) -> Bool in
-        return a0.date < a1.date
+        return a0.date > a1.date
       })
       self.tableView.reloadData()
-      self.tableView.scrollToBottomAnimated()
     }
   }
   
@@ -130,6 +132,7 @@ extension ConversationViewController: UITableViewDataSource {
     }
     cell.configure(with: messages[indexPath.row])
     cell.selectionStyle = .none
+    cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
     return cell
   }
 
