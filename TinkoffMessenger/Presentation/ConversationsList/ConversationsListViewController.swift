@@ -181,15 +181,17 @@ extension ConversationsListViewController: UITableViewDelegate {
     label.font = label.font.with(.traitBold)
     label.textColor = UIColor.black
     label.textAlignment = .center
-    
+    let sectionIsEmpty = self.tableView(tableView, numberOfRowsInSection: section) == 0
     switch section {
     case 0:
       label.text =  "Online"
     default:
       label.text =  "History"
     }
-    
-    return view
+    if !sectionIsEmpty {
+      return view
+    } else {
+      return nil
+    }
   }
-  
 }

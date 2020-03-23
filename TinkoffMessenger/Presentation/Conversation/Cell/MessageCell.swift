@@ -53,7 +53,7 @@ class MessageCell: UITableViewCell, ConfigurableView {
     senderLabel.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 749.0), for: .horizontal)
     senderLabel.leadingAnchor.constraint(equalTo: messageView.safeAreaLayoutGuide.leadingAnchor, constant: 8).isActive = true
     senderLabel.bottomAnchor.constraint(equalTo: self.messageView.safeAreaLayoutGuide.bottomAnchor, constant: -4).isActive = true
-    senderLabel.trailingAnchor.constraint(lessThanOrEqualTo: self.dateLabel.safeAreaLayoutGuide.leadingAnchor, constant: -20).isActive = true
+    senderLabel.trailingAnchor.constraint(lessThanOrEqualTo: self.dateLabel.safeAreaLayoutGuide.leadingAnchor, constant: -10).isActive = true
     
     dateLabel.trailingAnchor.constraint(equalTo: messageView.safeAreaLayoutGuide.trailingAnchor, constant: -8).isActive = true
 
