@@ -7,3 +7,4 @@
 3. Chat list and dialogue screen UI via `UITableView`
 4. Memory Management playground (understanding how to work without retain cycles)  
 5. Read/Write data from files (profile picture, name, description) using `GCD` and `Operation`  
+6. Fetching/Adding data to `Firebase`, creating new channels
