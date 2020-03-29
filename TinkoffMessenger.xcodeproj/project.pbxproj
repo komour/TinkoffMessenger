@@ -35,9 +35,6 @@
 		C58D76A623F9C178000E739E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C58D768423F9C004000E739E /* Assets.xcassets */; };
 		C5A344F5241E4DBD00922BFB /* UIImage+isEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A344F4241E4DBD00922BFB /* UIImage+isEqual.swift */; };
 		C5A344F7241E77D500922BFB /* GCDDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A344F6241E77D500922BFB /* GCDDataManager.swift */; };
-		C5A344FA241EA83B00922BFB /* OperationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A344F9241EA83B00922BFB /* OperationDataManager.swift */; };
-		C5A344FC241EA91700922BFB /* AllSaveHandleOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A344FB241EA91700922BFB /* AllSaveHandleOperation.swift */; };
-		C5A344FE241EAAFA00922BFB /* UpdateOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A344FD241EAAFA00922BFB /* UpdateOperation.swift */; };
 		C5A34500241EBF1200922BFB /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A344FF241EBF1200922BFB /* DataManager.swift */; };
 		C5C61F7B240AD00500ABBE7D /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61F76240AD00500ABBE7D /* ConversationsListViewController.swift */; };
 		C5C61F7C240AD00500ABBE7D /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61F76240AD00500ABBE7D /* ConversationsListViewController.swift */; };
@@ -125,9 +122,6 @@
 		C58D76AC23F9C178000E739E /* TinkoffMessengerDebug.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = TinkoffMessengerDebug.plist; path = /Users/asap/TinkoffMessenger/TinkoffMessengerDebug.plist; sourceTree = "<absolute>"; };
 		C5A344F4241E4DBD00922BFB /* UIImage+isEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+isEqual.swift"; sourceTree = "<group>"; };
 		C5A344F6241E77D500922BFB /* GCDDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDDataManager.swift; sourceTree = "<group>"; };
-		C5A344F9241EA83B00922BFB /* OperationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationDataManager.swift; sourceTree = "<group>"; };
-		C5A344FB241EA91700922BFB /* AllSaveHandleOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSaveHandleOperation.swift; sourceTree = "<group>"; };
-		C5A344FD241EAAFA00922BFB /* UpdateOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateOperation.swift; sourceTree = "<group>"; };
 		C5A344FF241EBF1200922BFB /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C5C61F76240AD00500ABBE7D /* ConversationsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
 		C5C61F7A240AD00500ABBE7D /* ConverationsList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConverationsList.storyboard; sourceTree = "<group>"; };
@@ -275,9 +269,6 @@
 			isa = PBXGroup;
 			children = (
 				C5A344F6241E77D500922BFB /* GCDDataManager.swift */,
-				C5A344F9241EA83B00922BFB /* OperationDataManager.swift */,
-				C5A344FB241EA91700922BFB /* AllSaveHandleOperation.swift */,
-				C5A344FD241EAAFA00922BFB /* UpdateOperation.swift */,
 				C5A344FF241EBF1200922BFB /* DataManager.swift */,
 			);
 			path = DataUtils;
@@ -604,7 +595,6 @@
 				C51F7B3B240B5A8A00A4D8A5 /* MessageCell.swift in Sources */,
 				C5C61F88240AD00C00ABBE7D /* ConversationViewController.swift in Sources */,
 				C5C61F96240B0CB800ABBE7D /* ConversationCell.swift in Sources */,
-				C5A344FE241EAAFA00922BFB /* UpdateOperation.swift in Sources */,
 				C5D41CDC24280B3E0062D681 /* FirebaseService.swift in Sources */,
 				C5A344F7241E77D500922BFB /* GCDDataManager.swift in Sources */,
 				C5A344F5241E4DBD00922BFB /* UIImage+isEqual.swift in Sources */,
@@ -612,8 +602,6 @@
 				C5C61FA1240B22D800ABBE7D /* Date+isToday.swift in Sources */,
 				C5C61F8F240AD01500ABBE7D /* ProfileViewController.swift in Sources */,
 				C543E5DE2401EC8F000652B4 /* ImagePickerManager.swift in Sources */,
-				C5A344FA241EA83B00922BFB /* OperationDataManager.swift in Sources */,
-				C5A344FC241EA91700922BFB /* AllSaveHandleOperation.swift in Sources */,
 				C55B88D82424307B00A22314 /* Message.swift in Sources */,
 				C5A34500241EBF1200922BFB /* DataManager.swift in Sources */,
 				C51F7B4A240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift in Sources */,

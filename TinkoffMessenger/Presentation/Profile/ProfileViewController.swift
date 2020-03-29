@@ -20,13 +20,11 @@ class ProfileViewController: UIViewController {
   @IBOutlet weak var nameTextField: UITextField!
   @IBOutlet weak var descriptionTextView: UITextView!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-  @IBOutlet weak var gcdButton: UIButton!
-  @IBOutlet weak var operationButton: UIButton!
+  @IBOutlet weak var saveButton: UIButton!
   @IBOutlet weak var cancelEditButton: UIButton!
   
   private var imagePicker: ImagePickerManager?
   private var gcdDataManager: GCDDataManager?
-  private var operationDataManager: OperationDataManager?
   private var dataManager: DataManager?
   
   var didSetAvatar = false
@@ -36,7 +34,6 @@ class ProfileViewController: UIViewController {
     
     imagePicker = ImagePickerManager(for: self)
     gcdDataManager = GCDDataManager(for: self)
-    operationDataManager = OperationDataManager(for: self)
     dataManager = DataManager(for: self)
     
     editButton.layer.borderWidth = 1
@@ -131,20 +128,10 @@ class ProfileViewController: UIViewController {
     handleSaveButtons()
   }
   
-  @IBAction func operationAction() {
-    endEditing()
-    guard let operationDataManager = operationDataManager else { return }
-    gcdButton.isEnabled = false
-    operationButton.isEnabled = false
-    cancelEditButton.isEnabled = false
-    operationDataManager.allSaveHandle()
-  }
-  
-  @IBAction func gcdAction() {
+  @IBAction func saveAction() {
     endEditing()
     guard let gcdDataManager = gcdDataManager else { return }
-    gcdButton.isEnabled = false
-    operationButton.isEnabled = false
+    saveButton.isEnabled = false
     cancelEditButton.isEnabled = false
     gcdDataManager.allSaveHandle()
   }
@@ -171,11 +158,9 @@ class ProfileViewController: UIViewController {
   
   private func handleSaveButtons() {
     if hasChanges() {
-      gcdButton.isEnabled = true
-      operationButton.isEnabled = true
+      saveButton.isEnabled = true
     } else {
-      gcdButton.isEnabled = false
-      operationButton.isEnabled = false
+      saveButton.isEnabled = false
     }
   }
   
@@ -201,12 +186,12 @@ class ProfileViewController: UIViewController {
     self.present(alert, animated: true, completion: nil)
   }
   
-  func createErrorAlert(isOperation: Bool) {
+  func createErrorAlert() {
     let alert = UIAlertController(title: "Error!", message: "An error has occurred while saving the new data.", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { [weak self] _ in
       alert.dismiss(animated: true, completion: nil)
       guard let self = self else { return }
-      if isOperation { self.operationAction() } else { self.gcdAction() }
+      self.saveAction()
     }))
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {[weak self] _ in
       alert.dismiss(animated: true, completion: nil)
