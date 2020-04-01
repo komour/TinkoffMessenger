@@ -23,6 +23,11 @@
 		C543E5DF2401EC90000652B4 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */; };
 		C55B88D82424307B00A22314 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B88D72424307B00A22314 /* Message.swift */; };
 		C55B88DA2424309300A22314 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B88D92424309300A22314 /* Channel.swift */; };
+		C58196A22434BE9100EEA1F1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55FA4CC2432813B00A23900 /* CoreDataManager.swift */; };
+		C58196A32434BE9200EEA1F1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55FA4CC2432813B00A23900 /* CoreDataManager.swift */; };
+		C58196A52434BFD400EEA1F1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58196A42434BFD400EEA1F1 /* User.swift */; };
+		C58196A72435167C00EEA1F1 /* CoreDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58196A62435167C00EEA1F1 /* CoreDataManagerProtocol.swift */; };
+		C58196A92435178900EEA1F1 /* CoreDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58196A62435167C00EEA1F1 /* CoreDataManagerProtocol.swift */; };
 		C585FF11242366B6006C51A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C585FF10242366B6006C51A4 /* GoogleService-Info.plist */; };
 		C585FF122423B1D7006C51A4 /* Pods_TinkoffMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84CD42ED9689180935E6D19F /* Pods_TinkoffMessenger.framework */; };
 		C585FF132423B1D7006C51A4 /* Pods_TinkoffMessenger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84CD42ED9689180935E6D19F /* Pods_TinkoffMessenger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -108,6 +113,9 @@
 		C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		C55B88D72424307B00A22314 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		C55B88D92424309300A22314 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		C55FA4CC2432813B00A23900 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		C58196A42434BFD400EEA1F1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C58196A62435167C00EEA1F1 /* CoreDataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerProtocol.swift; sourceTree = "<group>"; };
 		C585FF10242366B6006C51A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C586922F24158F69000700C1 /* MemoryManagement.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MemoryManagement.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C58D767523F9C002000E739E /* TinkoffMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,15 +204,14 @@
 		C55B88D52424301B00A22314 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C58196AB243517E000EEA1F1 /* Structs */,
+				C58196AA2435179300EEA1F1 /* Firebase */,
+				C58196A82435177500EEA1F1 /* CoreData */,
 				C5C61F91240AD0EF00ABBE7D /* ConversationCellModel.swift */,
 				C51F7B46240B5B1E00A4D8A5 /* MessageCellModel.swift */,
 				C51F7B49240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift */,
 				C5C61F662409CC9400ABBE7D /* Utils */,
 				C5A344F8241EA7E000922BFB /* DataUtils */,
-				C55B88D72424307B00A22314 /* Message.swift */,
-				C55B88D92424309300A22314 /* Channel.swift */,
-				C5D41CD924280AAD0062D681 /* FirebaseProtocol.swift */,
-				C5D41CDB24280B3E0062D681 /* FirebaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -217,6 +224,34 @@
 				C5C61F75240AD00500ABBE7D /* ConversationsList */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		C58196A82435177500EEA1F1 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				C58196A62435167C00EEA1F1 /* CoreDataManagerProtocol.swift */,
+				C55FA4CC2432813B00A23900 /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		C58196AA2435179300EEA1F1 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				C5D41CD924280AAD0062D681 /* FirebaseProtocol.swift */,
+				C5D41CDB24280B3E0062D681 /* FirebaseService.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		C58196AB243517E000EEA1F1 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				C55B88D72424307B00A22314 /* Message.swift */,
+				C55B88D92424309300A22314 /* Channel.swift */,
+				C58196A42434BFD400EEA1F1 /* User.swift */,
+			);
+			path = Structs;
 			sourceTree = "<group>";
 		};
 		C58D766C23F9C002000E739E = {
@@ -583,7 +618,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C58196A52434BFD400EEA1F1 /* User.swift in Sources */,
 				C51F7B47240B5B1E00A4D8A5 /* MessageCellModel.swift in Sources */,
+				C58196A72435167C00EEA1F1 /* CoreDataManagerProtocol.swift in Sources */,
 				C5C61F92240AD0EF00ABBE7D /* ConversationCellModel.swift in Sources */,
 				C5C61F9E240B1FC900ABBE7D /* UIfont+with.swift in Sources */,
 				C55B88DA2424309300A22314 /* Channel.swift in Sources */,
@@ -601,6 +638,7 @@
 				C58D768323F9C002000E739E /* TinkoffMessenger.xcdatamodeld in Sources */,
 				C5C61FA1240B22D800ABBE7D /* Date+isToday.swift in Sources */,
 				C5C61F8F240AD01500ABBE7D /* ProfileViewController.swift in Sources */,
+				C58196A22434BE9100EEA1F1 /* CoreDataManager.swift in Sources */,
 				C543E5DE2401EC8F000652B4 /* ImagePickerManager.swift in Sources */,
 				C55B88D82424307B00A22314 /* Message.swift in Sources */,
 				C5A34500241EBF1200922BFB /* DataManager.swift in Sources */,
@@ -624,8 +662,10 @@
 			files = (
 				C5C61F9F240B1FC900ABBE7D /* UIfont+with.swift in Sources */,
 				C58D76A023F9C178000E739E /* AppDelegate.swift in Sources */,
+				C58196A92435178900EEA1F1 /* CoreDataManagerProtocol.swift in Sources */,
 				C5C61F7C240AD00500ABBE7D /* ConversationsListViewController.swift in Sources */,
 				C5C61F93240AD0EF00ABBE7D /* ConversationCellModel.swift in Sources */,
+				C58196A32434BE9200EEA1F1 /* CoreDataManager.swift in Sources */,
 				C51F7B31240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift in Sources */,
 				C51F7B3C240B5A8A00A4D8A5 /* MessageCell.swift in Sources */,
 				C5C61F89240AD00C00ABBE7D /* ConversationViewController.swift in Sources */,

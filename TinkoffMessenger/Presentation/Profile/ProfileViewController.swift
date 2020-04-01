@@ -24,8 +24,6 @@ class ProfileViewController: UIViewController {
   @IBOutlet weak var cancelEditButton: UIButton!
   
   private var imagePicker: ImagePickerManager?
-  private var gcdDataManager: GCDDataManager?
-  private var dataManager: DataManager?
   
   var didSetAvatar = false
   
@@ -33,8 +31,6 @@ class ProfileViewController: UIViewController {
     super.viewDidLoad()
     
     imagePicker = ImagePickerManager(for: self)
-    gcdDataManager = GCDDataManager(for: self)
-    dataManager = DataManager(for: self)
     
     editButton.layer.borderWidth = 1
     editButton.layer.borderColor = UIColor.lightGray.cgColor
@@ -55,7 +51,12 @@ class ProfileViewController: UIViewController {
     
     nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
     descriptionTextView.delegate = self
-    if let dataManager = dataManager { dataManager.updateProfileData() }
+    if UserDefaults.standard.bool(forKey: "firstLaunch") == true {
+      UserDefaults.standard.set(false, forKey: "firstLaunch")
+      CoreDataManager.instance.createEntity()
+    } else {
+      fetchProfileData()
+    }
   }
   
   deinit {
@@ -64,6 +65,15 @@ class ProfileViewController: UIViewController {
   
   @objc func endEditing() {
     self.view.endEditing(true)
+  }
+  
+  func fetchProfileData() {
+    let user = CoreDataManager.instance.getUser()
+    if let user = user {
+      nameLabel.text = user.name
+      descriptionLabel.text = user.description
+      avatarImageView.image = UIImage(data: user.avatar)
+    }
   }
   
   override func viewDidLayoutSubviews() {
@@ -130,10 +140,17 @@ class ProfileViewController: UIViewController {
   
   @IBAction func saveAction() {
     endEditing()
-    guard let gcdDataManager = gcdDataManager else { return }
     saveButton.isEnabled = false
     cancelEditButton.isEnabled = false
-    gcdDataManager.allSaveHandle()
+    guard let name = nameTextField.text,
+      let description = descriptionTextView.text,
+      let avatarData = avatarImageView.image?.pngData() else {
+        print(#function)
+        return
+    }
+    let user = User(avatar: avatarData, name: name, description: description)
+    CoreDataManager.instance.saveChanges(user: user)
+    createSuccessAlert()
   }
   
   @IBAction func cancelEditMode() {
@@ -182,6 +199,7 @@ class ProfileViewController: UIViewController {
       alert.dismiss(animated: true, completion: nil)
       guard let self = self else { return }
       self.switchEditingMode()
+      self.fetchProfileData()
     }))
     self.present(alert, animated: true, completion: nil)
   }
