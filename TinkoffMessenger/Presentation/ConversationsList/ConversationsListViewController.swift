@@ -27,6 +27,7 @@ class ConversationsListViewController: UIViewController {
     self.tableView.dataSource = self
     self.tableView.delegate = self
     self.navigationController?.navigationBar.barTintColor = UIColor(named: "brightYellow")
+    self.tableView.rowHeight = 70
     
     guard let firebaseService = firebaseService else { return }
     let reference = firebaseService.channelsReference()
@@ -165,9 +166,9 @@ extension ConversationsListViewController: UITableViewDelegate {
     return CGFloat(20.0)
   }
   
-  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 80
-  }
+//  func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//    return 80
+//  }
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let view = UIView()
@@ -176,7 +177,7 @@ extension ConversationsListViewController: UITableViewDelegate {
     view.addSubview(label)
     label.bindEdgesToSuperview()
     
-    label.backgroundColor = UIColor(named: "lemon")
+    label.backgroundColor = UIColor(named: "brightYellow")
     label.font = UIFont.systemFont(ofSize: 17)
     label.font = label.font.with(.traitBold)
     label.textColor = UIColor.black

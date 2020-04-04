@@ -20,14 +20,10 @@ class ProfileViewController: UIViewController {
   @IBOutlet weak var nameTextField: UITextField!
   @IBOutlet weak var descriptionTextView: UITextView!
   @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-  @IBOutlet weak var gcdButton: UIButton!
-  @IBOutlet weak var operationButton: UIButton!
+  @IBOutlet weak var saveButton: UIButton!
   @IBOutlet weak var cancelEditButton: UIButton!
   
   private var imagePicker: ImagePickerManager?
-  private var gcdDataManager: GCDDataManager?
-  private var operationDataManager: OperationDataManager?
-  private var dataManager: DataManager?
   
   var didSetAvatar = false
   
@@ -35,9 +31,6 @@ class ProfileViewController: UIViewController {
     super.viewDidLoad()
     
     imagePicker = ImagePickerManager(for: self)
-    gcdDataManager = GCDDataManager(for: self)
-    operationDataManager = OperationDataManager(for: self)
-    dataManager = DataManager(for: self)
     
     editButton.layer.borderWidth = 1
     editButton.layer.borderColor = UIColor.lightGray.cgColor
@@ -58,7 +51,13 @@ class ProfileViewController: UIViewController {
     
     nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
     descriptionTextView.delegate = self
-    if let dataManager = dataManager { dataManager.updateProfileData() }
+    
+    if UserDefaults.standard.bool(forKey: "firstLaunch") != false {
+      UserDefaults.standard.set(false, forKey: "firstLaunch")
+      CoreDataManager.instance.createEntity()
+    } else {
+      fetchProfileData()
+    }
   }
   
   deinit {
@@ -67,6 +66,17 @@ class ProfileViewController: UIViewController {
   
   @objc func endEditing() {
     self.view.endEditing(true)
+  }
+  
+  func fetchProfileData() {
+    let user = CoreDataManager.instance.getUser()
+    if let user = user {
+      nameLabel.text = user.name
+      descriptionLabel.text = user.descr
+      if let data = user.avatar {
+        avatarImageView.image = UIImage(data: data)
+      }
+    }
   }
   
   override func viewDidLayoutSubviews() {
@@ -131,22 +141,19 @@ class ProfileViewController: UIViewController {
     handleSaveButtons()
   }
   
-  @IBAction func operationAction() {
+  @IBAction func saveAction() {
     endEditing()
-    guard let operationDataManager = operationDataManager else { return }
-    gcdButton.isEnabled = false
-    operationButton.isEnabled = false
+    saveButton.isEnabled = false
     cancelEditButton.isEnabled = false
-    operationDataManager.allSaveHandle()
-  }
-  
-  @IBAction func gcdAction() {
-    endEditing()
-    guard let gcdDataManager = gcdDataManager else { return }
-    gcdButton.isEnabled = false
-    operationButton.isEnabled = false
-    cancelEditButton.isEnabled = false
-    gcdDataManager.allSaveHandle()
+    guard let name = nameTextField.text,
+      let description = descriptionTextView.text,
+      let avatarData = avatarImageView.image?.pngData() else {
+        print(#function)
+        return
+    }
+    let user = User(avatar: avatarData, name: name, description: description)
+    CoreDataManager.instance.saveChanges(user: user)
+    createSuccessAlert()
   }
   
   @IBAction func cancelEditMode() {
@@ -171,11 +178,9 @@ class ProfileViewController: UIViewController {
   
   private func handleSaveButtons() {
     if hasChanges() {
-      gcdButton.isEnabled = true
-      operationButton.isEnabled = true
+      saveButton.isEnabled = true
     } else {
-      gcdButton.isEnabled = false
-      operationButton.isEnabled = false
+      saveButton.isEnabled = false
     }
   }
   
@@ -197,16 +202,17 @@ class ProfileViewController: UIViewController {
       alert.dismiss(animated: true, completion: nil)
       guard let self = self else { return }
       self.switchEditingMode()
+      self.fetchProfileData()
     }))
     self.present(alert, animated: true, completion: nil)
   }
   
-  func createErrorAlert(isOperation: Bool) {
+  func createErrorAlert() {
     let alert = UIAlertController(title: "Error!", message: "An error has occurred while saving the new data.", preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { [weak self] _ in
       alert.dismiss(animated: true, completion: nil)
       guard let self = self else { return }
-      if isOperation { self.operationAction() } else { self.gcdAction() }
+      self.saveAction()
     }))
     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {[weak self] _ in
       alert.dismiss(animated: true, completion: nil)

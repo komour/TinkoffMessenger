@@ -74,7 +74,7 @@ class GCDDataManager {
       } else {
         DispatchQueue.main.async {
           profileVC.endEditing()
-          profileVC.createErrorAlert(isOperation: false)
+          profileVC.createErrorAlert()
           profileVC.activityIndicator.stopAnimating()
         }
       }
