@@ -9,26 +9,32 @@ import CoreData
 
 class CoreDataManager: CoreDataManagerProtocol {
   
+  private init() {}
+  
   static let instance = CoreDataManager()
   
   func createEntity() {
-    guard let entityDescription = NSEntityDescription.entity(forEntityName: "User", in: self.managedObjectContext) else {
-      print("nil entityDescription in \(#function)")
-      fatalError()
-    }
-    let managedObject = NSManagedObject(entity: entityDescription, insertInto: self.managedObjectContext)
     if let image = UIImage(named: "defaultAvatar") {
       if let data = image.pngData() {
-        managedObject.setValue(data, forKey: "avatar")
+        _ = User(avatar: data, name: "User name", description: "User description")
+        saveContext()
+        return
       }
     }
-    saveContext()
+    fatalError("nil default image")
+  }
+  
+  func getEnity(for name: String) -> NSEntityDescription {
+    guard let entyty = NSEntityDescription.entity(forEntityName: name, in: self.managedObjectContext) else {
+      fatalError("nil entityDescription in \(#function)")
+    }
+    return entyty
   }
   
   func saveChanges(user: User) {
-    if let managedObject = fetchLastResult() {
+    if let managedObject = getUser() {
       managedObject.setValue(user.name, forKey: "name")
-      managedObject.setValue(user.description, forKey: "descr")
+      managedObject.setValue(user.descr, forKey: "descr")
       managedObject.setValue(user.avatar, forKey: "avatar")
       saveContext()
     } else {
@@ -37,53 +43,32 @@ class CoreDataManager: CoreDataManagerProtocol {
   }
   
   func getUser() -> User? {
-    var user: User?
-    if let result = fetchLastResult() {
-      guard let name = result.value(forKey: "name") as? String,
-        let description = result.value(forKey: "descr") as? String,
-        let avatar = result.value(forKey: "avatar") as? Data
-        else {
-          print(#function)
-          fatalError()
-      }
-      user = User(avatar: avatar, name: name, description: description)
-    } else {
-      print("nil last result in \(#function)")
-      user = nil
-    }
-    return user
-  }
-  
-  func fetchLastResult() -> NSManagedObject? {
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        do {
-          guard let results = try self.managedObjectContext.fetch(fetchRequest) as? [NSManagedObject] else {
-            print(#function)
-            fatalError()
-          }
-          return results[results.count - 1]
-        } catch {
-          print(error)
-          return nil
-        }
+    do {
+      guard let results = try self.managedObjectContext.fetch(fetchRequest) as? [User],
+      let lastResult = results.last else {
+          fatalError(#function)
+      }
+      return lastResult
+    } catch {
+      print(error)
+      return nil
+    }
   }
   
   lazy var getDocumentsDirectory: NSURL = {
     guard let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-      print("nil documents directory in \(#function)")
-      fatalError()
+      fatalError("nil documents directory in \(#function)")
     }
     return directory as NSURL
   }()
   
   lazy var managedObjectModel: NSManagedObjectModel = {
     guard let modelURL = Bundle.main.url(forResource: "TinkoffMessenger", withExtension: "momd") else {
-      print("nil modelURL in \(#function)")
-      fatalError()
+      fatalError("nil modelURL in \(#function)")
     }
     guard let momd = NSManagedObjectModel(contentsOf: modelURL) else {
-      print("nil momd in \(#function)")
-      fatalError()
+      fatalError("nil momd in \(#function)")
     }
     return momd
   }()

@@ -15,7 +15,6 @@ protocol CoreDataManagerProtocol {
   func saveChanges(user: User)
   func getUser() -> User?
   
-  func fetchLastResult() -> NSManagedObject?
   var getDocumentsDirectory: NSURL { get }
   var managedObjectModel: NSManagedObjectModel { get }
   var persistentStoreCoordinator: NSPersistentStoreCoordinator { get }

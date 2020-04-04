@@ -2,8 +2,8 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="avatar" attributeType="Binary"/>
-        <attribute name="descr" attributeType="String" defaultValueString="Nil Description"/>
-        <attribute name="name" attributeType="String" defaultValueString="Nil Name"/>
+        <attribute name="descr" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
     </entity>
     <elements>
         <element name="User" positionX="-63" positionY="-18" width="128" height="88"/>

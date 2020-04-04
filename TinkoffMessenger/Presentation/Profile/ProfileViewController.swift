@@ -51,7 +51,8 @@ class ProfileViewController: UIViewController {
     
     nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
     descriptionTextView.delegate = self
-    if UserDefaults.standard.bool(forKey: "firstLaunch") == true {
+    
+    if UserDefaults.standard.bool(forKey: "firstLaunch") != false {
       UserDefaults.standard.set(false, forKey: "firstLaunch")
       CoreDataManager.instance.createEntity()
     } else {
@@ -71,8 +72,10 @@ class ProfileViewController: UIViewController {
     let user = CoreDataManager.instance.getUser()
     if let user = user {
       nameLabel.text = user.name
-      descriptionLabel.text = user.description
-      avatarImageView.image = UIImage(data: user.avatar)
+      descriptionLabel.text = user.descr
+      if let data = user.avatar {
+        avatarImageView.image = UIImage(data: data)
+      }
     }
   }
   
