@@ -25,19 +25,17 @@
 		C543E5DF2401EC90000652B4 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */; };
 		C55B88D82424307B00A22314 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B88D72424307B00A22314 /* Message.swift */; };
 		C55B88DA2424309300A22314 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B88D92424309300A22314 /* Channel.swift */; };
+		C560A194243A3FD4009499C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C560A193243A3FD4009499C2 /* GoogleService-Info.plist */; };
 		C58196A22434BE9100EEA1F1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55FA4CC2432813B00A23900 /* CoreDataManager.swift */; };
 		C58196A32434BE9200EEA1F1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55FA4CC2432813B00A23900 /* CoreDataManager.swift */; };
 		C58196A72435167C00EEA1F1 /* CoreDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58196A62435167C00EEA1F1 /* CoreDataManagerProtocol.swift */; };
 		C58196A92435178900EEA1F1 /* CoreDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58196A62435167C00EEA1F1 /* CoreDataManagerProtocol.swift */; };
-		C585FF11242366B6006C51A4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C585FF10242366B6006C51A4 /* GoogleService-Info.plist */; };
 		C585FF122423B1D7006C51A4 /* Pods_TinkoffMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84CD42ED9689180935E6D19F /* Pods_TinkoffMessenger.framework */; };
 		C585FF132423B1D7006C51A4 /* Pods_TinkoffMessenger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84CD42ED9689180935E6D19F /* Pods_TinkoffMessenger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C58D767923F9C002000E739E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D767823F9C002000E739E /* AppDelegate.swift */; };
-		C58D768323F9C002000E739E /* TinkoffMessenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C58D768123F9C002000E739E /* TinkoffMessenger.xcdatamodeld */; };
 		C58D768523F9C004000E739E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C58D768423F9C004000E739E /* Assets.xcassets */; };
 		C58D769323F9C004000E739E /* TinkoffMessengerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D769223F9C004000E739E /* TinkoffMessengerTests.swift */; };
 		C58D76A023F9C178000E739E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D767823F9C002000E739E /* AppDelegate.swift */; };
-		C58D76A223F9C178000E739E /* TinkoffMessenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C58D768123F9C002000E739E /* TinkoffMessenger.xcdatamodeld */; };
 		C58D76A623F9C178000E739E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C58D768423F9C004000E739E /* Assets.xcassets */; };
 		C5A344F5241E4DBD00922BFB /* UIImage+isEqual.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A344F4241E4DBD00922BFB /* UIImage+isEqual.swift */; };
 		C5A344F7241E77D500922BFB /* GCDDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A344F6241E77D500922BFB /* GCDDataManager.swift */; };
@@ -117,12 +115,11 @@
 		C55B88D72424307B00A22314 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		C55B88D92424309300A22314 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		C55FA4CC2432813B00A23900 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		C560A193243A3FD4009499C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C58196A62435167C00EEA1F1 /* CoreDataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerProtocol.swift; sourceTree = "<group>"; };
-		C585FF10242366B6006C51A4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C586922F24158F69000700C1 /* MemoryManagement.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MemoryManagement.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C58D767523F9C002000E739E /* TinkoffMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C58D767823F9C002000E739E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C58D768223F9C002000E739E /* TinkoffMessenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinkoffMessenger.xcdatamodel; sourceTree = "<group>"; };
 		C58D768423F9C004000E739E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C58D768923F9C004000E739E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C58D768E23F9C004000E739E /* TinkoffMessengerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinkoffMessengerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,7 +257,6 @@
 		C58D766C23F9C002000E739E = {
 			isa = PBXGroup;
 			children = (
-				C585FF10242366B6006C51A4 /* GoogleService-Info.plist */,
 				C586922F24158F69000700C1 /* MemoryManagement.playground */,
 				C58D767723F9C002000E739E /* TinkoffMessenger */,
 				C58D769123F9C004000E739E /* TinkoffMessengerTests */,
@@ -289,7 +285,7 @@
 				C58D767823F9C002000E739E /* AppDelegate.swift */,
 				C58D768423F9C004000E739E /* Assets.xcassets */,
 				C58D768923F9C004000E739E /* Info.plist */,
-				C58D768123F9C002000E739E /* TinkoffMessenger.xcdatamodeld */,
+				C560A193243A3FD4009499C2 /* GoogleService-Info.plist */,
 			);
 			path = TinkoffMessenger;
 			sourceTree = "<group>";
@@ -481,13 +477,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C585FF11242366B6006C51A4 /* GoogleService-Info.plist in Resources */,
 				C5C61F81240AD00500ABBE7D /* ConverationsList.storyboard in Resources */,
 				C5C61F86240AD00C00ABBE7D /* Conversation.storyboard in Resources */,
 				C5C61F8D240AD01500ABBE7D /* Profile.storyboard in Resources */,
 				C51F7B3D240B5A8A00A4D8A5 /* MessageCell.xib in Resources */,
 				C58D768523F9C004000E739E /* Assets.xcassets in Resources */,
 				C5C61F98240B0CB800ABBE7D /* ConversationCell.xib in Resources */,
+				C560A194243A3FD4009499C2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,7 +634,6 @@
 				C5D41CDC24280B3E0062D681 /* FirebaseService.swift in Sources */,
 				C5A344F7241E77D500922BFB /* GCDDataManager.swift in Sources */,
 				C5A344F5241E4DBD00922BFB /* UIImage+isEqual.swift in Sources */,
-				C58D768323F9C002000E739E /* TinkoffMessenger.xcdatamodeld in Sources */,
 				C5C61FA1240B22D800ABBE7D /* Date+isToday.swift in Sources */,
 				C5C61F8F240AD01500ABBE7D /* ProfileViewController.swift in Sources */,
 				C58196A22434BE9100EEA1F1 /* CoreDataManager.swift in Sources */,
@@ -674,7 +669,6 @@
 				C51F7B3C240B5A8A00A4D8A5 /* MessageCell.swift in Sources */,
 				C5C61F89240AD00C00ABBE7D /* ConversationViewController.swift in Sources */,
 				C5C61F97240B0CB800ABBE7D /* ConversationCell.swift in Sources */,
-				C58D76A223F9C178000E739E /* TinkoffMessenger.xcdatamodeld in Sources */,
 				C5C61FA2240B22D800ABBE7D /* Date+isToday.swift in Sources */,
 				C5C61F90240AD01500ABBE7D /* ProfileViewController.swift in Sources */,
 				C543E5DF2401EC90000652B4 /* ImagePickerManager.swift in Sources */,
@@ -824,7 +818,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ru.tcsbank.TinkoffChat;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.tinkoff.messenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -982,19 +976,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		C58D768123F9C002000E739E /* TinkoffMessenger.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				C58D768223F9C002000E739E /* TinkoffMessenger.xcdatamodel */,
-			);
-			currentVersion = C58D768223F9C002000E739E /* TinkoffMessenger.xcdatamodel */;
-			path = TinkoffMessenger.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = C58D766D23F9C002000E739E /* Project object */;
 }
