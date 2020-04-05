@@ -35,7 +35,7 @@ class CreateChannelViewController: UIViewController {
         return
       }
       let reference = firebaseService.channelsReference()
-      reference.addDocument(data: Channel(identifier: "123", name: name, lastMessage: "nothing").toDict)
+      reference.addDocument(data: Channel(identifier: "123", name: name, lastMessage: "nothing", lastActivity: Date()).toDict)
       self.dismiss(animated: true, completion: nil)
     }
   }

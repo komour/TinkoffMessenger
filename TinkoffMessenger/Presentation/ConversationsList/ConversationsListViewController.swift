@@ -157,7 +157,7 @@ extension ConversationsListViewController: UITableViewDelegate {
     }
     destination.title = curChannel.name
     let lastMessage = curChannel.message ?? "nothing"
-    destination.channel = Channel(identifier: curChannel.identifier, name: curChannel.name, lastMessage: lastMessage)
+    destination.channel = Channel(identifier: curChannel.identifier, name: curChannel.name, lastMessage: lastMessage, lastActivity: Date())
     self.navigationController?.pushViewController(destination, animated: true)
     tableView.deselectRow(at: indexPath, animated: true)
   }

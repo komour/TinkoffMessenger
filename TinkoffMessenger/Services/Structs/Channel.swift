@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import Firebase
 
 struct Channel {
   let identifier: String
   let name: String
   let lastMessage: String
+  let lastActivity: Date
   
   var toDict: [String: Any] {
-    return ["name": name]
+    return ["name": name, "lastActivity": Timestamp(date: lastActivity)]
   }
 }
