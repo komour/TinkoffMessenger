@@ -69,6 +69,16 @@ class ConversationsListViewController: UIViewController {
     }
   }
   
+  func deleteChat(withID: String) {
+    guard let firebaseService = firebaseService else { return }
+    let reference = firebaseService.channelsReference()
+    _ = reference.document(withID).delete { err in
+      if let err = err {
+        print("Error removing document: \(err)")
+      }
+    }
+  }
+  
   //  go to profile vc
   @IBAction func profileButtonAction(_ sender: Any) {
     let profileNavigationController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileNavigationController")

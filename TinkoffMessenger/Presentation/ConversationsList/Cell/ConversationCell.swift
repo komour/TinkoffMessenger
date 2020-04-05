@@ -23,20 +23,23 @@ class ConversationCell: UITableViewCell, ConfigurableView {
     }
     
     nameLabel.text = model.name
+    dateLabel.text = dateFormatter.string(from: model.date)
     if let lastMessage = model.message {
+      if lastMessage == "No messages yet" {
+        messageLabel.font = messageLabel.font.italic
+      } else {
+        messageLabel.font = messageLabel.font.without(.traitItalic)
+      }
       messageLabel.text = lastMessage
-      messageLabel.font = messageLabel.font.without(.traitItalic)
       if model.hasUnreadMessages {
         messageLabel.font = messageLabel.font.with(.traitBold)
       } else {
         messageLabel.font = messageLabel.font.without(.traitBold)
       }
-      dateLabel.text = dateFormatter.string(from: model.date)
     } else {
       messageLabel.text = "No messages yet"
       messageLabel.font = messageLabel.font.italic
       messageLabel.font = messageLabel.font.without(.traitBold)
-      dateLabel.text = ""
     }
     
     if model.isOnline {
