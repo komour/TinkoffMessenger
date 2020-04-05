@@ -99,7 +99,7 @@ class ConversationViewController: UIViewController {
     if let newMessage = newMessageTextField.text {
       if newMessage == "" { return }
       let createdDate = Date()
-      let senderName = "Andrey Komarov"
+      let senderName = CoreDataManager.instance.getUser()?.name ?? "admin"
       guard let channelIdentifier = channel?.identifier else { return }
       let reference = firebaseService.messagesReference(channelIdentifier: channelIdentifier)
       reference.addDocument(data: Message(content: newMessage,

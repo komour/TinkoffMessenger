@@ -23,6 +23,7 @@
 		C51F7B4B240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B49240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift */; };
 		C543E5DE2401EC8F000652B4 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */; };
 		C543E5DF2401EC90000652B4 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */; };
+		C551D85E243A6C0100C55D3E /* TinkoffMessenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C551D85C243A6C0100C55D3E /* TinkoffMessenger.xcdatamodeld */; };
 		C55B88D82424307B00A22314 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B88D72424307B00A22314 /* Message.swift */; };
 		C55B88DA2424309300A22314 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B88D92424309300A22314 /* Channel.swift */; };
 		C560A194243A3FD4009499C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C560A193243A3FD4009499C2 /* GoogleService-Info.plist */; };
@@ -112,6 +113,7 @@
 		C51F7B46240B5B1E00A4D8A5 /* MessageCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCellModel.swift; sourceTree = "<group>"; };
 		C51F7B49240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableViewProtocol.swift; sourceTree = "<group>"; };
 		C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
+		C551D85D243A6C0100C55D3E /* TinkoffMessenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinkoffMessenger.xcdatamodel; sourceTree = "<group>"; };
 		C55B88D72424307B00A22314 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		C55B88D92424309300A22314 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		C55FA4CC2432813B00A23900 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 				C58D767823F9C002000E739E /* AppDelegate.swift */,
 				C58D768423F9C004000E739E /* Assets.xcassets */,
 				C58D768923F9C004000E739E /* Info.plist */,
+				C551D85C243A6C0100C55D3E /* TinkoffMessenger.xcdatamodeld */,
 				C560A193243A3FD4009499C2 /* GoogleService-Info.plist */,
 			);
 			path = TinkoffMessenger;
@@ -628,6 +631,7 @@
 				C5C61F7B240AD00500ABBE7D /* ConversationsListViewController.swift in Sources */,
 				C51F7B30240B407F00A4D8A5 /* UIView+bindEdgesToSuperview.swift in Sources */,
 				C5D41CD124243C170062D681 /* CreateChannelViewController.swift in Sources */,
+				C551D85E243A6C0100C55D3E /* TinkoffMessenger.xcdatamodeld in Sources */,
 				C51F7B3B240B5A8A00A4D8A5 /* MessageCell.swift in Sources */,
 				C5C61F88240AD00C00ABBE7D /* ConversationViewController.swift in Sources */,
 				C5C61F96240B0CB800ABBE7D /* ConversationCell.swift in Sources */,
@@ -976,6 +980,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C551D85C243A6C0100C55D3E /* TinkoffMessenger.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C551D85D243A6C0100C55D3E /* TinkoffMessenger.xcdatamodel */,
+			);
+			currentVersion = C551D85D243A6C0100C55D3E /* TinkoffMessenger.xcdatamodel */;
+			path = TinkoffMessenger.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C58D766D23F9C002000E739E /* Project object */;
 }

@@ -47,7 +47,7 @@ class CoreDataManager: CoreDataManagerProtocol {
     do {
       guard let results = try self.managedObjectContext.fetch(fetchRequest) as? [User],
       let lastResult = results.last else {
-          fatalError(#function)
+          return nil
       }
       return lastResult
     } catch {
