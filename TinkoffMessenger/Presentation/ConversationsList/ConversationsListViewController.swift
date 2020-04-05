@@ -141,6 +141,15 @@ extension ConversationsListViewController: UITableViewDataSource {
     return cell
   }
   
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    switch indexPath.section {
+    case 0:
+      deleteChat(withID: onlineChannels[indexPath.row].identifier)
+    default:
+      deleteChat(withID: offlineChannels[indexPath.row].identifier)
+    }
+  }
+  
 }
 
 // MARK: - UITableViewDelegate
