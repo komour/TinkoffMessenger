@@ -9,3 +9,4 @@
 5. Read/Write data from files (profile picture, name, description) using `GCD` and `Operation`  
 6. Fetching/Adding data to `Firebase`, creating new channels
 7. Save/Load profile data using CoreData
+8. Channel and message caching via CoreData. NSFetchedResultsController - in process
