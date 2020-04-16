@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Creating New Channel-->
+        <scene sceneID="hs5-lM-OjU">
+            <objects>
+                <viewController storyboardIdentifier="CreateChannelViewController" id="ldN-Ye-6nD" customClass="CreateChannelViewController" customModule="TinkoffMessenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0ww-ub-0wb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Dz-Fd-Nfb" userLabel="channelName TextField">
+                                <rect key="frame" x="16" y="131.5" width="382" height="34"/>
+                                <color key="backgroundColor" name="cream"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter channel name:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="33n-is-XMh">
+                                <rect key="frame" x="16" y="98" width="382" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rVh-Gf-mxq">
+                                <rect key="frame" x="16" y="169.5" width="382" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mSy-3l-bcU">
+                                        <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelAction:" destination="ldN-Ye-6nD" eventType="touchUpInside" id="QFh-Xs-H66"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uQu-zR-Pdb">
+                                        <rect key="frame" x="191" y="0.0" width="191" height="30"/>
+                                        <state key="normal" title="Create!"/>
+                                        <connections>
+                                            <action selector="doneAction" destination="ldN-Ye-6nD" eventType="touchUpInside" id="Ztl-gj-2D8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" name="cream"/>
+                        <constraints>
+                            <constraint firstItem="lZS-EF-xYx" firstAttribute="trailing" secondItem="rVh-Gf-mxq" secondAttribute="trailing" constant="16" id="29R-1L-gqN"/>
+                            <constraint firstItem="8Dz-Fd-Nfb" firstAttribute="top" secondItem="33n-is-XMh" secondAttribute="bottom" constant="13" id="OSj-jB-sbf"/>
+                            <constraint firstItem="lZS-EF-xYx" firstAttribute="trailing" secondItem="33n-is-XMh" secondAttribute="trailing" constant="16" id="YYZ-Ch-Zej"/>
+                            <constraint firstItem="rVh-Gf-mxq" firstAttribute="leading" secondItem="lZS-EF-xYx" secondAttribute="leading" constant="16" id="eAg-Gz-Qpw"/>
+                            <constraint firstItem="8Dz-Fd-Nfb" firstAttribute="leading" secondItem="lZS-EF-xYx" secondAttribute="leading" constant="16" id="gb2-pe-sDp"/>
+                            <constraint firstItem="33n-is-XMh" firstAttribute="leading" secondItem="lZS-EF-xYx" secondAttribute="leading" constant="16" id="qIL-MA-nOY"/>
+                            <constraint firstItem="rVh-Gf-mxq" firstAttribute="top" secondItem="8Dz-Fd-Nfb" secondAttribute="bottom" constant="4" id="spF-Ri-Sgj"/>
+                            <constraint firstItem="lZS-EF-xYx" firstAttribute="trailing" secondItem="8Dz-Fd-Nfb" secondAttribute="trailing" constant="16" id="tPJ-ZW-JGZ"/>
+                            <constraint firstItem="33n-is-XMh" firstAttribute="top" secondItem="lZS-EF-xYx" secondAttribute="top" constant="10" id="wUt-D7-Sat"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lZS-EF-xYx"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Creating New Channel" id="jRT-Lv-Lmn"/>
+                    <connections>
+                        <outlet property="newChannelName" destination="8Dz-Fd-Nfb" id="gQ2-3q-5lb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1tv-dQ-PeQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-397.5" y="813.38028169014081"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UfS-cE-BCu">
+            <objects>
+                <navigationController storyboardIdentifier="CreateChannelNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="BRk-Np-M0J" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OGL-sB-f8A">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ldN-Ye-6nD" kind="relationship" relationship="rootViewController" id="U7W-II-xOG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j2x-lY-6nl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1236" y="814"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="cream">
+            <color red="1" green="0.99215686274509807" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

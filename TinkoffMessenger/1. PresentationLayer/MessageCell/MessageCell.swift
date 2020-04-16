@@ -10,6 +10,8 @@ import UIKit
 
 class MessageCell: UITableViewCell, ConfigurableView {
   
+  lazy var model = MessageCellModel(for: self)
+  
   let messageView = UIView()
   let messageLabel = UILabel()
   let dateLabel = UILabel()
@@ -61,26 +63,11 @@ class MessageCell: UITableViewCell, ConfigurableView {
     
   }
   
-  func configure(with model: MessageCellModel) {
-    let dateFormatter = DateFormatter()
-    if model.date.isToday() {
-      dateFormatter.dateFormat = "HH:mm"
-    } else {
-      dateFormatter.dateFormat = "dd MMM"
-    }
-    dateLabel.text = dateFormatter.string(from: model.date)
-    messageLabel.text = model.text
-    senderLabel.text = model.sender
-    DispatchQueue.main.async {
-      if model.isIncoming {
-        self.messageView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.45)
-        self.trailingConstraint.isActive = false
-        self.leadingConstraint.isActive = true
-      } else {
-        self.messageView.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.55)
-        self.leadingConstraint.isActive = false
-        self.trailingConstraint.isActive = true
-      }
-    }
+  func configure(with curStruct: MessageCellStruct) {
+    let dateFormatter = model.getDateFormatter(with: curStruct)
+    dateLabel.text = dateFormatter.string(from: curStruct.date)
+    messageLabel.text = curStruct.text
+    senderLabel.text = curStruct.sender
+    model.adjustWithIncomingType(isIncoming: curStruct.isIncoming)
   }
 }
