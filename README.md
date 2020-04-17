@@ -10,3 +10,4 @@
 6. Fetching/Adding data to `Firebase`, creating new channels
 7. Save/Load profile data using CoreData
 8. Channel and message caching via CoreData. NSFetchedResultsController - in process
+9. Architecture (SOA, MVC) - ?
