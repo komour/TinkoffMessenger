@@ -32,7 +32,7 @@ class ConversationViewController: UIViewController {
     tableView.scrollIndicatorInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: tableView.bounds.size.width - 8.0)
     
     addKeyboardNotifications()
-    model.addEndEditingGesture() 
+    addEndEditingGesture() 
     model.addSnapshotListner()
     
   }
@@ -67,6 +67,15 @@ class ConversationViewController: UIViewController {
   
   @IBAction func sendAction() {
     model.sendAction()
+  }
+  
+  @objc func endEditing() {
+    view.endEditing(true)
+  }
+  
+  func addEndEditingGesture() {
+    let tapEndEditing = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+    view.addGestureRecognizer(tapEndEditing)
   }
   
 }

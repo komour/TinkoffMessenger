@@ -19,17 +19,6 @@ class ConversationModel {
   let uniqueId = UIDevice.current.identifierForVendor?.uuidString ?? "123"
   
   private let firebaseService: FirebaseProtocol = FirebaseService()
-
-  @objc func endEditing() {
-    guard let vc = viewController else { return }
-    vc.view.endEditing(true)
-  }
-  
-  func addEndEditingGesture() {
-    guard let vc = viewController else { return }
-    let tapEndEditing = UITapGestureRecognizer(target: vc, action: #selector(endEditing))
-    vc.view.addGestureRecognizer(tapEndEditing)
-  }
   
   func addSnapshotListner() {
     guard let vc = viewController else { return }
