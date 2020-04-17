@@ -136,8 +136,6 @@
 		C58E2CAE2443B33D00A8D4CF /* CreateChannelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChannelModel.swift; sourceTree = "<group>"; };
 		C59562BC24490765003F3973 /* CreateChannel.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateChannel.storyboard; sourceTree = "<group>"; };
 		C5A344F4241E4DBD00922BFB /* UIImage+isEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+isEqual.swift"; sourceTree = "<group>"; };
-		C5A344F6241E77D500922BFB /* GCDDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDDataManager.swift; sourceTree = "<group>"; };
-		C5A344FF241EBF1200922BFB /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		C5C61F76240AD00500ABBE7D /* ConversationsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
 		C5C61F7A240AD00500ABBE7D /* ConverationsList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConverationsList.storyboard; sourceTree = "<group>"; };
 		C5C61F84240AD00C00ABBE7D /* Conversation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
@@ -329,18 +327,8 @@
 			isa = PBXGroup;
 			children = (
 				C5C61F662409CC9400ABBE7D /* Utils */,
-				C5A344F8241EA7E000922BFB /* DataUtilsDeprecated */,
 			);
 			path = "3. CoreLayer";
-			sourceTree = "<group>";
-		};
-		C5A344F8241EA7E000922BFB /* DataUtilsDeprecated */ = {
-			isa = PBXGroup;
-			children = (
-				C5A344F6241E77D500922BFB /* GCDDataManager.swift */,
-				C5A344FF241EBF1200922BFB /* DataManager.swift */,
-			);
-			path = DataUtilsDeprecated;
 			sourceTree = "<group>";
 		};
 		C5C61F662409CC9400ABBE7D /* Utils */ = {
