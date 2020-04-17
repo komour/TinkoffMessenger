@@ -10,15 +10,13 @@ import UIKit
 
 class ConversationViewController: UIViewController {
   
-  //  unique ID
-  let myId = UIDevice.current.identifierForVendor?.uuidString ?? "123"
+  lazy var model = ConversationModel(for: self)
   
   @IBOutlet weak var newMessageTextField: UITextField!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var scrollView: UIScrollView!
   
-  private let firebaseService: FirebaseProtocol = FirebaseService()
-  private var messages = [MessageCellModel]()
+  var messages = [MessageCellStruct]()
   private let toolbarHeight: CGFloat = 25
   
   var channel: Channel?
@@ -34,45 +32,21 @@ class ConversationViewController: UIViewController {
     tableView.scrollIndicatorInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: tableView.bounds.size.width - 8.0)
     
     addKeyboardNotifications()
-    let tapEndEditing = UITapGestureRecognizer(target: self, action: #selector(endEditing))
-    view.addGestureRecognizer(tapEndEditing)
+    model.addEndEditingGesture() 
+    model.addSnapshotListner()
     
-    guard let channelIdentifier = channel?.identifier else { return }
-    let reference = firebaseService.messagesReference(channelIdentifier: channelIdentifier)
-    reference.addSnapshotListener { [weak self] (querySnapshot, err) in
-      guard let self = self else { return }
-      self.messages.removeAll()
-      if let err = err {
-        print("Error getting documents: \(err)")
-      } else {
-        guard let querySnapshot = querySnapshot else { return }
-        for document in querySnapshot.documents {
-          let name = document.data()["senderName"] as? String ?? "nil senderName"
-          let content = document.data()["content"] as? String ?? "nil content"
-          let senderID = document.data()["senderID"] as? String ?? "nil senderID"
-          let created = self.firebaseService.getDateFromTimestamp(receivedTimestamp: document.data()["created"])
-          let isIncoming = senderID != self.myId
-          self.messages.append(MessageCellModel(text: content, isIncoming: isIncoming, date: created, sender: name))
-          
-        }
-      }
-      self.messages.sort(by: {(a0: MessageCellModel, a1: MessageCellModel) -> Bool in
-        return a0.date > a1.date
-      })
-      self.tableView.reloadData()
-    }
   }
   
   deinit {
     removeKeyboardNotifications()
   }
   
-  private func addKeyboardNotifications() {
+  func addKeyboardNotifications() {
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
   }
   
-  private func removeKeyboardNotifications() {
+  func removeKeyboardNotifications() {
     NotificationCenter.default.removeObserver(UIResponder.keyboardWillShowNotification)
     NotificationCenter.default.removeObserver(UIResponder.keyboardWillHideNotification)
   }
@@ -88,26 +62,11 @@ class ConversationViewController: UIViewController {
   }
   
   @objc private func keyboardWillHide() {
-    self.scrollView.contentOffset = CGPoint.zero
-  }
-  
-  @objc private func endEditing() {
-    self.view.endEditing(true)
+    scrollView.contentOffset = CGPoint.zero
   }
   
   @IBAction func sendAction() {
-    if let newMessage = newMessageTextField.text {
-      if newMessage == "" { return }
-      let createdDate = Date()
-      let senderName = "Andrey Komarov"
-      guard let channelIdentifier = channel?.identifier else { return }
-      let reference = firebaseService.messagesReference(channelIdentifier: channelIdentifier)
-      reference.addDocument(data: Message(content: newMessage,
-                                          created: createdDate,
-                                          senderId: myId,
-                                          senderName: senderName).toDict)
-      newMessageTextField.text = ""
-    }
+    model.sendAction()
   }
   
 }

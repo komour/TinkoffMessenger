@@ -9,19 +9,20 @@
 import UIKit
 
 class ConversationsListViewController: UIViewController {
+  
+  lazy var model = ConversationsListModel(for: self)
+
   @IBOutlet weak var tableView: UITableView!
   let conversationStoryboard = UIStoryboard(name: "Conversation", bundle: Bundle.main)
   let profileStoryboard = UIStoryboard(name: "Profile", bundle: Bundle.main)
+  let createChannelStoryboard = UIStoryboard(name: "CreateChannel", bundle: Bundle.main)
   
-  private var firebaseService: FirebaseProtocol?
-  
-  private var onlineChannels = [ConversationCellModel]()
-  private var offlineChannels = [ConversationCellModel]()
+  var onlineChannels = [ConversationCellStruct]()
+  var offlineChannels = [ConversationCellStruct]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    firebaseService = FirebaseService()
     let conversationCellId = String(describing: ConversationCell.self)
     tableView.register(UINib(nibName: conversationCellId, bundle: nil), forCellReuseIdentifier: conversationCellId)
     self.tableView.dataSource = self
@@ -29,44 +30,8 @@ class ConversationsListViewController: UIViewController {
     self.navigationController?.navigationBar.barTintColor = UIColor(named: "brightYellow")
     self.tableView.rowHeight = 70
     
-    guard let firebaseService = firebaseService else { return }
-    let reference = firebaseService.channelsReference()
-    reference.addSnapshotListener { [weak self] (querySnapshot, err) in
-      guard let self = self else { return }
-      self.onlineChannels.removeAll()
-      self.offlineChannels.removeAll()
-      if let err = err {
-        print("Error getting documents: \(err)")
-      } else {
-        let tenMinutesAgo = Date().addingTimeInterval(-10.0 * 60.0)
-        guard let querySnapshot = querySnapshot else { return }
-        for document in querySnapshot.documents {
-          let name = document.data()["name"] as? String ?? "nil name"
-          let lastMessage = document.data()["lastMessage"] as? String
-          let channelActivityDate = firebaseService.getDateFromTimestamp(receivedTimestamp: document.data()["lastActivity"])
-          if tenMinutesAgo <= channelActivityDate {
-            self.onlineChannels.append(ConversationCellModel(name: name,
-                                                             message: lastMessage,
-                                                             date: channelActivityDate,
-                                                             isOnline: true,
-                                                             hasUnreadMessages: false,
-                                                             identifier: document.documentID))
-          } else {
-            self.offlineChannels.append(
-              ConversationCellModel(name: name,
-                                    message: lastMessage,
-                                    date: channelActivityDate,
-                                    isOnline: false,
-                                    hasUnreadMessages: false,
-                                    identifier: document.documentID))
-          }
-          
-        }
-      }
-      self.onlineChannels.sort(by: self.sortingClosure)
-      self.offlineChannels.sort(by: self.sortingClosure)
-      self.tableView.reloadData()
-    }
+    model.addSnapshotListner()
+    
   }
   
   //  go to profile vc
@@ -77,27 +42,9 @@ class ConversationsListViewController: UIViewController {
   }
   
   @IBAction func createChannelAction(_ sender: Any) {
-    let conversationsListStoryboard = self.storyboard
-    guard let conversationsListStoryboard1 = conversationsListStoryboard else { return }
-    let createChannelNavigationController = conversationsListStoryboard1.instantiateViewController(withIdentifier: "CreateChannelNavigationController")
+    let createChannelNavigationController = createChannelStoryboard.instantiateViewController(withIdentifier: "CreateChannelNavigationController")
     createChannelNavigationController.modalPresentationStyle = .fullScreen
     present(createChannelNavigationController, animated: true)
-  }
-  
-  lazy var sortingClosure = { (a0: ConversationCellModel, a1: ConversationCellModel) -> Bool in
-    if a0.message != nil {
-      if a1.message != nil {
-        return a1.date < a0.date
-      } else {
-        return true
-      }
-    } else {
-      if a1.message != nil {
-        return false
-      } else {
-        return a0.name < a1.name
-      }
-    }
   }
 }
 
@@ -131,6 +78,15 @@ extension ConversationsListViewController: UITableViewDataSource {
     return cell
   }
   
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    switch indexPath.section {
+    case 0:
+      model.deleteChat(withID: onlineChannels[indexPath.row].identifier)
+    default:
+      model.deleteChat(withID: offlineChannels[indexPath.row].identifier)
+    }
+  }
+  
 }
 
 // MARK: - UITableViewDelegate
@@ -145,7 +101,7 @@ extension ConversationsListViewController: UITableViewDelegate {
       return
     }
     
-    var chosenChanel: ConversationCellModel?
+    var chosenChanel: ConversationCellStruct?
     if indexPath.section == 0 {
       chosenChanel = onlineChannels[indexPath.row]
     } else {
