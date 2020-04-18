@@ -11,7 +11,7 @@
         <!--Choose Photo-->
         <scene sceneID="Bec-qT-5ZJ">
             <objects>
-                <viewController id="8FC-xj-Pzd" customClass="LoadPhotosViewController" customModule="TinkoffMessenger" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoadPhotosVC" id="8FC-xj-Pzd" customClass="LoadPhotosViewController" customModule="TinkoffMessenger" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s1Z-7v-fz1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

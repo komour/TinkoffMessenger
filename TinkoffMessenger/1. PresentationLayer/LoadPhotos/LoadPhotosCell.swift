@@ -12,11 +12,11 @@ class LoadPhotosCell: UICollectionViewCell {
   
   var curImage: UIImage = #imageLiteral(resourceName: "placeholder") {
     didSet {
-      bg.image = curImage
+      loadedPhotoImageView.image = curImage
     }
   }
   
-  fileprivate let bg: UIImageView = {
+  let loadedPhotoImageView: UIImageView = {
     let iv = UIImageView()
     iv.image = #imageLiteral(resourceName: "placeholder")
     iv.translatesAutoresizingMaskIntoConstraints = false
@@ -28,11 +28,11 @@ class LoadPhotosCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    contentView.addSubview(bg)
-    bg.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-    bg.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-    bg.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-    bg.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+    contentView.addSubview(loadedPhotoImageView)
+    loadedPhotoImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+    loadedPhotoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+    loadedPhotoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+    loadedPhotoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
 
   }
   

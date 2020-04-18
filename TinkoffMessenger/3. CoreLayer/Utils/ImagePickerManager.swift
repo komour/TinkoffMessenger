@@ -50,13 +50,14 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
   private func goToLoadView() {
     guard let viewController = self.viewController else { return }
     alert.dismiss(animated: true, completion: nil)
-    let loadPhotosViewController = loadPhotosStoryboard.instantiateViewController(withIdentifier: "LoadPhotosNC")
-//    guard let destination = loadPhotosViewController else {
-//      print(#function)
-//      return
-//    }
-    loadPhotosViewController.modalPresentationStyle = .fullScreen
-    viewController.present(loadPhotosViewController, animated: true)
+    let loadPhotosViewController = loadPhotosStoryboard.instantiateViewController(withIdentifier: "LoadPhotosVC") as? LoadPhotosViewController
+    guard let destination = loadPhotosViewController else {
+      print("nil destination in \(#function)")
+      return
+    }
+    destination.modalPresentationStyle = .fullScreen
+    destination.profileVC = viewController
+    viewController.present(destination, animated: true)
   }
   
   private func openCamera() {
