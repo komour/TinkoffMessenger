@@ -11,6 +11,8 @@ import UIKit
 
 class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
+  let loadPhotosStoryboard = UIStoryboard(name: "LoadPhotos", bundle: Bundle.main)
+  
   let alert = UIAlertController(title: "Select a New Avatar", message: nil, preferredStyle: .actionSheet)
   let picker = UIImagePickerController()
   
@@ -27,10 +29,14 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
     let galleryAction = UIAlertAction(title: "Choose from gallery", style: .default) { _ in
       self.openGallery()
     }
+    let loadAction = UIAlertAction(title: "Download", style: .default) { _ in
+      self.goToLoadView()
+    }
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
     picker.delegate = self
     alert.addAction(cameraAction)
     alert.addAction(galleryAction)
+    alert.addAction(loadAction)
     alert.addAction(cancelAction)
     alert.popoverPresentationController?.sourceView = viewController.view
   }
@@ -39,6 +45,18 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
     guard let viewController = self.viewController else { return }
     pickImageCallback = callback
     viewController.present(alert, animated: true, completion: nil)
+  }
+  
+  private func goToLoadView() {
+    guard let viewController = self.viewController else { return }
+    alert.dismiss(animated: true, completion: nil)
+    let loadPhotosViewController = loadPhotosStoryboard.instantiateViewController(withIdentifier: "LoadPhotosNC")
+//    guard let destination = loadPhotosViewController else {
+//      print(#function)
+//      return
+//    }
+    loadPhotosViewController.modalPresentationStyle = .fullScreen
+    viewController.present(loadPhotosViewController, animated: true)
   }
   
   private func openCamera() {
