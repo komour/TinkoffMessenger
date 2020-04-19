@@ -57,7 +57,9 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
     }
     destination.modalPresentationStyle = .fullScreen
     destination.profileVC = viewController
-    viewController.present(destination, animated: true)
+    let navigationController = UINavigationController(rootViewController: destination)
+    navigationController.navigationBar.barTintColor = UIColor(named: "brightYellow")
+    viewController.present(navigationController, animated: true, completion: nil)
   }
   
   private func openCamera() {

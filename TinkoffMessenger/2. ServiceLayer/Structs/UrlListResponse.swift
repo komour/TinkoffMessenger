@@ -13,3 +13,7 @@ struct UrlListResponse: Decodable {
     var totalHits: Int
     var hits: [PhotoUrl]
 }
+
+struct PhotoUrl: Decodable {
+  var webformatURL: String
+}

@@ -74,7 +74,6 @@
 		C5C61FA2240B22D800ABBE7D /* Date+isToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61FA0240B22D800ABBE7D /* Date+isToday.swift */; };
 		C5D6E2B9240B63D400543026 /* RandomHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6E2B7240B63D400543026 /* RandomHelper.swift */; };
 		C5D6E2BD240C294A00543026 /* UITableView+scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6E2BB240C294900543026 /* UITableView+scroll.swift */; };
-		C5DAF7C8244B740500BFC7A4 /* PhotoUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DAF7C7244B740500BFC7A4 /* PhotoUrl.swift */; };
 		C5DAF7CA244B76EB00BFC7A4 /* UrlListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DAF7C9244B76EB00BFC7A4 /* UrlListResponse.swift */; };
 /* End PBXBuildFile section */
 
@@ -161,7 +160,6 @@
 		C5D41CDB24280B3E0062D681 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		C5D6E2B7240B63D400543026 /* RandomHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomHelper.swift; sourceTree = "<group>"; };
 		C5D6E2BB240C294900543026 /* UITableView+scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+scroll.swift"; sourceTree = "<group>"; };
-		C5DAF7C7244B740500BFC7A4 /* PhotoUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUrl.swift; sourceTree = "<group>"; };
 		C5DAF7C9244B76EB00BFC7A4 /* UrlListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlListResponse.swift; sourceTree = "<group>"; };
 		ECB8DE563DC6C31F4C830E1D /* Pods-TinkoffMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffMessenger.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffMessenger/Pods-TinkoffMessenger.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -242,7 +240,6 @@
 			children = (
 				C55B88D72424307B00A22314 /* Message.swift */,
 				C55B88D92424309300A22314 /* Channel.swift */,
-				C5DAF7C7244B740500BFC7A4 /* PhotoUrl.swift */,
 				C5DAF7C9244B76EB00BFC7A4 /* UrlListResponse.swift */,
 			);
 			path = Structs;
@@ -686,7 +683,6 @@
 				C58E2D522443B7CD00A8D4CF /* TinkoffMessenger.xcdatamodeld in Sources */,
 				C58E2D472443B68900A8D4CF /* ConfigurableViewProtocol.swift in Sources */,
 				C59562C424492711003F3973 /* ConversationCell.swift in Sources */,
-				C5DAF7C8244B740500BFC7A4 /* PhotoUrl.swift in Sources */,
 				C58E2D4C2443B69500A8D4CF /* RandomHelper.swift in Sources */,
 				C5ACA479244B04C900C143FE /* LoadPhotosViewController.swift in Sources */,
 				C59562C92449271F003F3973 /* ConversationModel.swift in Sources */,

@@ -15,7 +15,17 @@
                     <view key="view" contentMode="scaleToFill" id="s1Z-7v-fz1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LKH-hN-Mba">
+                                <rect key="frame" x="141.5" y="287.5" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="LKH-hN-Mba" firstAttribute="centerY" secondItem="nxF-4z-2pC" secondAttribute="centerY" id="2BJ-hX-orR"/>
+                            <constraint firstItem="LKH-hN-Mba" firstAttribute="centerX" secondItem="nxF-4z-2pC" secondAttribute="centerX" id="Egv-fL-H32"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="nxF-4z-2pC"/>
                     </view>
                     <navigationItem key="navigationItem" title="Choose Photo" id="pCo-sL-dkF">
@@ -25,6 +35,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="LKH-hN-Mba" id="8cT-SA-1BA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nSg-WH-k6h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

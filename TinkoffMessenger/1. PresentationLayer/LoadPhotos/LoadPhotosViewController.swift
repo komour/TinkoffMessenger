@@ -11,10 +11,13 @@ import UIKit
 class LoadPhotosViewController: UIViewController, UICollectionViewDelegateFlowLayout {
   
   private let spacing: CGFloat = 5.0
+  private let apiKey = "16102464-3d0d1d0025255c01eee47eb3f"
+  private let imagePerPage = 150
   
-  var cratch = false
+  var urlListHasBeenLoaded = false
   
   var profileVC: UIViewController?
+  @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
   
   let reusableCellId = "loadReuseId"
   
@@ -29,31 +32,41 @@ class LoadPhotosViewController: UIViewController, UICollectionViewDelegateFlowLa
     return cv
   }()
   
-  let photos: [UIImage] = (1...50).map { _ in
-    #imageLiteral(resourceName: "placeholder")
-  }
   var photoUrls = [PhotoUrl]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     view.addSubview(collectionView)
     collectionView.backgroundColor = .white
     collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
     collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
     collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
     collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-    
+
+    collectionView.isHidden = true
+
     collectionView.dataSource = self
     collectionView.delegate = self
     collectionView.reloadData()
+
+    heavyWork()
     
-    loadUrlList { (success) -> Void in
-      if success {
-        self.cratch = true
-        self.collectionView.reloadData()
-      } else {
-        print(#function)
+  }
+  
+  func heavyWork() {
+    activityIndicator.startAnimating()
+    
+    DispatchQueue.global(qos: .default).async {
+      self.loadUrlList { (success) -> Void in
+        if success {
+          self.collectionView.isHidden = false
+          self.activityIndicator.stopAnimating()
+          self.urlListHasBeenLoaded = true
+          self.collectionView.reloadData()
+        } else {
+          print(#function)
+        }
       }
     }
   }
@@ -70,7 +83,7 @@ class LoadPhotosViewController: UIViewController, UICollectionViewDelegateFlowLa
   
   private func requestUrlList(completion: @escaping(Result<Bool, RequestError>) -> Void) {
     guard let url = URL(string:
-      "https://pixabay.com/api/?key=16102464-3d0d1d0025255c01eee47eb3f&q=yellow+flowers&image_type=photo") else {
+      "https://pixabay.com/api/?key=\(apiKey)&image_type=photo&per_page=\(imagePerPage)") else {
       completion(.failure(.wrongUrl))
       return
     }
@@ -132,20 +145,7 @@ extension LoadPhotosViewController: UICollectionViewDataSource {
     guard let cellUnwrapped = cell else {
       return UICollectionViewCell()
     }
-    
-    cellUnwrapped.layer.borderColor = UIColor.red.cgColor
-    cellUnwrapped.layer.borderWidth = 1
-    cellUnwrapped.layer.cornerRadius = 5
-    
-    if indexPath.row % 2 == 0 {
-      cellUnwrapped.curImage = photos[indexPath.row]
-    }
-    
-//    if indexPath.row == 0 {
-//      cellUnwrapped.loadedPhotoImageView.loadImageUsingUrlString(urlString:
-//        "https://pixabay.com/get/55e1d4404953a414f1dc84609629317f153ddae3574c704c7d2879d69f4ec351_640.jpg")
-//    }
-    if cratch {
+    if urlListHasBeenLoaded {
     cellUnwrapped.loadedPhotoImageView.loadImageUsingUrlString(urlString: photoUrls[indexPath.row].webformatURL)
     } else {
       cellUnwrapped.curImage = #imageLiteral(resourceName: "placeholder")
@@ -168,8 +168,3 @@ extension LoadPhotosViewController: UICollectionViewDelegate {
     }
   }
 }
-
-// https://pixabay.com/api/?key=16102464-3d0d1d0025255c01eee47eb3f&q=yellow+flowers&image_type=photo&pre\y=true&per_page=10
-
-// image
-// https://pixabay.com/get/55e1d4404953a414f1dc84609629317f153ddae3574c704c7d2879d69f4ec351_640.jpg

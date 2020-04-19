@@ -33,6 +33,12 @@ class LoadPhotosCell: UICollectionViewCell {
     loadedPhotoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
     loadedPhotoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
     loadedPhotoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+    
+    layer.borderColor = UIColor.lightGray.cgColor
+    layer.borderWidth = 1
+    layer.cornerRadius = 5
+    
+    loadedPhotoImageView.layer.cornerRadius = 5
 
   }
   
