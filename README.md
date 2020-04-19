@@ -11,3 +11,4 @@
 7. Save/Load profile data using CoreData
 8. Channel and message caching via CoreData. NSFetchedResultsController - in process
 9. Architecture (SOA, MVC) - ?
+10. Ability to select avatars from the network via `UICollectionView` and `URLSessionTask`  
