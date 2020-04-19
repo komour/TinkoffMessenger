@@ -14,6 +14,8 @@
 		C51F7B4B240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B49240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift */; };
 		C543E5DF2401EC90000652B4 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */; };
 		C560A194243A3FD4009499C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C560A193243A3FD4009499C2 /* GoogleService-Info.plist */; };
+		C56C33C1244C461C0055BB9F /* LoadUrlListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56C33C0244C461C0055BB9F /* LoadUrlListManager.swift */; };
+		C56C33C3244C47540055BB9F /* LoadUrlListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56C33C2244C47540055BB9F /* LoadUrlListProtocol.swift */; };
 		C58196A32434BE9200EEA1F1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55FA4CC2432813B00A23900 /* CoreDataManager.swift */; };
 		C58196A92435178900EEA1F1 /* CoreDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58196A62435167C00EEA1F1 /* CoreDataManagerProtocol.swift */; };
 		C58206FA244B3BEC00D0733C /* LoadPhotos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C58206F9244B3BEC00D0733C /* LoadPhotos.storyboard */; };
@@ -120,6 +122,8 @@
 		C55B88D92424309300A22314 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		C55FA4CC2432813B00A23900 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		C560A193243A3FD4009499C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C56C33C0244C461C0055BB9F /* LoadUrlListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadUrlListManager.swift; sourceTree = "<group>"; };
+		C56C33C2244C47540055BB9F /* LoadUrlListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadUrlListProtocol.swift; sourceTree = "<group>"; };
 		C58196A62435167C00EEA1F1 /* CoreDataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerProtocol.swift; sourceTree = "<group>"; };
 		C58206F9244B3BEC00D0733C /* LoadPhotos.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadPhotos.storyboard; sourceTree = "<group>"; };
 		C586922F24158F69000700C1 /* MemoryManagement.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MemoryManagement.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -213,6 +217,15 @@
 				192DE6B50B18F5B0886C0509 /* Pods-TinkoffMessengerTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C56C33BF244C45530055BB9F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C56C33C0244C461C0055BB9F /* LoadUrlListManager.swift */,
+				C56C33C2244C47540055BB9F /* LoadUrlListProtocol.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		C58196A82435177500EEA1F1 /* CoreData */ = {
@@ -327,6 +340,7 @@
 		C59562CB24492773003F3973 /* 2. ServiceLayer */ = {
 			isa = PBXGroup;
 			children = (
+				C56C33BF244C45530055BB9F /* Network */,
 				C58196AB243517E000EEA1F1 /* Structs */,
 				C58196AA2435179300EEA1F1 /* Firebase */,
 				C58196A82435177500EEA1F1 /* CoreData */,
@@ -692,6 +706,7 @@
 				C58E2D392443B66400A8D4CF /* ProfileModel.swift in Sources */,
 				C5DAF7CA244B76EB00BFC7A4 /* UrlListResponse.swift in Sources */,
 				C58E2D3D2443B67000A8D4CF /* Message.swift in Sources */,
+				C56C33C3244C47540055BB9F /* LoadUrlListProtocol.swift in Sources */,
 				C58E2D4F2443B69C00A8D4CF /* AppDelegate.swift in Sources */,
 				C5ACA47B244B062300C143FE /* UIImageView+Load.swift in Sources */,
 				C58E2D382443B66200A8D4CF /* ProfileViewController.swift in Sources */,
@@ -699,6 +714,7 @@
 				C58E2D442443B68300A8D4CF /* CoreDataManager.swift in Sources */,
 				C58E2D482443B68D00A8D4CF /* ImagePickerManager.swift in Sources */,
 				C59562C32449270F003F3973 /* MessageCellModel.swift in Sources */,
+				C56C33C1244C461C0055BB9F /* LoadUrlListManager.swift in Sources */,
 				C58E2D4A2443B69100A8D4CF /* Date+isToday.swift in Sources */,
 				C58E2D4B2443B69300A8D4CF /* UIView+bindEdgesToSuperview.swift in Sources */,
 			);

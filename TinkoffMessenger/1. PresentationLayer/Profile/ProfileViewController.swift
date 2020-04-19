@@ -127,6 +127,7 @@ class ProfileViewController: UIViewController {
   }
   
   @IBAction func cancelEditMode() {
+    model.fetchDataOrCreateEntity()
     model.switchEditingMode()
     endEditing()
   }
