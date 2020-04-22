@@ -14,8 +14,11 @@
 		C51F7B4B240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B49240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift */; };
 		C543E5DF2401EC90000652B4 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */; };
 		C560A194243A3FD4009499C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C560A193243A3FD4009499C2 /* GoogleService-Info.plist */; };
+		C56C33C1244C461C0055BB9F /* LoadUrlListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56C33C0244C461C0055BB9F /* LoadUrlListManager.swift */; };
+		C56C33C3244C47540055BB9F /* LoadUrlListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56C33C2244C47540055BB9F /* LoadUrlListProtocol.swift */; };
 		C58196A32434BE9200EEA1F1 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55FA4CC2432813B00A23900 /* CoreDataManager.swift */; };
 		C58196A92435178900EEA1F1 /* CoreDataManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58196A62435167C00EEA1F1 /* CoreDataManagerProtocol.swift */; };
+		C58206FA244B3BEC00D0733C /* LoadPhotos.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C58206F9244B3BEC00D0733C /* LoadPhotos.storyboard */; };
 		C585FF122423B1D7006C51A4 /* Pods_TinkoffMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84CD42ED9689180935E6D19F /* Pods_TinkoffMessenger.framework */; };
 		C585FF132423B1D7006C51A4 /* Pods_TinkoffMessenger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84CD42ED9689180935E6D19F /* Pods_TinkoffMessenger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C58D768523F9C004000E739E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C58D768423F9C004000E739E /* Assets.xcassets */; };
@@ -58,6 +61,9 @@
 		C59562C724492719003F3973 /* Conversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C61F84240AD00C00ABBE7D /* Conversation.storyboard */; };
 		C59562C82449271D003F3973 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61F85240AD00C00ABBE7D /* ConversationViewController.swift */; };
 		C59562C92449271F003F3973 /* ConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58E2CA72443B2F500A8D4CF /* ConversationModel.swift */; };
+		C5ACA479244B04C900C143FE /* LoadPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACA478244B04C900C143FE /* LoadPhotosViewController.swift */; };
+		C5ACA47B244B062300C143FE /* UIImageView+Load.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACA47A244B062300C143FE /* UIImageView+Load.swift */; };
+		C5ACA47D244B16EB00C143FE /* LoadPhotosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5ACA47C244B16EB00C143FE /* LoadPhotosCell.swift */; };
 		C5C61F7C240AD00500ABBE7D /* ConversationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61F76240AD00500ABBE7D /* ConversationsListViewController.swift */; };
 		C5C61F82240AD00500ABBE7D /* ConverationsList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C61F7A240AD00500ABBE7D /* ConverationsList.storyboard */; };
 		C5C61F87240AD00C00ABBE7D /* Conversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C61F84240AD00C00ABBE7D /* Conversation.storyboard */; };
@@ -70,6 +76,7 @@
 		C5C61FA2240B22D800ABBE7D /* Date+isToday.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C61FA0240B22D800ABBE7D /* Date+isToday.swift */; };
 		C5D6E2B9240B63D400543026 /* RandomHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6E2B7240B63D400543026 /* RandomHelper.swift */; };
 		C5D6E2BD240C294A00543026 /* UITableView+scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D6E2BB240C294900543026 /* UITableView+scroll.swift */; };
+		C5DAF7CA244B76EB00BFC7A4 /* UrlListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DAF7C9244B76EB00BFC7A4 /* UrlListResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,7 +122,10 @@
 		C55B88D92424309300A22314 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		C55FA4CC2432813B00A23900 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		C560A193243A3FD4009499C2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C56C33C0244C461C0055BB9F /* LoadUrlListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadUrlListManager.swift; sourceTree = "<group>"; };
+		C56C33C2244C47540055BB9F /* LoadUrlListProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadUrlListProtocol.swift; sourceTree = "<group>"; };
 		C58196A62435167C00EEA1F1 /* CoreDataManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerProtocol.swift; sourceTree = "<group>"; };
+		C58206F9244B3BEC00D0733C /* LoadPhotos.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoadPhotos.storyboard; sourceTree = "<group>"; };
 		C586922F24158F69000700C1 /* MemoryManagement.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MemoryManagement.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C58D767523F9C002000E739E /* TinkoffMessenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffMessenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C58D767823F9C002000E739E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +146,9 @@
 		C58E2CAE2443B33D00A8D4CF /* CreateChannelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChannelModel.swift; sourceTree = "<group>"; };
 		C59562BC24490765003F3973 /* CreateChannel.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateChannel.storyboard; sourceTree = "<group>"; };
 		C5A344F4241E4DBD00922BFB /* UIImage+isEqual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+isEqual.swift"; sourceTree = "<group>"; };
+		C5ACA478244B04C900C143FE /* LoadPhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPhotosViewController.swift; sourceTree = "<group>"; };
+		C5ACA47A244B062300C143FE /* UIImageView+Load.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Load.swift"; sourceTree = "<group>"; };
+		C5ACA47C244B16EB00C143FE /* LoadPhotosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadPhotosCell.swift; sourceTree = "<group>"; };
 		C5C61F76240AD00500ABBE7D /* ConversationsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsListViewController.swift; sourceTree = "<group>"; };
 		C5C61F7A240AD00500ABBE7D /* ConverationsList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConverationsList.storyboard; sourceTree = "<group>"; };
 		C5C61F84240AD00C00ABBE7D /* Conversation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
@@ -151,6 +164,7 @@
 		C5D41CDB24280B3E0062D681 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		C5D6E2B7240B63D400543026 /* RandomHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomHelper.swift; sourceTree = "<group>"; };
 		C5D6E2BB240C294900543026 /* UITableView+scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+scroll.swift"; sourceTree = "<group>"; };
+		C5DAF7C9244B76EB00BFC7A4 /* UrlListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlListResponse.swift; sourceTree = "<group>"; };
 		ECB8DE563DC6C31F4C830E1D /* Pods-TinkoffMessenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TinkoffMessenger.debug.xcconfig"; path = "Target Support Files/Pods-TinkoffMessenger/Pods-TinkoffMessenger.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,6 +219,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C56C33BF244C45530055BB9F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C56C33C0244C461C0055BB9F /* LoadUrlListManager.swift */,
+				C56C33C2244C47540055BB9F /* LoadUrlListProtocol.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		C58196A82435177500EEA1F1 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +253,7 @@
 			children = (
 				C55B88D72424307B00A22314 /* Message.swift */,
 				C55B88D92424309300A22314 /* Channel.swift */,
+				C5DAF7C9244B76EB00BFC7A4 /* UrlListResponse.swift */,
 			);
 			path = Structs;
 			sourceTree = "<group>";
@@ -302,6 +326,7 @@
 		C59562CA2449273B003F3973 /* 1. PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				C5ACA475244AE2CC00C143FE /* LoadPhotos */,
 				C58E2CAD2443B31E00A8D4CF /* CreateChannel */,
 				C5D6E2BA240BFF9F00543026 /* MessageCell */,
 				C5C61F77240AD00500ABBE7D /* ConversationCell */,
@@ -315,6 +340,7 @@
 		C59562CB24492773003F3973 /* 2. ServiceLayer */ = {
 			isa = PBXGroup;
 			children = (
+				C56C33BF244C45530055BB9F /* Network */,
 				C58196AB243517E000EEA1F1 /* Structs */,
 				C58196AA2435179300EEA1F1 /* Firebase */,
 				C58196A82435177500EEA1F1 /* CoreData */,
@@ -331,6 +357,16 @@
 			path = "3. CoreLayer";
 			sourceTree = "<group>";
 		};
+		C5ACA475244AE2CC00C143FE /* LoadPhotos */ = {
+			isa = PBXGroup;
+			children = (
+				C5ACA478244B04C900C143FE /* LoadPhotosViewController.swift */,
+				C5ACA47C244B16EB00C143FE /* LoadPhotosCell.swift */,
+				C58206F9244B3BEC00D0733C /* LoadPhotos.storyboard */,
+			);
+			path = LoadPhotos;
+			sourceTree = "<group>";
+		};
 		C5C61F662409CC9400ABBE7D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -341,6 +377,7 @@
 				C5D6E2B7240B63D400543026 /* RandomHelper.swift */,
 				C5D6E2BB240C294900543026 /* UITableView+scroll.swift */,
 				C5A344F4241E4DBD00922BFB /* UIImage+isEqual.swift */,
+				C5ACA47A244B062300C143FE /* UIImageView+Load.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -504,6 +541,7 @@
 			files = (
 				C59562C524492714003F3973 /* ConversationCell.xib in Resources */,
 				C59562C724492719003F3973 /* Conversation.storyboard in Resources */,
+				C58206FA244B3BEC00D0733C /* LoadPhotos.storyboard in Resources */,
 				C58E2D372443B66000A8D4CF /* Profile.storyboard in Resources */,
 				C58D768523F9C004000E739E /* Assets.xcassets in Resources */,
 				C59562C024492707003F3973 /* CreateChannel.storyboard in Resources */,
@@ -649,6 +687,7 @@
 				C58E2D4E2443B69A00A8D4CF /* UIImage+isEqual.swift in Sources */,
 				C58E2D402443B67800A8D4CF /* FirebaseService.swift in Sources */,
 				C58E2D3C2443B66C00A8D4CF /* ConversationsListModel.swift in Sources */,
+				C5ACA47D244B16EB00C143FE /* LoadPhotosCell.swift in Sources */,
 				C58E2D3A2443B66700A8D4CF /* ConversationsListViewController.swift in Sources */,
 				C59562BF24492702003F3973 /* CreateChannelModel.swift in Sources */,
 				C58E2D4D2443B69700A8D4CF /* UITableView+scroll.swift in Sources */,
@@ -659,18 +698,23 @@
 				C58E2D472443B68900A8D4CF /* ConfigurableViewProtocol.swift in Sources */,
 				C59562C424492711003F3973 /* ConversationCell.swift in Sources */,
 				C58E2D4C2443B69500A8D4CF /* RandomHelper.swift in Sources */,
+				C5ACA479244B04C900C143FE /* LoadPhotosViewController.swift in Sources */,
 				C59562C92449271F003F3973 /* ConversationModel.swift in Sources */,
 				C58E2D3E2443B67200A8D4CF /* Channel.swift in Sources */,
 				C59562BE244926FF003F3973 /* CreateChannelViewController.swift in Sources */,
 				C58E2D432443B68100A8D4CF /* CoreDataManagerProtocol.swift in Sources */,
 				C58E2D392443B66400A8D4CF /* ProfileModel.swift in Sources */,
+				C5DAF7CA244B76EB00BFC7A4 /* UrlListResponse.swift in Sources */,
 				C58E2D3D2443B67000A8D4CF /* Message.swift in Sources */,
+				C56C33C3244C47540055BB9F /* LoadUrlListProtocol.swift in Sources */,
 				C58E2D4F2443B69C00A8D4CF /* AppDelegate.swift in Sources */,
+				C5ACA47B244B062300C143FE /* UIImageView+Load.swift in Sources */,
 				C58E2D382443B66200A8D4CF /* ProfileViewController.swift in Sources */,
 				C58E2D3F2443B67600A8D4CF /* FirebaseProtocol.swift in Sources */,
 				C58E2D442443B68300A8D4CF /* CoreDataManager.swift in Sources */,
 				C58E2D482443B68D00A8D4CF /* ImagePickerManager.swift in Sources */,
 				C59562C32449270F003F3973 /* MessageCellModel.swift in Sources */,
+				C56C33C1244C461C0055BB9F /* LoadUrlListManager.swift in Sources */,
 				C58E2D4A2443B69100A8D4CF /* Date+isToday.swift in Sources */,
 				C58E2D4B2443B69300A8D4CF /* UIView+bindEdgesToSuperview.swift in Sources */,
 			);

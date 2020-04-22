@@ -25,7 +25,11 @@ class ProfileViewController: UIViewController {
   @IBOutlet weak var saveButton: UIButton!
   @IBOutlet weak var cancelEditButton: UIButton!
     
-  var didSetAvatar = false
+  var didSetAvatar = false {
+    didSet {
+      model.handleSaveButtons()
+    }
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -123,6 +127,7 @@ class ProfileViewController: UIViewController {
   }
   
   @IBAction func cancelEditMode() {
+    model.fetchDataOrCreateEntity()
     model.switchEditingMode()
     endEditing()
   }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Choose Photo-->
+        <scene sceneID="Bec-qT-5ZJ">
+            <objects>
+                <viewController storyboardIdentifier="LoadPhotosVC" id="8FC-xj-Pzd" customClass="LoadPhotosViewController" customModule="TinkoffMessenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="s1Z-7v-fz1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="LKH-hN-Mba">
+                                <rect key="frame" x="141.5" y="287.5" width="37" height="37"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="LKH-hN-Mba" firstAttribute="centerY" secondItem="nxF-4z-2pC" secondAttribute="centerY" id="2BJ-hX-orR"/>
+                            <constraint firstItem="LKH-hN-Mba" firstAttribute="centerX" secondItem="nxF-4z-2pC" secondAttribute="centerX" id="Egv-fL-H32"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nxF-4z-2pC"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Choose Photo" id="pCo-sL-dkF">
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="YVT-j5-KV6">
+                            <connections>
+                                <action selector="cancelAction:" destination="8FC-xj-Pzd" id="At1-P8-YIa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="LKH-hN-Mba" id="8cT-SA-1BA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nSg-WH-k6h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1235.625" y="0.0"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kkq-vY-M1u">
+            <objects>
+                <navigationController storyboardIdentifier="LoadPhotosNC" automaticallyAdjustsScrollViewInsets="NO" id="Tgl-cw-OK8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Z94-yi-GZD">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8FC-xj-Pzd" kind="relationship" relationship="rootViewController" id="prs-zj-nR6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IxN-JU-kxe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="238.125" y="0.0"/>
+        </scene>
+    </scenes>
+</document>

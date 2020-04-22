@@ -11,6 +11,8 @@ import UIKit
 
 class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
+  let loadPhotosStoryboard = UIStoryboard(name: "LoadPhotos", bundle: Bundle.main)
+  
   let alert = UIAlertController(title: "Select a New Avatar", message: nil, preferredStyle: .actionSheet)
   let picker = UIImagePickerController()
   
@@ -27,10 +29,14 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
     let galleryAction = UIAlertAction(title: "Choose from gallery", style: .default) { _ in
       self.openGallery()
     }
+    let loadAction = UIAlertAction(title: "Download", style: .default) { _ in
+      self.goToLoadView()
+    }
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
     picker.delegate = self
     alert.addAction(cameraAction)
     alert.addAction(galleryAction)
+    alert.addAction(loadAction)
     alert.addAction(cancelAction)
     alert.popoverPresentationController?.sourceView = viewController.view
   }
@@ -39,6 +45,21 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
     guard let viewController = self.viewController else { return }
     pickImageCallback = callback
     viewController.present(alert, animated: true, completion: nil)
+  }
+  
+  private func goToLoadView() {
+    guard let viewController = self.viewController else { return }
+    alert.dismiss(animated: true, completion: nil)
+    let loadPhotosViewController = loadPhotosStoryboard.instantiateViewController(withIdentifier: "LoadPhotosVC") as? LoadPhotosViewController
+    guard let destination = loadPhotosViewController else {
+      print("nil destination in \(#function)")
+      return
+    }
+    destination.modalPresentationStyle = .fullScreen
+    destination.profileVC = viewController
+    let navigationController = UINavigationController(rootViewController: destination)
+    navigationController.navigationBar.barTintColor = UIColor(named: "brightYellow")
+    viewController.present(navigationController, animated: true, completion: nil)
   }
   
   private func openCamera() {
