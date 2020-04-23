@@ -60,7 +60,10 @@ class ConversationModel {
                                           created: createdDate,
                                           senderId: uniqueId,
                                           senderName: senderName).toDict)
-      vc.newMessageTextField.text = ""
+      DispatchQueue.main.async {
+        vc.newMessageTextField.text = ""
+        vc.textFieldDidChange()
+      }
     }
   }
   
