@@ -25,7 +25,6 @@
 		C585FF122423B1D7006C51A4 /* Pods_TinkoffMessenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84CD42ED9689180935E6D19F /* Pods_TinkoffMessenger.framework */; };
 		C585FF132423B1D7006C51A4 /* Pods_TinkoffMessenger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84CD42ED9689180935E6D19F /* Pods_TinkoffMessenger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C58D768523F9C004000E739E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C58D768423F9C004000E739E /* Assets.xcassets */; };
-		C58D769323F9C004000E739E /* TinkoffMessengerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D769223F9C004000E739E /* TinkoffMessengerTests.swift */; };
 		C58D76A023F9C178000E739E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58D767823F9C002000E739E /* AppDelegate.swift */; };
 		C58D76A623F9C178000E739E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C58D768423F9C004000E739E /* Assets.xcassets */; };
 		C58E2D372443B66000A8D4CF /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5C61F8B240AD01500ABBE7D /* Profile.storyboard */; };
@@ -138,7 +137,6 @@
 		C58D768423F9C004000E739E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C58D768923F9C004000E739E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C58D768E23F9C004000E739E /* TinkoffMessengerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinkoffMessengerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C58D769223F9C004000E739E /* TinkoffMessengerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkoffMessengerTests.swift; sourceTree = "<group>"; };
 		C58D769423F9C004000E739E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C58D76AB23F9C178000E739E /* TinkoffMessengerDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffMessengerDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C58D76AC23F9C178000E739E /* TinkoffMessengerDebug.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = TinkoffMessengerDebug.plist; path = /Users/asap/TinkoffMessenger/TinkoffMessengerDebug.plist; sourceTree = "<absolute>"; };
@@ -313,7 +311,6 @@
 		C58D769123F9C004000E739E /* TinkoffMessengerTests */ = {
 			isa = PBXGroup;
 			children = (
-				C58D769223F9C004000E739E /* TinkoffMessengerTests.swift */,
 				C58D769423F9C004000E739E /* Info.plist */,
 				C55B572A245B56A9002ABB57 /* SortChannelTests.swift */,
 			);
@@ -743,7 +740,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C58D769323F9C004000E739E /* TinkoffMessengerTests.swift in Sources */,
 				C55B572B245B56A9002ABB57 /* SortChannelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,9 +14,29 @@ class ChannelsSorter: IChannelsSorter {
   }
   
   lazy var sortingClosure = { (a0: ConversationCellStruct, a1: ConversationCellStruct) -> Bool in
-//    every channel always has actual date (regardless of whether it has messages inside or not)
+    
+//    would be enough if every channel always had actual date (regardless of whether it had messages inside)
+//    also enough for testing
+//    if a0.isOnline == a1.isOnline {
+//      return a0.date > a1.date
+//    } else {
+//      return a0.isOnline
+//    }
+    
     if a0.isOnline == a1.isOnline {
-      return a0.date > a1.date
+      if a0.message != nil {
+        if a1.message != nil {
+          return a0.date > a1.date
+        } else {
+          return true
+        }
+      } else {
+        if a1.message != nil {
+          return false
+        } else {
+          return a0.date == a1.date ? a0.name < a1.name : a0.date > a1.date //just `a0.date > a1.date` in ideal world
+        }
+      }
     } else {
       return a0.isOnline
     }
