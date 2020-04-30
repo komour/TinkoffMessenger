@@ -12,3 +12,5 @@
 8. Channel and message caching via CoreData. NSFetchedResultsController - in process
 9. Architecture (SOA, MVC) - ?
 10. Ability to select avatars from the network via `UICollectionView` and `URLSessionTask`  
+11. SendButton state transition animations. (animation effect with Tinkoff logo during touching the screen in any area - not done)
+12. Sorting channels Unit tests via `XCTest`
