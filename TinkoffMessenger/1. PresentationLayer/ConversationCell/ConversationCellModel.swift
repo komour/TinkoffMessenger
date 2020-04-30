@@ -8,7 +8,7 @@
 
 import UIKit
 
-public struct ConversationCellStruct {
+public struct ConversationCellStruct: Equatable {
   let name: String
   let message: String?
   let date: Date
