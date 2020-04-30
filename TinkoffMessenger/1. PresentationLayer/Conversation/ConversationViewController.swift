@@ -15,6 +15,7 @@ class ConversationViewController: UIViewController {
   @IBOutlet weak var newMessageTextField: UITextField!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var scrollView: UIScrollView!
+  @IBOutlet weak var sendButton: UIButton!
   
   var messages = [MessageCellStruct]()
   private let toolbarHeight: CGFloat = 25
@@ -35,6 +36,43 @@ class ConversationViewController: UIViewController {
     addEndEditingGesture() 
     model.addSnapshotListner()
     
+    newMessageTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+    
+    sendButton.layer.cornerRadius = 5
+  }
+  
+  var wasAnimatedTo = false
+  var wasAnimatedFrom = true
+  
+  @objc func textFieldDidChange() {
+    if newMessageTextField.text != nil {
+      if !wasAnimatedTo {
+        wasAnimatedFrom = false
+        UIView.animate(withDuration: 0.5) {
+          self.sendButton.backgroundColor = UIColor(named: "brightYellow")
+        }
+        sendButtonAnimation()
+        wasAnimatedTo = true
+      }
+    }
+    if newMessageTextField.text == "" || newMessageTextField.text == nil {
+      wasAnimatedTo = false
+      if !wasAnimatedFrom {
+        sendButtonAnimation()
+        wasAnimatedFrom = true
+      }
+      UIView.animate(withDuration: 0.5) {
+        self.sendButton.backgroundColor = UIColor(named: "brightYellowInactive")
+      }
+    }
+  }
+  
+  func sendButtonAnimation() {
+    UIView.animate(withDuration: 0.25, delay: 0, options: .autoreverse, animations: {
+      self.sendButton.transform = CGAffineTransform(scaleX: 1.15, y: 1.15)
+    }, completion: { (_: Bool) in
+      self.sendButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+    })
   }
   
   deinit {
@@ -103,5 +141,5 @@ extension ConversationViewController: UITableViewDataSource {
     cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
     return cell
   }
-
+  
 }

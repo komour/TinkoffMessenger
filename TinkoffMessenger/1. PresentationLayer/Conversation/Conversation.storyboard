@@ -3,7 +3,7 @@
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,11 +29,12 @@
                                             </tableView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qIe-GX-yAR" userLabel="Send">
                                                 <rect key="frame" x="278" y="528" width="38" height="36"/>
+                                                <color key="backgroundColor" name="brightYellowInactive"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="38" id="gNu-M6-u6K"/>
                                                     <constraint firstAttribute="height" constant="36" id="pZD-sh-QB2"/>
                                                 </constraints>
-                                                <state key="normal" title="Attach" image="Send"/>
+                                                <state key="normal" image="Send"/>
                                                 <connections>
                                                     <action selector="sendAction" destination="ZwG-Vw-7BW" eventType="touchUpInside" id="NLH-SW-XLk"/>
                                                 </connections>
@@ -85,6 +86,7 @@
                     <connections>
                         <outlet property="newMessageTextField" destination="w17-aJ-UNb" id="Ink-Pj-XFR"/>
                         <outlet property="scrollView" destination="rxO-ot-YFo" id="LG5-Er-v2y"/>
+                        <outlet property="sendButton" destination="qIe-GX-yAR" id="PlQ-UU-30C"/>
                         <outlet property="tableView" destination="nrl-A7-fcF" id="qOO-9f-hlg"/>
                     </connections>
                 </viewController>
@@ -97,6 +99,9 @@
         <image name="Send" width="50" height="50"/>
         <namedColor name="brightYellow">
             <color red="1" green="0.89411764705882357" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="brightYellowInactive">
+            <color red="0.61166563039999999" green="0.55860628400000001" blue="0.18826988689999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="cream">
             <color red="1" green="0.99215686274509807" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
