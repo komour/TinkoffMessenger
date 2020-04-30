@@ -13,6 +13,8 @@
 		C51F7B3E240B5A8A00A4D8A5 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C51F7B3A240B5A8A00A4D8A5 /* MessageCell.xib */; };
 		C51F7B4B240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51F7B49240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift */; };
 		C543E5DF2401EC90000652B4 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */; };
+		C55B5725245B51E3002ABB57 /* IChannelsSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B5724245B51E3002ABB57 /* IChannelsSorter.swift */; };
+		C55B5727245B523B002ABB57 /* ChannelsSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55B5726245B523B002ABB57 /* ChannelsSorter.swift */; };
 		C560A194243A3FD4009499C2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C560A193243A3FD4009499C2 /* GoogleService-Info.plist */; };
 		C56C33C1244C461C0055BB9F /* LoadUrlListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56C33C0244C461C0055BB9F /* LoadUrlListManager.swift */; };
 		C56C33C3244C47540055BB9F /* LoadUrlListProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56C33C2244C47540055BB9F /* LoadUrlListProtocol.swift */; };
@@ -118,6 +120,8 @@
 		C51F7B49240B5C0000A4D8A5 /* ConfigurableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableViewProtocol.swift; sourceTree = "<group>"; };
 		C543E5DD2401EC8F000652B4 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		C551D85D243A6C0100C55D3E /* TinkoffMessenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinkoffMessenger.xcdatamodel; sourceTree = "<group>"; };
+		C55B5724245B51E3002ABB57 /* IChannelsSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IChannelsSorter.swift; sourceTree = "<group>"; };
+		C55B5726245B523B002ABB57 /* ChannelsSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelsSorter.swift; sourceTree = "<group>"; };
 		C55B88D72424307B00A22314 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		C55B88D92424309300A22314 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		C55FA4CC2432813B00A23900 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -217,6 +221,15 @@
 				192DE6B50B18F5B0886C0509 /* Pods-TinkoffMessengerTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		C55B5723245B51C5002ABB57 /* ChannelsSorting */ = {
+			isa = PBXGroup;
+			children = (
+				C55B5724245B51E3002ABB57 /* IChannelsSorter.swift */,
+				C55B5726245B523B002ABB57 /* ChannelsSorter.swift */,
+			);
+			path = ChannelsSorting;
 			sourceTree = "<group>";
 		};
 		C56C33BF244C45530055BB9F /* Network */ = {
@@ -340,6 +353,7 @@
 		C59562CB24492773003F3973 /* 2. ServiceLayer */ = {
 			isa = PBXGroup;
 			children = (
+				C55B5723245B51C5002ABB57 /* ChannelsSorting */,
 				C56C33BF244C45530055BB9F /* Network */,
 				C58196AB243517E000EEA1F1 /* Structs */,
 				C58196AA2435179300EEA1F1 /* Firebase */,
@@ -686,6 +700,7 @@
 				C59562C82449271D003F3973 /* ConversationViewController.swift in Sources */,
 				C58E2D4E2443B69A00A8D4CF /* UIImage+isEqual.swift in Sources */,
 				C58E2D402443B67800A8D4CF /* FirebaseService.swift in Sources */,
+				C55B5725245B51E3002ABB57 /* IChannelsSorter.swift in Sources */,
 				C58E2D3C2443B66C00A8D4CF /* ConversationsListModel.swift in Sources */,
 				C5ACA47D244B16EB00C143FE /* LoadPhotosCell.swift in Sources */,
 				C58E2D3A2443B66700A8D4CF /* ConversationsListViewController.swift in Sources */,
@@ -704,6 +719,7 @@
 				C59562BE244926FF003F3973 /* CreateChannelViewController.swift in Sources */,
 				C58E2D432443B68100A8D4CF /* CoreDataManagerProtocol.swift in Sources */,
 				C58E2D392443B66400A8D4CF /* ProfileModel.swift in Sources */,
+				C55B5727245B523B002ABB57 /* ChannelsSorter.swift in Sources */,
 				C5DAF7CA244B76EB00BFC7A4 /* UrlListResponse.swift in Sources */,
 				C58E2D3D2443B67000A8D4CF /* Message.swift in Sources */,
 				C56C33C3244C47540055BB9F /* LoadUrlListProtocol.swift in Sources */,

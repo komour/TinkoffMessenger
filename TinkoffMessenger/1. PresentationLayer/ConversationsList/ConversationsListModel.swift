@@ -11,6 +11,7 @@ import UIKit
 class ConversationsListModel {
   
   let viewController: ConversationsListViewController?
+  let channelsSorter: IChannelsSorter = ChannelsSorter()
   
   private let firebaseService: FirebaseProtocol = FirebaseService()
   
@@ -23,8 +24,7 @@ class ConversationsListModel {
     let reference = firebaseService.channelsReference()
     reference.addSnapshotListener { [weak self] (querySnapshot, err) in
       guard let self = self else { return }
-      vc.onlineChannels.removeAll()
-      vc.offlineChannels.removeAll()
+      var tempChannels = [ConversationCellStruct]()
       if let err = err {
         print("Error getting documents: \(err)")
       } else {
@@ -35,14 +35,14 @@ class ConversationsListModel {
           let lastMessage = document.data()["lastMessage"] as? String
           let channelActivityDate = self.firebaseService.getDateFromTimestamp(receivedTimestamp: document.data()["lastActivity"])
           if tenMinutesAgo <= channelActivityDate {
-            vc.onlineChannels.append(ConversationCellStruct(name: name,
-                                                              message: lastMessage,
-                                                              date: channelActivityDate,
-                                                              isOnline: true,
-                                                              hasUnreadMessages: false,
-                                                              identifier: document.documentID))
+            tempChannels.append(ConversationCellStruct(name: name,
+                                                            message: lastMessage,
+                                                            date: channelActivityDate,
+                                                            isOnline: true,
+                                                            hasUnreadMessages: false,
+                                                            identifier: document.documentID))
           } else {
-            vc.offlineChannels.append(
+            tempChannels.append(
               ConversationCellStruct(name: name,
                                      message: lastMessage,
                                      date: channelActivityDate,
@@ -53,25 +53,8 @@ class ConversationsListModel {
           
         }
       }
-      vc.onlineChannels.sort(by: self.sortingClosure)
-      vc.offlineChannels.sort(by: self.sortingClosure)
+      vc.channels = self.channelsSorter.sort(tempChannels)
       vc.tableView.reloadData()
-    }
-  }
-  
-  lazy var sortingClosure = { (a0: ConversationCellStruct, a1: ConversationCellStruct) -> Bool in
-    if a0.message != nil {
-      if a1.message != nil {
-        return a1.date < a0.date
-      } else {
-        return true
-      }
-    } else {
-      if a1.message != nil {
-        return false
-      } else {
-        return a0.name < a1.name
-      }
     }
   }
   
